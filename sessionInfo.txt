@@ -1,6 +1,6 @@
 R version 3.5.0 (2018-04-23)
 Platform: x86_64-apple-darwin15.6.0 (64-bit)
-Running under: macOS High Sierra 10.13.3
+Running under: macOS Sierra 10.12
 
 Matrix products: default
 BLAS: /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib
@@ -10,48 +10,76 @@ locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
 attached base packages:
- [1] grid      parallel  stats4    stats     graphics  grDevices utils    
- [8] datasets  methods   base     
+ [1] grid      parallel  stats4    stats     graphics 
+ [6] grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] GGally_1.4.0         xtable_1.8-2         broom_0.5.0         
- [4] bindrcpp_0.2.2       Hmisc_4.1-1          ggplot2_3.0.0       
- [7] Formula_1.2-3        survival_2.42-6      lattice_0.20-35     
-[10] biomaRt_2.36.1       annotate_1.58.0      XML_3.98-1.12       
-[13] tidyr_0.8.1          RBGL_1.56.0          sna_2.4             
-[16] network_1.13.0.1     statnet.common_4.1.4 dplyr_0.7.6         
-[19] stringr_1.3.1        stringi_1.2.4        tm_0.7-4            
-[22] NLP_0.1-11           org.Mm.eg.db_3.6.0   igraph_1.2.2        
-[25] Rgraphviz_2.24.0     graph_1.58.0         KEGGgraph_1.40.0    
-[28] pathview_1.20.0      org.Hs.eg.db_3.6.0   AnnotationDbi_1.42.1
-[31] IRanges_2.14.10      S4Vectors_0.18.3     Biobase_2.40.0      
-[34] BiocGenerics_0.26.0  CHRONOS_1.8.0       
+ [1] bindrcpp_0.2.2       matlib_0.9.1        
+ [3] xtable_1.8-3         broom_0.5.0         
+ [5] Hmisc_4.1-1          ggplot2_3.0.0       
+ [7] Formula_1.2-3        survival_2.42-6     
+ [9] lattice_0.20-35      biomaRt_2.37.6      
+[11] annotate_1.59.1      XML_3.98-1.16       
+[13] tidyr_0.8.1          sna_2.4             
+[15] network_1.13.0.1     statnet.common_4.1.4
+[17] RBGL_1.57.0          dplyr_0.7.6         
+[19] stringr_1.3.1        stringi_1.2.4       
+[21] tm_0.7-5             NLP_0.1-11          
+[23] org.Mm.eg.db_3.6.0   igraph_1.2.2        
+[25] Rgraphviz_2.25.1     graph_1.59.0        
+[27] KEGGgraph_1.41.0     pathview_1.21.2     
+[29] org.Hs.eg.db_3.6.0   AnnotationDbi_1.43.1
+[31] IRanges_2.15.17      S4Vectors_0.19.19   
+[33] Biobase_2.41.2       BiocGenerics_0.27.1 
+[35] CHRONOS_1.9.1        BiocInstaller_1.31.3
 
 loaded via a namespace (and not attached):
- [1] colorspace_1.3-2    circlize_0.4.4      htmlTable_1.12     
- [4] XVector_0.20.0      GlobalOptions_0.1.0 base64enc_0.1-3    
- [7] rstudioapi_0.7      bit64_0.9-7         fansi_0.2.3        
-[10] xml2_1.2.0          codetools_0.2-15    splines_3.5.0      
-[13] doParallel_1.0.11   knitr_1.20          cluster_2.0.7-1    
-[16] png_0.1-7           compiler_3.5.0      httr_1.3.1         
-[19] backports_1.1.2     assertthat_0.2.0    Matrix_1.2-14      
-[22] lazyeval_0.2.1      cli_1.0.0           acepack_1.4.1      
-[25] htmltools_0.3.6     prettyunits_1.0.2   tools_3.5.0        
-[28] coda_0.19-1         gtable_0.2.0        glue_1.3.0         
-[31] reshape2_1.4.3      Rcpp_0.12.18        slam_0.1-43        
-[34] Biostrings_2.48.0   nlme_3.1-137        iterators_1.0.10   
-[37] openxlsx_4.1.0      MASS_7.3-50         zlibbioc_1.26.0    
-[40] scales_0.5.0        hms_0.4.2           RColorBrewer_1.1-2 
-[43] yaml_2.2.0          memoise_1.1.0       gridExtra_2.3      
-[46] rpart_4.1-13        reshape_0.8.7       latticeExtra_0.6-28
-[49] RSQLite_2.1.1       foreach_1.4.4       checkmate_1.8.5    
-[52] zip_1.0.0           shape_1.4.4         rlang_0.2.1        
-[55] pkgconfig_2.0.1     bitops_1.0-6        purrr_0.2.5        
-[58] bindr_0.1.1         htmlwidgets_1.2     labeling_0.3       
-[61] bit_1.1-14          tidyselect_0.2.4    plyr_1.8.4         
-[64] magrittr_1.5        R6_2.2.2            DBI_1.0.0          
-[67] pillar_1.3.0        foreign_0.8-71      withr_2.1.2        
-[70] KEGGREST_1.20.1     RCurl_1.95-4.11     nnet_7.3-12        
-[73] tibble_1.4.2        crayon_1.3.4        utf8_1.1.4         
-[76] progress_1.2.0      data.table_1.11.4   blob_1.1.1         
-[79] forcats_0.3.0       digest_0.6.15       munsell_0.5.0      
+ [1] readxl_1.1.0            backports_1.1.2        
+ [3] circlize_0.4.4          plyr_1.8.4             
+ [5] lazyeval_0.2.1          splines_3.5.0          
+ [7] crosstalk_1.0.0         digest_0.6.17          
+ [9] foreach_1.4.4           htmltools_0.3.6        
+[11] fansi_0.3.0             magrittr_1.5           
+[13] checkmate_1.8.5         memoise_1.1.0          
+[15] cluster_2.0.7-1         doParallel_1.0.11      
+[17] openxlsx_4.1.0          Biostrings_2.49.1      
+[19] prettyunits_1.0.2       colorspace_1.3-2       
+[21] blob_1.1.1              haven_1.1.2            
+[23] crayon_1.3.4            RCurl_1.95-4.11        
+[25] jsonlite_1.5            bindr_0.1.1            
+[27] iterators_1.0.10        glue_1.3.0             
+[29] gtable_0.2.0            zlibbioc_1.27.0        
+[31] XVector_0.21.3          webshot_0.5.0          
+[33] car_3.0-2               shape_1.4.4            
+[35] abind_1.4-5             scales_1.0.0           
+[37] DBI_1.0.0               miniUI_0.1.1.1         
+[39] Rcpp_0.12.18            progress_1.2.0         
+[41] htmlTable_1.12          foreign_0.8-71         
+[43] bit_1.1-14              htmlwidgets_1.2        
+[45] httr_1.3.1              RColorBrewer_1.1-2     
+[47] acepack_1.4.1           pkgconfig_2.0.2        
+[49] nnet_7.3-12             utf8_1.1.4             
+[51] tidyselect_0.2.4        rlang_0.2.2            
+[53] manipulateWidget_0.10.0 later_0.7.4            
+[55] munsell_0.5.0           cellranger_1.1.0       
+[57] tools_3.5.0             cli_1.0.0              
+[59] RSQLite_2.1.1           yaml_2.2.0             
+[61] knitr_1.20              bit64_0.9-7            
+[63] zip_1.0.0               rgl_0.99.16            
+[65] purrr_0.2.5             KEGGREST_1.21.1        
+[67] nlme_3.1-137            mime_0.5               
+[69] slam_0.1-43             xml2_1.2.0             
+[71] compiler_3.5.0          rstudioapi_0.7         
+[73] curl_3.2                png_0.1-7              
+[75] tibble_1.4.2            forcats_0.3.0          
+[77] Matrix_1.2-14           pillar_1.3.0           
+[79] GlobalOptions_0.1.0     data.table_1.11.4      
+[81] bitops_1.0-6            httpuv_1.4.5           
+[83] R6_2.2.2                latticeExtra_0.6-28    
+[85] promises_1.0.1          gridExtra_2.3          
+[87] rio_0.5.10              codetools_0.2-15       
+[89] MASS_7.3-50             assertthat_0.2.0       
+[91] withr_2.1.2             hms_0.4.2              
+[93] rpart_4.1-13            coda_0.19-1            
+[95] carData_3.0-1           shiny_1.1.0            
+[97] base64enc_0.1-3        

@@ -1,4 +1,21 @@
 # Library Imports; Make sure all packages are installed
+libList <- c("CHRONOS","pathview","KEGGgraph","Rgraphviz","igraph",
+             "org.Mm.eg.db","tm","stringi","stringr","dplyr","sna",
+             "RBGL","tidyr","AnnotationDbi","org.Hs.eg.db","annotate",
+             "biomaRt","Hmisc","broom","xtable")
+
+source("https://bioconductor.org/biocLite.R")
+
+for(i in libList) {
+   if(!require(i)){
+          install.packages(i) 
+   }
+    if(!require(i)){
+          biocLite(i)
+    }
+}
+    
+
 library(CHRONOS)
 library(pathview)
 library(KEGGgraph)
@@ -34,7 +51,7 @@ newpath.centrality  <- function(adj.matrix, alpha, beta){
     cent.out  <- solve(eye - alpha * adj.matrix)
     cent.in   <- solve(eye - alpha * t(adj.matrix))
     cent.tot  <- (cent.out) + beta * (cent.in)
-    return(cent.tot)
+    return(list("SSC" = cent.tot, "Sink" =cent.in, "Source" =cent.out))
 
 }
 
@@ -57,8 +74,28 @@ zero.one.normalize    <- function(cent.list){
     }
 }
 
+### Semi laplace calculator, works with normalized connectivty matrix
+semi.laplace <- function(some.Matrix){
+    
+    inv.diag <- 1/rowSums(some.Matrix)
+    inv.diag[!is.finite(inv.diag)] <- 0
+    norm.laplace.esque <-  diag(1,length(inv.diag)) - (diag(inv.diag) %*% some.Matrix)
+    #norm.laplace.esque <-  Ginv(norm.laplace.esque)
+    norm.laplace.esque <-  solve(norm.laplace.esque)
+    
+        return(rowSums(norm.laplace.esque))  
+}
 
-
+homo.mat <- homo.mat + t(homo.mat)
+homo.mat[homo.mat > 0 ] <- 1
+some.Matrix <- as_adj(igraph.obj3, sparse = F)
+comps <- igraph::components(igraph.obj3)
+inv.diag <- 1/rowSums(homo.mat)
+inv.diag[!is.finite(inv.diag)] <- 0
+norm.laplace.esque <-  diag(1,length(inv.diag)) - (diag(inv.diag) %*% some.Matrix)
+eigen((diag(inv.diag) %*% some.Matrix),only.values = T)
+norm.laplace.esque <-  Ginv(norm.laplace.esque)
+norm.laplace.esque <-  solve(some.Matrix)
 # Downloading KEGG PATHWAYS
 # Pathwview stores pathways in the working directory
 
@@ -90,10 +127,14 @@ graphs.homo    <-  sapply(graphs.list, function(X) ({
 
 
 
+## This line is new and not in submitted version
+graphs.homo      <- sapply(graphs.homo, function(X)(RBGL::removeSelfLoops(X)))
+
 ### Some basic pathway filterg, leaving out empty graphs
 non.empty.homo   <- sapply(graphs.homo, function(X)(length(nodes(X)) != 0))
 num.nodes.homo   <- sapply(graphs.homo, function(X)(length(nodes(X))))
 non.empty.homo   <- graphs.homo[non.empty.homo]
+
 mtx.collection   <- sapply(non.empty.homo, function(X)(as(X,"matrix")))
 num.edges.homo   <- sapply(mtx.collection, sum)
 eigen.collection <- lapply(mtx.collection, eigen, only.value = T )
@@ -140,8 +181,10 @@ paths.summary[paths.summary$num_nodes < 21 | paths.summary$num_edges <21,]
 paths.summary[paths.summary$eigen >10,]
 all.path.names     <- pathway.titles
 all.homo.essential <- data_frame()
-
+all.path.names[166]
 j <- 0
+i <- 10
+k <- 0
 for (i in 1:length(graphs.homo)){
 
 
@@ -159,10 +202,9 @@ for (i in 1:length(graphs.homo)){
 
 
 
-
-    #Source/Sink Centrality processing
+    #Source/Sink Katz Centrality processing
     cent.mat     <- newpath.centrality(homo.mat,alpha = 0.1, beta = 1)
-    cent.vec     <- rowSums(cent.mat)
+    cent.vec     <- rowSums(cent.mat$SSC)
     ssc.rank     <- rank(cent.vec, ties.method = "min")
     ssc.norm     <- zero.one.normalize(cent.vec)
 
@@ -175,12 +217,21 @@ for (i in 1:length(graphs.homo)){
     degree.norm  <- zero.one.normalize(all.degree)
 
 
-    #Betweenness Centrality
+    #Betweenness Centrality Source
     beet.vec     <- sna::betweenness(homo.mat, cmode = "directed")
     beet.rank    <- rank(beet.vec, ties.method = "min")
     beet.norm    <- zero.one.normalize(beet.vec)
 
-
+    #Betweenness Centrality Sink
+    beet.sink.vec     <- sna::betweenness(t(homo.mat), cmode = "directed")
+    beet.sink.rank    <- rank(beet.sink.vec, ties.method = "min")
+    beet.sink.norm    <- zero.one.normalize(beet.sink.vec)
+    
+    #Betweenness Centrality Undirected
+    beet.und.vec     <- sna::betweenness((homo.mat), cmode = "undirected")
+    beet.und.rank    <- rank(beet.und.vec, ties.method = "min")
+    beet.und.norm    <- zero.one.normalize(beet.und.vec)
+    
     #PageRank Centrality
     igraph.obj   <- igraph::graph_from_adjacency_matrix(homo.mat,mode = "directed")
     igraph.obj2  <- igraph::graph_from_adjacency_matrix(t(homo.mat),mode = "directed")
@@ -206,12 +257,21 @@ for (i in 1:length(graphs.homo)){
 
     # Katz Centrality
     katz.mat     <- newpath.centrality((homo.mat),alpha = 0.1, beta = 0)
-    katz.vec     <- rowSums(katz.mat)
+    katz.vec     <- rowSums(katz.mat$Source)
     ktz.rank     <- rank(katz.vec, ties.method = "min")
     ktz.norm     <- zero.one.normalize(katz.vec)
 
 
-
+    
+    # Semi Laplacian, heat diffusion kernel esque
+    tryCatch({
+    #source.lap <- semi.laplace(homo.mat)
+    #sink.lap   <- semi.laplace(t(homo.mat))
+    #ssc.lap    <- source.lap + sink.lap
+    und.lap    <- semi.laplace(igraph::as_adj(igraph.obj3,sparse = F))
+    k <- k+1
+    } , error = function(e){print("err")}, finally = {print("Grrr")})
+    
 
     pathway.name <- all.path.names[[i]]
     pathway.name <- rep(pathway.name,length(node.genes))
@@ -269,7 +329,7 @@ for (i in 1:length(graphs.homo)){
     print(temp)
 }
 
-
+k
 gene.essential <-  all.homo.essential
 gene.essential %>% distinct(.,pathway.name)
 gene.essential <-  gene.essential %>%  replace_na(list(Description = "Normal"))
@@ -336,12 +396,12 @@ gene.essential %<>% filter(., total.node >20, total.edge > 20) %>%
 
     # The following line only for nonparametrix you have to remove the log values
     # The Wilcox test will not make any difference with the log values
-    # confusion2 <- confusion[c("SS-Katz","Degree", "Katz", "PageRank",
-    #                          "SS-PageRank", "Und. PageRank"),
-    #                        c("SS-Katz","Degree", "Katz", "PageRank",
-    #                          "SS-PageRank", "Und. PageRank")]
+     confusion2 <- confusion[c("SS-Katz","Degree", "Katz", "PageRank",
+                              "SS-PageRank", "Und. PageRank"),
+                            c("SS-Katz","Degree", "Katz", "PageRank",
+                              "SS-PageRank", "Und. PageRank")]
 
-    #confusion2[lower.tri(confusion2,diag = F)] <- ""
+    confusion2[lower.tri(confusion2,diag = F)] <- ""
     confusion[lower.tri(confusion,diag = F)] <- ""
     xtable(confusion2)
 
@@ -366,7 +426,8 @@ gene.essential %<>% filter(., total.node >20, total.edge > 20) %>%
 
 
     # Plotting Correlations
-    # library(GGally)
+    biocLite("GGally")
+     library(GGally)
     gene.cor.data <- gene.essential %>% dplyr::select(., deg.quant,ssc.quant,
                                                       pgr.quant,pgr.dbl.quant,
                                                       pgr.und.quant)
