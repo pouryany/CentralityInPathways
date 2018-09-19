@@ -368,8 +368,9 @@ for (i in 1:length(graphs.homo)){
     }
 
     homo.path.info <- data_frame(pathway.name, total.node,total.edge,node.genes,
-                                 katz.ssc.vec, katz.ssc.rank, katz.ssc.norm, out.degree,
-                                 in.degree, all.degree, degree.rank,degree.norm,
+                                 katz.ssc.vec, katz.ssc.rank, katz.ssc.norm,
+                                 out.degree, in.degree, all.degree,
+                                 degree.rank,degree.norm,
                                  beet.vec, beet.rank,beet.norm,
                                  pgr.source.vec, pgr.source.rank, pgr.source.norm,
                                  pgr.ssc.vec, pgr.ssc.norm, pgr.dbl.rank,
