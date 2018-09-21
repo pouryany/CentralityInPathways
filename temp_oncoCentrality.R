@@ -15,7 +15,6 @@ for(i in libList) {
     }
 }
 
-
 library(CHRONOS)
 library(pathview)
 library(KEGGgraph)
@@ -36,54 +35,6 @@ library(biomaRt)
 library(Hmisc)
 library(broom)
 library(xtable)
-
-
-# Some necessary functions
-#
-#
-#
-
-### Function for calculating Katz-Source-Sink
-newpath.centrality  <- function(adj.matrix, alpha, beta){
-
-
-    eye <- diag(nrow(adj.matrix))
-    cent.out  <- solve(eye - alpha * adj.matrix)
-    cent.in   <- solve(eye - alpha * t(adj.matrix))
-    cent.tot  <- (cent.out) + beta * (cent.in)
-    return(list("SSC" = cent.tot, "Sink" =cent.in, "Source" =cent.out))
-
-}
-
-### Given a list of eigenvalues, find the largest real component
-largest.eigen       <- function(b) {
-    c <-  b %>% unlist()  %>% Im() == 0
-    c %<>% subset.default(x = b,.) %>% Re() %>% max()
-    return(c)
-}
-
-### Normalizes a list of values to zero mean and 1 standard deviation
-zero.one.normalize    <- function(cent.list){
-    if(max(cent.list) == min(cent.list)){
-        return(rep(1,length(cent.list)))
-    } else{
-    #normalizedVec <- (cent.list - min(cent.list))/(max(cent.list) - min(cent.list))
-    normalizedVec <- (cent.list - mean(cent.list))/(sd(cent.list))
-
-    return(normalizedVec)
-    }
-}
-
-### Semi laplace calculator, works with normalized connectivty matrix
-semi.laplace <- function(some.Matrix){
-
-    inv.diag <- 1/(rowSums(some.Matrix) + 0.01)
-    inv.diag[!is.finite(inv.diag)] <- 0
-    norm.laplace.esque <-  diag(1,length(inv.diag)) - (diag(inv.diag) %*% some.Matrix)
-    #norm.laplace.esque <-  Ginv(norm.laplace.esque)
-    norm.laplace.esque <-  solve(norm.laplace.esque)
-    return(norm.laplace.esque)
-}
 
 
 source("basicFunctions.R")
@@ -183,41 +134,41 @@ colnames(paths.summary) <- c("pathway_name", "num_nodes", "num_edges","eigen")
 
 
 # Cancer related genes From Bushman, just an additional option
-cancer.list <- read.table(file = 'data/allOnco_May2018.tsv', sep = '\t', header = TRUE)
-cancer.list <- as.character(cancer.list$symbol)
-homo.gene.ref <- cancer.list
-homo.gene.ref <- data_frame(homo.gene.ref,"Cancer")
-colnames(homo.gene.ref) <- c("Gene", "Description")
+        cancer.list <- read.table(file = 'data/allOnco_May2018.tsv',
+                                  sep = '\t', header = TRUE)
+        cancer.list <- as.character(cancer.list$symbol)
+        homo.gene.ref <- cancer.list
+        homo.gene.ref <- data_frame(homo.gene.ref,"Cancer")
+        colnames(homo.gene.ref) <- c("Gene", "Description")
 
 
 # Cancer related genes From MSigDB
-homo.gene.ref1   <- read.csv("data/msigdblist.csv")
-homo.gene.ref1   <- as_data_frame(homo.gene.ref1)
-homo.gene.ref1$Description <- "Cancer"
-homo.gene.ref1   <-  distinct(homo.gene.ref1,Gene,Description)
+        homo.gene.ref1   <- read.csv("data/msigdblist.csv")
+        homo.gene.ref1   <- as_data_frame(homo.gene.ref1)
+        homo.gene.ref1$Description <- "Cancer"
+        homo.gene.ref1   <-  distinct(homo.gene.ref1,Gene,Description)
 
 
 
 
 #Cancer related genes From Cancer gene consensus
-consensus.list <- read.csv("data/Census_allWed Jun  6 18_56_35 2018.csv")
-consensus.list <- consensus.list[,1]
-homo.gene.ref2 <- data_frame(consensus.list,"Cancer")
-colnames(homo.gene.ref2) <- c("Gene", "Description")
+        consensus.list <- read.csv("data/Census_allWed Jun  6 18_56_35 2018.csv")
+        consensus.list <- consensus.list[,1]
+        homo.gene.ref2 <- data_frame(consensus.list,"Cancer")
+        colnames(homo.gene.ref2) <- c("Gene", "Description")
 
 
 ### Selecting union of CGC and MSigDB as the cancer set
-homo.gene.ref <- dplyr::bind_rows(homo.gene.ref1,homo.gene.ref2)
-homo.gene.ref <-  distinct(homo.gene.ref,Gene,Description)
+        homo.gene.ref <- dplyr::bind_rows(homo.gene.ref1,homo.gene.ref2)
+        homo.gene.ref <-  distinct(homo.gene.ref,Gene,Description)
 
-paths.summary[paths.summary$num_nodes < 21 | paths.summary$num_edges <21,]
-paths.summary[paths.summary$eigen >10,]
-all.path.names     <- pathway.titles
-all.homo.essential <- data_frame()
-all.path.names[166]
-j <- 0
-i <- 10
-k <- 0
+        paths.summary[paths.summary$num_nodes < 21 | paths.summary$num_edges <21,]
+        paths.summary[paths.summary$eigen >10,]
+        all.path.names     <- pathway.titles
+        all.homo.essential <- data_frame()
+
+        j <- 0
+        k <- 0
 for (i in 1:length(graphs.homo)){
 
 
@@ -474,18 +425,18 @@ gene.essential %>% distinct(.,pathway.name)
 
     p.vals.process <- gene.essential[!(gene.essential$pathway.name %in% unlist(no.cancers)),]
     distinct(p.vals.process,pathway.name)
-    p.vals.process <- p.vals.process %>% mutate(.,pgr.log.vec2 = log(pgr.ssc.vec),
-                                                cent.log.vec = log(katz.ssc.vec),
-                                                pgr.log.vec = log(pgr.source.vec),
-                                                pgr.log.vec3= log(pgr.und.vec))
+    # p.vals.process <- p.vals.process %>% mutate(.,pgr.log.vec2 = log(pgr.ssc.vec),
+    #                                             cent.log.vec = log(katz.ssc.vec),
+    #                                             pgr.log.vec = log(pgr.source.vec),
+    #                                             pgr.log.vec3= log(pgr.und.vec))
 
 
     # You can change the t.test to wilcox.test in the below formula to compute
     # Nonparametric statistics. In that case, log values would not differ.
     p.vals.process <- p.vals.process %>%
-                      gather(., key = "Centrality", value = "cent_value",pgr.log.vec2,
-                             pgr.log.vec,pgr.log.vec3,cent.log.vec,pgr.ssc.vec,
-                             pgr.source.vec,pgr.und.vec,degree.norm,katz.ssc.vec,katz.source.norm)%>%
+                      gather(., key = "Centrality", value = "cent_value",
+                             pgr.ssc.vec,pgr.source.vec,pgr.und.vec,degree.norm,
+                             katz.ssc.vec,katz.source.norm)%>%
                       group_by(pathway.name,Centrality) %>%
                       do(pval =tidy(t.test( cent_value~ Description,
                                alternative = "greater",paired = F,exact=FALSE, data = .))) %>%
@@ -501,8 +452,7 @@ gene.essential %>% distinct(.,pathway.name)
 
 
     confusion <- as.matrix(mat1) %*% as.matrix(mat2)
-    colnames(confusion) <- c("log SS-Katz","SS-Katz","Degree", "Katz","log PageRank","log SS-PageRank",
-                             "log Und. PageRank", "PageRank","SS-PageRank", "Und. PageRank")
+    colnames(confusion) <- c("Degree", "Katz", "PageRank","SS-PageRank", "Und. PageRank")
     rownames(confusion) <- colnames(confusion)
 
     # The following line only for nonparametrix you have to remove the log values
@@ -526,15 +476,6 @@ gene.essential %>% distinct(.,pathway.name)
     # aa$coefficients
     #
 
-
-
-    # Analyzing for only pathways with cancer
-    gene.essential <- gene.essential[!(gene.essential$pathway.name %in% unlist(no.cancers)),]
-
-
-
-    gene.essential %>% distinct(., node.genes)
-    gene.essential %>% filter(.,Description == "Cancer") %>% distinct(., node.genes)
 
 
 
