@@ -259,14 +259,20 @@ for (i in 1:length(graphs.homo)){
 
 
     #Betweenness Centrality Source
-        beet.vec     <- sna::betweenness(homo.mat, cmode = "directed")
-        beet.rank    <- rank(beet.vec, ties.method = "min")
-        beet.norm    <- zero.one.normalize(beet.vec)
+        beet.source.vec     <- sna::betweenness(homo.mat, cmode = "directed")
+        beet.source.rank    <- rank(beet.source.vec, ties.method = "min")
+        beet.source.norm    <- zero.one.normalize(beet.source.vec)
 
     #Betweenness Centrality Sink
         beet.sink.vec     <- sna::betweenness(t(homo.mat), cmode = "directed")
         beet.sink.rank    <- rank(beet.sink.vec, ties.method = "min")
         beet.sink.norm    <- zero.one.normalize(beet.sink.vec)
+
+    #Betweenness Centrality Source Sink
+        beet.ssc.vec     <- beet.source.vec + beet.sink.vec
+        beet.ssc.rank    <- rank(beet.ssc.vec, ties.method = "min")
+        beet.ssc.norm    <- zero.one.normalize(beet.ssc.vec)
+
 
     #Betweenness Centrality Undirected
         beet.und.vec     <- sna::betweenness((homo.mat), cmode = "undirected")
@@ -284,7 +290,8 @@ for (i in 1:length(graphs.homo)){
 
     ###Source-Sink pageRank
         pgr.sink.vec     <- igraph::page.rank(igraph.obj2,damping = 0.9)
-        pgr.ssc.vec      <- pgr.source.vec + pgr.sink.vec$vector
+        pgr.sink.vec     <- pgr.sink.vec$vector
+        pgr.ssc.vec      <- pgr.source.vec + pgr.sink.vec
 
     ###Undirected pageRank
         pgr.und.vec      <- igraph::page.rank(igraph.obj3,damping = 0.9)
@@ -293,13 +300,21 @@ for (i in 1:length(graphs.homo)){
 
         pgr.source.rank     <- rank(pgr.source.vec,ties.method = "min")
         pgr.source.norm     <- zero.one.normalize(pgr.source.vec)
-        pgr.ssc.norm <- zero.one.normalize(pgr.ssc.vec)
-        pgr.dbl.rank <- rank(pgr.ssc.vec,ties.method = "min")
-        pgr.und.norm <- zero.one.normalize(pgr.und.vec)
-        pgr.und.rank <- rank(pgr.und.vec,ties.method = "min")
+        pgr.sink.rank       <- rank(pgr.sink.vec,ties.method = "min")
+        pgr.sink.norm       <- zero.one.normalize(pgr.sink.vec)
+        pgr.ssc.norm        <- zero.one.normalize(pgr.ssc.vec)
+        pgr.ssc.rank        <- rank(pgr.ssc.vec,ties.method = "min")
+        pgr.und.norm        <- zero.one.normalize(pgr.und.vec)
+        pgr.und.rank        <- rank(pgr.und.vec,ties.method = "min")
 
 
 
+    # Undirected katz
+        ktz.mat             <-  igraph::as_adj(igraph.obj3,sparse = F)
+        katz.und.vec        <-  newpath.centrality(ktz.mat, alpha = 0.1, beta = 0)
+        katz.und.vec        <-  rowSums(katz.und.vec$Source)
+        katz.und.norm       <-  rank(katz.und.vec, ties.method = "min")
+        katz.und.rank       <-  zero.one.normalize(katz.und.vec)
 
     # Semi Laplacian, heat diffusion kernel esque
         tryCatch({
@@ -311,23 +326,23 @@ for (i in 1:length(graphs.homo)){
         } , error = function(e){print("err"); next}, finally = {print("Grrr")})
 
 
-        source.lap.vec     <- rowSums(source.lap)
-        source.lap.rank    <- rank(source.lap.vec, ties.method = "min")
-        source.lap.norm    <- zero.one.normalize(source.lap.vec)
+        lap.source.vec     <- rowSums(source.lap)
+        lap.source.rank    <- rank(lap.source.vec, ties.method = "min")
+        lap.source.norm    <- zero.one.normalize(lap.source.vec)
 
-        sink.lap.vec       <- rowSums(sink.lap)
-        sink.lap.rank      <- rank(sink.lap.vec, ties.method = "min")
-        sink.lap.norm      <- zero.one.normalize(sink.lap.vec)
-
-
-        ssc.lap.vec        <- rowSums(ssc.lap)
-        ssc.lap.rank       <- rank(ssc.lap.vec, ties.method = "min")
-        ssc.lap.norm       <- zero.one.normalize(ssc.lap.vec)
+        lap.sink.vec       <- rowSums(sink.lap)
+        lap.sink.rank      <- rank(lap.sink.vec, ties.method = "min")
+        lap.sink.norm      <- zero.one.normalize(lap.sink.vec)
 
 
-        und.lap.vec        <- rowSums(und.lap)
-        ssc.lap.rank       <- rank(und.lap.vec, ties.method = "min")
-        ssc.lap.norm       <- zero.one.normalize(und.lap.vec)
+        lap.ssc.vec        <- rowSums(ssc.lap)
+        lap.ssc.rank       <- rank(lap.ssc.vec, ties.method = "min")
+        lap.ssc.norm       <- zero.one.normalize(lap.ssc.vec)
+
+
+        lap.und.vec        <- rowSums(und.lap)
+        lap.und.rank       <- rank(lap.und.vec, ties.method = "min")
+        lap.und.norm       <- zero.one.normalize(lap.und.vec)
 
 
 
@@ -357,52 +372,85 @@ for (i in 1:length(graphs.homo)){
     levels(deg.buckets) <- 1:20
     }
 
-    if(min(beet.vec) == max(beet.vec)){
+    if(min(beet.source.vec) == max(beet.source.vec)){
         j <- j+1
         next
-    } else{
-        beet.buckets <- cut(beet.vec,breaks = seq(min(beet.vec), max(beet.vec)
+    }
+    else{
+        beet.buckets <- cut(beet.source.vec,breaks = seq(min(beet.source.vec), max(beet.source.vec)
                                                   ,len =21), include.lowest = TRUE)
         levels(beet.buckets) <- 1:20
 
     }
 
-    homo.path.info <- data_frame(pathway.name, total.node,total.edge,node.genes,
-                                 katz.ssc.vec, katz.ssc.rank, katz.ssc.norm,
-                                 out.degree, in.degree, all.degree,
-                                 degree.rank,degree.norm,
-                                 beet.vec, beet.rank,beet.norm,
-                                 pgr.source.vec, pgr.source.rank, pgr.source.norm,
-                                 pgr.ssc.vec, pgr.ssc.norm, pgr.dbl.rank,
-                                 pgr.und.vec, pgr.und.norm, pgr.und.rank,
-                                 katz.source.vec, katz.source.rank, katz.source.norm,
-                                 ssc.buckets, beet.buckets, deg.buckets)
+    homo.info <- data_frame(pathway.name, total.node,total.edge,node.genes,
+                            katz.source.vec, katz.source.rank, katz.source.norm,
+                            katz.sink.vec, katz.sink.rank, katz.sink.norm,
+                            katz.ssc.vec, katz.ssc.rank, katz.ssc.norm,
+                            katz.und.vec, katz.und.rank, katz.und.norm,
+                            out.degree, in.degree, all.degree, degree.rank,degree.norm,
+                            beet.source.vec, beet.source.rank,beet.source.norm,
+                            beet.sink.vec, beet.sink.rank,beet.sink.norm,
+                            beet.und.vec, beet.und.rank,beet.und.norm,
+                            beet.ssc.vec, beet.ssc.rank, beet.ssc.norm,
+                            pgr.source.vec, pgr.source.rank, pgr.source.norm,
+                            pgr.sink.vec, pgr.sink.rank, pgr.sink.norm,
+                            pgr.ssc.vec, pgr.ssc.norm, pgr.ssc.rank,
+                            pgr.und.vec, pgr.und.norm, pgr.und.rank,
+                            lap.source.vec, lap.source.rank, lap.source.norm,
+                            lap.sink.vec, lap.sink.rank, lap.sink.norm,
+                            lap.ssc.vec, lap.ssc.rank, lap.ssc.norm,
+                            lap.und.vec, lap.und.rank, lap.und.norm,
+                            ssc.buckets, beet.buckets, deg.buckets)
 
-    #homo.path.info %<>% filter(., node.genes %in% b$Gene) %>%
+    #homo.info %<>% filter(., node.genes %in% b$Gene) %>%
     #    inner_join(.,b, by = c("node.genes" = "Gene"))
 
-    homo.path.info <- left_join(homo.path.info,b, by = c("node.genes" = "Gene"))
+    homo.info <- left_join(homo.info,b, by = c("node.genes" = "Gene"))
 
-    all.homo.essential <- rbind(all.homo.essential, homo.path.info)
+    all.homo.essential <- rbind(all.homo.essential, homo.info)
     temp <- all.path.names[[i]]
     print(temp)
 }
 
-k
+
+### Saving and loading made easy
+saveRDS(all.homo.essential, file = "pathwayCentralities.rds")
+library(dplyr)
+all.homo.essential <- readRDS("pathwayCentralities.rds")
+
 gene.essential <-  all.homo.essential
 gene.essential %>% distinct(.,pathway.name)
 gene.essential <-  gene.essential %>%  replace_na(list(Description = "Normal"))
 
 # Assigning quantile scores to centrality models
-gene.essential %<>% filter(., total.node >20, total.edge > 20) %>%
-    mutate(., ssc.quant = round((katz.ssc.rank/total.node)*100),
-           deg.quant = round((degree.rank/total.node)*100),
-           bet.quant = round((beet.rank/total.node)*100),
-           pgr.quant = round((pgr.source.rank/total.node)*100),
-           pgr.dbl.quant = round((pgr.dbl.rank/total.node)*100),
-           pgr.und.quant = round((pgr.und.rank/total.node)*100),
-           ktz.quant = round((katz.source.rank/total.node)*100))
+gene.essential %<>% filter(.,total.node < 1000, total.node >20, total.edge > 20,
+                             total.edge < 4000) %>%
+    mutate(., katz.ssc.quant =    round((katz.ssc.rank/total.node)*100),
+              katz.und.quant =    round((katz.und.rank/total.node)*100),
+              katz.sink.quant =   round((katz.sink.rank/total.node)*100),
+              katz.source.quant = round((katz.source.rank/total.node)*100),
+              deg.quant =         round((degree.rank/total.node)*100),
+              beet.source.quant = round((beet.source.rank/total.node)*100),
+              beet.und.quant =    round((beet.und.rank/total.node)*100),
+              beet.sink.quant =   round((beet.sink.rank/total.node)*100),
+              beet.ssc.quant =    round((beet.ssc.rank/total.node)*100),
+              pgr.source.quant =  round((pgr.source.rank/total.node)*100),
+              pgr.sink.quant =    round((pgr.sink.rank/total.node)*100),
+              pgr.ssc.quant =     round((pgr.ssc.rank/total.node)*100),
+              pgr.und.quant =     round((pgr.und.rank/total.node)*100),
+              lap.ssc.quant =     round((lap.ssc.rank/total.node)*100),
+              lap.source.quant =  round((lap.source.rank/total.node)*100),
+              lap.sink.quant =    round((lap.sink.rank/total.node)*100),
+              lap.und.quant =     round((lap.und.rank/total.node)*100))
 
+
+### A total of 219 pathways passed the criteria
+gene.essential %>% distinct(.,pathway.name)
+
+sum(gene.essential$katz.und.vec < 0)
+
+plot(density(gene.essential$katz.und.vec))
 ## Total Number of cancer genes found in all genes
 ##gene.essential %>% filter(., Description == "Cancer") %>% distinct(.,node.genes)
 
@@ -487,12 +535,12 @@ gene.essential %<>% filter(., total.node >20, total.edge > 20) %>%
     # Plotting Correlations
     biocLite("GGally")
      library(GGally)
-    gene.cor.data <- gene.essential %>% dplyr::select(., deg.quant,ssc.quant,
-                                                      pgr.quant,pgr.dbl.quant,
-                                                      pgr.und.quant)
+    gene.cor.data <- gene.essential %>% dplyr::select(., deg.quant,katz.ssc.quant,
+                                                      pgr.source.quant,pgr.ssc.quant,
+                                                      pgr.und.quant,lap.ssc.quant)
     ggpairs(gene.cor.data, method = "pearson", columns = 1:ncol(gene.cor.data),
             columnLabels = c("Degree","Source-Sink Katz","PageRank",
-                             "Source-Sink PageRank","Undirected PageRank"),
+                             "Source-Sink PageRank","Undirected PageRank","SSC Laplace"),
             title = "",
             axisLabels = "internal",
             diag  = list(continuous=wrap("text", labelSize=30)),
@@ -526,7 +574,7 @@ gene.essential %<>% filter(., total.node >20, total.edge > 20) %>%
     levels(zz2) <- 1:100
 
     abc <-  mutate(abc, pgr.quant2 = as.numeric(zz))
-    abc <-  mutate(abc, ssc.quant2 = as.numeric(zz2))
+    abc <-  mutate(abc, katz.ssc.quant2 = as.numeric(zz2))
 
     zzz <-  abc %>% filter(., Description =="Normal") %>%
         dplyr::select(.,pgr.quant2) %>% unlist %>% unname %>% ecdf()
@@ -535,9 +583,9 @@ gene.essential %<>% filter(., total.node >20, total.edge > 20) %>%
         dplyr::select(.,pgr.quant2) %>% unlist %>% unname %>% ecdf()
 
     zzz3 <-  abc %>% filter(., Description =="Normal") %>%
-        dplyr::select(.,ssc.quant2) %>% unlist %>% ecdf()
+        dplyr::select(.,katz.ssc.quant2) %>% unlist %>% ecdf()
     zzz4 <-  abc %>% filter(., Description =="Cancer") %>%
-        dplyr::select(.,ssc.quant2) %>% unlist %>% ecdf()
+        dplyr::select(.,katz.ssc.quant2) %>% unlist %>% ecdf()
 
 
 
@@ -563,20 +611,20 @@ gene.essential %<>% filter(., total.node >20, total.edge > 20) %>%
 
     # Creating quantile scores
 gene.essential <-  mutate(gene.essential, pgr.quant2 = as.numeric(zz))
-gene.essential <-  mutate(gene.essential, ssc.quant2 = as.numeric(zz2))
+gene.essential <-  mutate(gene.essential, katz.ssc.quant2 = as.numeric(zz2))
 gene.essential <-  mutate(gene.essential, pgr.quant3 = as.numeric(zz3))
 
 
 
 # Comparing the quantile scores
-zzz0 <-  gene.essential %>% dplyr::select(.,ssc.quant2) %>%
+zzz0 <-  gene.essential %>% dplyr::select(.,katz.ssc.quant2) %>%
          unlist %>% unname #%>% ecdf()
 
 zzz1 <-  gene.essential %>% filter(., Description =="Normal") %>%
-         dplyr::select(.,ssc.quant2) %>% unlist %>% unname #%>% ecdf()
+         dplyr::select(.,katz.ssc.quant2) %>% unlist %>% unname #%>% ecdf()
 
 zzz2<-   gene.essential %>% filter(., Description =="Cancer") %>%
-         dplyr::select(.,ssc.quant2) %>% unlist %>% unname #%>% ecdf()
+         dplyr::select(.,katz.ssc.quant2) %>% unlist %>% unname #%>% ecdf()
 
 zzz3 <-  gene.essential %>% filter(., Description =="Normal") %>%
          dplyr::select(.,pgr.quant3) %>% unlist  #%>% ecdf()
@@ -593,8 +641,8 @@ aa$statistic
 # Getting KS Statistics across models
 gene.essential2 <- rbind(gene.essential, mutate(gene.essential, Description = "All genes"))
 
-ssk <- ks.test(gene.essential2$ssc.quant2[gene.essential2$Description == "Cancer"],
-               gene.essential2$ssc.quant2[gene.essential2$Description == "Normal"],
+ssk <- ks.test(gene.essential2$katz.ssc.quant2[gene.essential2$Description == "Cancer"],
+               gene.essential2$katz.ssc.quant2[gene.essential2$Description == "Normal"],
                alternative = "less")
 ssp <- ks.test(gene.essential2$pgr.quant2[gene.essential2$Description == "Cancer"],
                gene.essential2$pgr.quant2[gene.essential2$Description == "Normal"],
@@ -608,7 +656,7 @@ ks.pvals <- formatC(ks.pvals, digits = 3)
 ks.pvals <- paste("KS p-value <",ks.pvals)
 
 # Getting plots out!
-gene.essential2 <- gene.essential2 %>% gather(.,key = "Type", value = "ranks", pgr.quant2,pgr.quant3,ssc.quant2)
+gene.essential2 <- gene.essential2 %>% gather(.,key = "Type", value = "ranks", pgr.quant2,pgr.quant3,katz.ssc.quant2)
 gene.essential2$Type <- as.factor(gene.essential2$Type)
 levels(gene.essential2$Type) <- c("Source-Sink PageRank", "Undirected PageRank", "Source-Sink Katz")
 
@@ -630,7 +678,7 @@ ggplot(gene.essential2,aes(ranks,color = Description)) +
 
 
 
-ggplot(gene.essential,aes(pgr.und.quant,pgr.quant)) + geom_point()
+ggplot(gene.essential,aes(pgr.und.quant,pgr.source.quant)) + geom_point()
 
 
 
@@ -666,42 +714,52 @@ ggplot(gene.essential4,aes(pgr.quant2, color = Description)) +
 
 ## The regression analysis
 
-a <- gene.essential %>% group_by(ssc.quant, Description)  %>%
+a <- gene.essential %>% group_by(katz.ssc.quant, Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer") %>%
-    mutate(., Centrality = "Katz-Source-Sink",quant = ssc.quant)
+    mutate(., Centrality = "Katz-Source-Sink",quant = katz.ssc.quant)
 
 b <- gene.essential %>% group_by(deg.quant,Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer") %>%
     mutate(Centrality = "Degree",quant = deg.quant )
 
-c <- gene.essential %>% group_by(bet.quant,Description)  %>%
+c <- gene.essential %>% group_by(beet.source.quant,Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer") %>%
-    mutate(Centrality = "Betweenness" ,quant = bet.quant)
+    mutate(Centrality = "Betweenness" ,quant = beet.source.quant)
 
-d <- gene.essential %>% group_by(pgr.quant,Description)  %>%
+d <- gene.essential %>% group_by(pgr.source.quant,Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer") %>%
-    mutate(Centrality = "PageRank",quant = pgr.quant)
+    mutate(Centrality = "PageRank",quant = pgr.source.quant)
 
-e <- gene.essential %>% group_by(ktz.quant,Description)  %>%
+e <- gene.essential %>% group_by(katz.source.quant,Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer")  %>%
-    mutate(Centrality = "Katz",quant = ktz.quant)
+    mutate(Centrality = "Katz",quant = katz.source.quant)
 
-f <- gene.essential %>% group_by(pgr.dbl.quant,Description)  %>%
+f <- gene.essential %>% group_by(pgr.ssc.quant,Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer")  %>%
-    mutate(Centrality = "PageRank-Source-Sink",quant = pgr.dbl.quant )
+    mutate(Centrality = "PageRank-Source-Sink",quant = pgr.ssc.quant )
 
 g <- gene.essential %>% group_by(pgr.und.quant,Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer")  %>%
     mutate(Centrality = "PageRank-Undirected",quant = pgr.und.quant )
 
-total <- rbind(a,b,d,e,f,g)
+h <- gene.essential %>% group_by(lap.source.quant,Description)  %>%
+    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
+    filter(., Description== "Cancer")  %>%
+    mutate(Centrality = "Lap-SSC",quant = lap.source.quant )
+
+i <- gene.essential %>% group_by(beet.und.quant,Description)  %>%
+    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
+    filter(., Description== "Cancer")  %>%
+    mutate(Centrality = "Beetween",quant = beet.und.quant )
+
+total <- rbind(a,b,d,e,f,g,h,i)
 
 
 
@@ -748,26 +806,26 @@ h <- abc %>% group_by(pgr.quant2,Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer")  %>% mutate(Centrality = "Katz Source/Sink")
 
-i <- abc %>% group_by(ssc.quant2,Description)  %>%
+i <- abc %>% group_by(katz.ssc.quant2,Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer")  %>% mutate(Centrality = "Katz Source/Sink")
 
-areg <-lm(freq ~ as.numeric(ssc.quant), data = a)
+areg <-lm(freq ~ as.numeric(katz.ssc.quant), data = a)
 summary(areg)
 
 breg <-lm(freq ~ as.numeric(deg.quant), data = b)
 summary(breg)
 
-creg <-lm(freq ~ as.numeric(bet.quant), data = c)
+creg <-lm(freq ~ as.numeric(beet.source.quant), data = c)
 summary(reg)
 
-dreg <-lm(freq ~ as.numeric(pgr.quant), data = d)
+dreg <-lm(freq ~ as.numeric(pgr.source.quant), data = d)
 summary(dreg)
 
-reg <-lm(freq ~ as.numeric(ktz.quant), data = e)
+reg <-lm(freq ~ as.numeric(katz.source.quant), data = e)
 summary(reg)
 
-reg <-lm(freq ~ as.numeric(pgr.dbl.quant), data = f)
+reg <-lm(freq ~ as.numeric(pgr.ssc.quant), data = f)
 summary(reg)
 
 reg <-lm(freq ~ as.numeric(pgr.und.quant), data = g)
@@ -776,20 +834,20 @@ summary(reg)
 reg <-lm(freq ~ as.numeric(pgr.quant2), data = h)
 summary(reg)
 
-reg <-lm(freq ~ as.numeric(ssc.quant2), data = i)
+reg <-lm(freq ~ as.numeric(katz.ssc.quant2), data = i)
 summary(reg)
 
 
 
-plot(a$ssc.quant,a$freq)
+plot(a$katz.ssc.quant,a$freq)
 plot(b$deg.quant,b$freq)
-plot(c$bet.quant,c$freq)
-plot(d$pgr.quant,d$freq)
-plot(e$ktz.quant,e$freq)
-plot(f$pgr.dbl.quant,f$freq)
+plot(c$beet.source.quant,c$freq)
+plot(d$pgr.source.quant,d$freq)
+plot(e$katz.source.quant,e$freq)
+plot(f$pgr.ssc.quant,f$freq)
 plot(g$pgr.und.quant,g$freq)
 plot(h$pgr.quant2,h$freq)
-plot(i$ssc.quant2,i$freq)
+plot(i$katz.ssc.quant2,i$freq)
 
 sum(b$n )
 #####
