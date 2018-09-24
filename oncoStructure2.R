@@ -465,6 +465,7 @@ gene.essential %>% distinct(.,pathway.name)
     no.cancers     <- gene.essential %>% group_by(.,pathway.name) %>%
                       filter(.,Description =="Cancer") %>% distinct(., pathway.name)
     gene.essential <- gene.essential %>% filter(., pathway.name %in% unlist(no.cancers))
+    names(gene.essential)
     no.cancers     <- gene.essential %>% group_by(.,pathway.name) %>%
                       filter(.,Description =="Cancer") %>%
                       summarise(count = n()) %>%

@@ -6,55 +6,159 @@ library(xtable)
 gene.essential <- readRDS("gene_essentials.rds")
 
 
+names(gene.essential)[61]
+gene.essential$Description <- factor(gene.essential$Description)
+# levels(gene.temp$Description)
+ gene.essential$Description <- relevel(gene.essential$Description,ref = "Normal")
+feature.list <-  grep("quant",names(gene.essential))
+-c(1,2,3,4,58,59,60,61)
+
+reg.table <- gene.essential %>%
+    gather(., key = "Centrality", value = "cent_value",
+            gather_cols=feature.list) %>%
+    group_by(Centrality) %>%
+    do(fit =tidy(glm(as.factor(Description) ~ cent_value, family="binomial", data = .))) %>%
+    unnest()  %>%
+    group_by(Centrality)
+
+
+    mutate(., fdr = p.adjust(p.value)) %>%
+    filter(., fdr < 0.05)
+
+
+bbb <- reg.table %>% filter(., term != "(Intercept)") %>%
+    mutate(., estimate = exp(estimate))
+levels(gene.essential$Description) <- c(0,1)
+
+glm(Description ~ katz.ssc.quant, family= binomial, data = gene.essential)
+
+log(log(log(katz.ssc.vec)) +2)
+as.logical(factor(gene.essential$Description))
+log(100)
+exp(0.37)
+ggplot(gene.essential,aes(x =katz.ssc.vec ,   colour = Description)) +
+    geom_density( kernel = "g")+
+    theme_bw()
+
+
+ggplot(gene.essential,aes(x =rgamma(nrow(gene.essential),3.27839639,1.00738148 ))) +
+    geom_density( kernel = "g")
+
+
+?dgamma
+
+library(MASS)
+my.mle<-fitdistr(gene.essential$katz.ssc.vec, densfun="gamma")
+my.mle$sd
+BIC(my.mle)
+
+
+feature.list <-  grep("quant",names(gene.essential),value = T)
+feature.list <- feature.list[-2]
+reg.res <- gene.essential %>% mutate(., deg.quant = all.degree)
+reg.res <-    gene.essential %>%
+    gather_(., key = "Centrality", value = "cent_value",
+           gather_cols=feature.list)
+
+
+reg.res %>% group_by(Centrality) %>% group_by(Description,cent_value) %>%
+             summarise(n = n()) %>%
+             mutate(freq = n/ sum(n)) %>%
+             filter(., Description== "Cancer") %>% mutate(.,Models = Centrality)
+
+
+reg.res %>% group_by(., Centrality) %>%
+do(fit = lm(freq ~ as.numeric(cent_value), data=.)) %>%    glance(fit)
+
+
+
 ## The regression analysis
 
-a <- gene.essential %>% group_by(katz.ssc.quant, Description)  %>%
+a1 <- gene.essential %>% group_by(katz.ssc.quant, Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer") %>%
     mutate(., Centrality = "Katz-Source-Sink",quant = katz.ssc.quant)
+
+a2 <- gene.essential %>% group_by(katz.source.quant, Description)  %>%
+    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
+    filter(., Description== "Cancer") %>%
+    mutate(., Centrality = "Katz-Source",quant = katz.source.quant)
+
+a3 <- gene.essential %>% group_by(katz.sink.quant, Description)  %>%
+    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
+    filter(., Description== "Cancer") %>%
+    mutate(., Centrality = "Katz-Sink",quant = katz.sink.quant)
 
 b <- gene.essential %>% group_by(deg.quant,Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer") %>%
     mutate(Centrality = "Degree",quant = deg.quant )
 
-c <- gene.essential %>% group_by(beet.source.quant,Description)  %>%
+c1 <- gene.essential %>% group_by(beet.source.quant,Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer") %>%
-    mutate(Centrality = "Betweenness" ,quant = beet.source.quant)
+    mutate(Centrality = "Bet-Source" ,quant = beet.source.quant)
 
-d <- gene.essential %>% group_by(pgr.source.quant,Description)  %>%
+c2 <- gene.essential %>% group_by(beet.sink.quant,Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer") %>%
-    mutate(Centrality = "PageRank",quant = pgr.source.quant)
+    mutate(Centrality = "Bet-Sink" ,quant = beet.sink.quant)
 
-e <- gene.essential %>% group_by(katz.source.quant,Description)  %>%
+c3 <- gene.essential %>% group_by(beet.ssc.quant,Description)  %>%
+    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
+    filter(., Description== "Cancer") %>%
+    mutate(Centrality = "Bet-SSC" ,quant = beet.ssc.quant)
+
+c4 <- gene.essential %>% group_by(beet.und.quant,Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer")  %>%
-    mutate(Centrality = "Katz",quant = katz.source.quant)
+    mutate(Centrality = "Between-Und",quant = beet.und.quant )
 
-f <- gene.essential %>% group_by(pgr.ssc.quant,Description)  %>%
+d1 <- gene.essential %>% group_by(pgr.source.quant,Description)  %>%
+    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
+    filter(., Description== "Cancer") %>%
+    mutate(Centrality = "PageRank-Source",quant = pgr.source.quant)
+
+d2 <- gene.essential %>% group_by(pgr.sink.quant,Description)  %>%
+    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
+    filter(., Description== "Cancer") %>%
+    mutate(Centrality = "PageRank-Sink",quant = pgr.sink.quant)
+
+d3 <- gene.essential %>% group_by(pgr.ssc.quant,Description)  %>%
+    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
+    filter(., Description== "Cancer") %>%
+    mutate(Centrality = "PageRank-SSC",quant = pgr.ssc.quant)
+
+
+d4 <- gene.essential %>% group_by(pgr.und.quant,Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer")  %>%
-    mutate(Centrality = "PageRank-Source-Sink",quant = pgr.ssc.quant )
+    mutate(Centrality = "PageRank-Und",quant = pgr.und.quant )
 
-g <- gene.essential %>% group_by(pgr.und.quant,Description)  %>%
+h1 <- gene.essential %>% group_by(lap.source.quant,Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer")  %>%
-    mutate(Centrality = "PageRank-Undirected",quant = pgr.und.quant )
+    mutate(Centrality = "Lap-Source",quant = lap.source.quant )
 
-h <- gene.essential %>% group_by(lap.source.quant,Description)  %>%
+h2 <- gene.essential %>% group_by(lap.sink.quant,Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer")  %>%
-    mutate(Centrality = "Lap-SSC",quant = lap.source.quant )
+    mutate(Centrality = "Lap-Sink",quant = lap.sink.quant )
 
-i <- gene.essential %>% group_by(beet.und.quant,Description)  %>%
+h3 <- gene.essential %>% group_by(lap.ssc.quant,Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer")  %>%
-    mutate(Centrality = "Beetween",quant = beet.und.quant )
+    mutate(Centrality = "Lap-SSC",quant = lap.ssc.quant )
 
-total <- rbind(a,b,d,e,f,g,h,i)
+h4 <- gene.essential %>% group_by(lap.und.quant,Description)  %>%
+    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
+    filter(., Description== "Cancer")  %>%
+    mutate(Centrality = "Lap-Und",quant = lap.und.quant )
 
+
+total <- rbind(a1,a2,a3,b,c1,c2,c3,c4,d1,d2,d3,d4,h1,h2,h3,h4)
+
+rm(a1,a2,a3,b,c1,c2,c3,c4,d1,d2,d3,d4,h1,h2,h3,h4)
 
 
 # Reporting
@@ -81,6 +185,7 @@ ggplot(total, aes(y = freq, x= quant)) + geom_point()+
           legend.title=element_text(face = "bold", size = 9),
           axis.text.y=element_text(size = 12),
           axis.text.x=element_text(size = 12),
-          axis.ticks.y=element_blank()) +  geom_text(data=overall.cors, x = 50, y =0.5,
+          axis.ticks.y=element_blank()) +  geom_text(data=overall.cors, x = 50,
+                                                     y =0.8,
                                                      aes(x,y,label=label),size = 6, inherit.aes=FALSE)
 
