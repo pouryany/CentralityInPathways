@@ -1,3 +1,4 @@
+rm(list = ls())
 library(dplyr)
 library(broom)
 library(ggplot2)
@@ -6,7 +7,12 @@ library(xtable)
 gene.essential <- readRDS("gene_essentials.rds")
 
 
-names(gene.essential)[61]
+
+
+
+
+
+
 gene.essential$Description <- factor(gene.essential$Description)
 # levels(gene.temp$Description)
  gene.essential$Description <- relevel(gene.essential$Description,ref = "Normal")
@@ -30,7 +36,9 @@ bbb <- reg.table %>% filter(., term != "(Intercept)") %>%
     mutate(., estimate = exp(estimate))
 levels(gene.essential$Description) <- c(0,1)
 
-glm(Description ~ katz.ssc.quant, family= binomial, data = gene.essential)
+glm(as.factor(Description) ~ pgr.source.norm + pgr.sink.norm, family= binomial, data = gene.essential)
+
+
 
 log(log(log(katz.ssc.vec)) +2)
 as.logical(factor(gene.essential$Description))
@@ -40,7 +48,8 @@ ggplot(gene.essential,aes(x =katz.ssc.vec ,   colour = Description)) +
     geom_density( kernel = "g")+
     theme_bw()
 
-
+ggplot(gene.essential,aes(x =log(katz.source.vec) , y = log(katz.sink.vec),
+                          colour = Description)) + geom_point()
 ggplot(gene.essential,aes(x =rgamma(nrow(gene.essential),3.27839639,1.00738148 ))) +
     geom_density( kernel = "g")
 
@@ -158,7 +167,8 @@ h4 <- gene.essential %>% group_by(lap.und.quant,Description)  %>%
 
 total <- rbind(a1,a2,a3,b,c1,c2,c3,c4,d1,d2,d3,d4,h1,h2,h3,h4)
 
-rm(a1,a2,a3,b,c1,c2,c3,c4,d1,d2,d3,d4,h1,h2,h3,h4)
+
+#rm(a1,a2,a3,b,c1,c2,c3,c4,d1,d2,d3,d4,h1,h2,h3,h4)
 
 
 # Reporting
@@ -177,7 +187,7 @@ overall.cors$label <- text.vals
 
 ggplot(total, aes(y = freq, x= quant)) + geom_point()+
     geom_smooth(method= "lm") + #geom_smooth(method= "loess", color="green" , fill = "red") +
-    facet_wrap(~Centrality ,ncol = 3) +theme_bw()+ labs(x = "Quantile Score", y = "Fraction of Cancer Genes")+
+    facet_wrap(~Centrality ,ncol = 2) +theme_bw()+ labs(x = "Quantile Score", y = "Fraction of Cancer Genes")+
     theme(strip.text = element_text(face="bold", size=20),
           plot.title = element_text(size = 20),
           axis.title = element_text(size = 30),
@@ -186,6 +196,7 @@ ggplot(total, aes(y = freq, x= quant)) + geom_point()+
           axis.text.y=element_text(size = 12),
           axis.text.x=element_text(size = 12),
           axis.ticks.y=element_blank()) +  geom_text(data=overall.cors, x = 50,
-                                                     y =0.8,
+                                                     y =0.4,
                                                      aes(x,y,label=label),size = 6, inherit.aes=FALSE)
-
+#ggsave("images/Degree-regression.pdf",
+#       width = 18, height = 10, units = c("in"))
