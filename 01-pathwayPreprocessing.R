@@ -37,7 +37,7 @@ library(broom)
 library(xtable)
 
 
-source("basicFunctions.R")
+source("00-basicFunctions.R")
 
 # Downloading KEGG PATHWAYS
 # Pathwview stores pathways in the working directory
@@ -71,23 +71,23 @@ if(!dir.exists("PATHWAYLIST/")){
 
 
 ## This line is new and not in submitted version
-        graphs.homo      <- sapply(graphs.homo, function(X)(RBGL::removeSelfLoops(X)))
+graphs.homo      <- sapply(graphs.homo, function(X)(RBGL::removeSelfLoops(X)))
 
 ### Some basic pathway filterg, leaving out empty graphs
-    non.empty.homo   <- sapply(graphs.homo, function(X)(length(nodes(X)) != 0))
-    num.nodes.homo   <- sapply(graphs.homo, function(X)(length(nodes(X))))
-    non.empty.homo   <- graphs.homo[non.empty.homo]
+non.empty.homo   <- sapply(graphs.homo, function(X)(length(nodes(X)) != 0))
+num.nodes.homo   <- sapply(graphs.homo, function(X)(length(nodes(X))))
+non.empty.homo   <- graphs.homo[non.empty.homo]
 
-    mtx.collection   <- sapply(non.empty.homo, function(X)(as(X,"matrix")))
-    num.edges.homo   <- sapply(mtx.collection, sum)
-    eigen.collection <- lapply(mtx.collection, eigen, only.value = T )
+mtx.collection   <- sapply(non.empty.homo, function(X)(as(X,"matrix")))
+num.edges.homo   <- sapply(mtx.collection, sum)
+eigen.collection <- lapply(mtx.collection, eigen, only.value = T )
 
-    largest.egn.vals <- sapply(eigen.collection,function(X)(largest.eigen(unlist(X))))
-    egn.vals         <- data_frame(names(largest.egn.vals), largest.egn.vals)
-    paths.summary    <- data_frame(names(graphs.homo),num.nodes.homo,num.edges.homo)
-    paths.summary    <- left_join(paths.summary,egn.vals,
-                                  by = c("names(graphs.homo)" = "names(largest.egn.vals)"))
-    colnames(paths.summary) <- c("pathway_name", "num_nodes", "num_edges","eigen")
+largest.egn.vals <- sapply(eigen.collection,function(X)(largest.eigen(unlist(X))))
+egn.vals         <- data_frame(names(largest.egn.vals), largest.egn.vals)
+paths.summary    <- data_frame(names(graphs.homo),num.nodes.homo,num.edges.homo)
+paths.summary    <- left_join(paths.summary,egn.vals,
+                            by = c("names(graphs.homo)" = "names(largest.egn.vals)"))
+colnames(paths.summary) <- c("pathway_name", "num_nodes", "num_edges","eigen")
 
 
 ### Generating some pre analysis reports.

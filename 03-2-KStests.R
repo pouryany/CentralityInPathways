@@ -1,36 +1,39 @@
 require(dplyr)
 require(ggplot2)
 require(Hmisc)
+require(tidyr)
+require(broom)
+require(xtable)
 gene.essential <- readRDS("gene_essentials.rds")
 
 sum(gene.essential$beet.sink.norm == gene.essential$beet.source.norm)
 
 #### Getting quantiles across the data
 
-feature.list <-  grep("norm",names(gene.essential))
--c(1,2,3,4,58,59,60,61)
-feature.list <- feature.list[-4]
+??gather
+feature.list <-  grep("norm",names(gene.essential), value = T)
+feature.list <- feature.list[-c(4,6,7,8,9)]
+
 aa <-     gene.essential %>%
     gather(., key = "Centrality", value = "cent_value",
            gather_cols=feature.list) %>%  group_by(Centrality) %>%
      mutate(.,zz = as.factor(cut2(cent_value,m = 3, g = 100))) %>%
     group_by(Centrality) %>% mutate(., zz = as.factor(zz))
 
-aa <- lapply(gene.essential[,feature.list], FUN = function(X){as.factor(cut2(X,m=3,g=100))})
+    aa <- lapply(gene.essential[,feature.list],
+                 FUN = function(X){as.factor(cut2(X,m=3,g=100))})
+    aa <- sapply(aa, function(X){levels(X) <- 1:100; return(X)})
+    aa <- cbind(aa,gene.essential$Description)
+    aa <- as_data_frame(aa)
+    aa2 <- as_data_frame(aa)
+    aa <- gather(aa, key = "Centrality", value = "cent_value",-c(13))
+
+    aa$cent_value <- as.numeric(aa$cent_value)
 
 
-aa <- sapply(aa, function(X){levels(X) <- 1:100; return(X)})
-aa <- cbind(aa,gene.essential$Description)
-aa <- as_data_frame(aa)
-aa2 <- as_data_frame(aa)
-aa <- gather(aa, key = "Centrality", value = "cent_value",
-              -c(17))
+    feat.list <- colnames(aa2)
 
-aa$cent_value <- as.numeric(aa$cent_value)
-
-
-feat.list <- colnames(aa2)
-feat.list <- feat.list[-17]
+feat.list <- feat.list[-13]
 ks.list <- list()
 for (i in feat.list){
     temp <- aa2[,i]
@@ -47,7 +50,10 @@ ks.list <- data.frame(cbind(feat.list,ks.list))
 ks.pvals <- formatC(unlist(ks.list$V2), digits = 3)
 ks.pvals <- paste("KS p-value <",ks.pvals)
 
-ggplot(aa,aes(cent_value,color = V1)) +
+
+aa3 <- rbind(aa,mutate(aa,V1= "All Genes"))
+
+ggplot(aa3,aes(cent_value,color = V1)) +
     stat_ecdf(geom = "point") + facet_wrap(~Centrality ,ncol = 4)+theme_bw() +
     labs(x = "Quantile", y = "Cumulative Density")+
     guides(colour = guide_legend(override.aes = list(size=10))) +
@@ -63,6 +69,118 @@ ggplot(aa,aes(cent_value,color = V1)) +
     geom_text(data=data.frame(x=50, y=0.5, label=ks.pvals,
                               Centrality = unlist(ks.list$feat.list)),
               aes(x,y,label=label),size = 7, inherit.aes=FALSE)
+    ggsave("images/KSstats.pdf",
+           width = 18, height = 20, units = c("in"))
+
+
+
+
+colnames(aa)
+
+    aa.katz <-  filter(aa, grepl("katz",Centrality), V1=="Cancer" )
+
+    ggplot(aa.katz,aes(cent_value,color = Centrality)) +
+        stat_ecdf(geom = "point") +
+        labs(x = "Quantile", y = "Cumulative Density")+
+        guides(colour = guide_legend(override.aes = list(size=10))) +
+        theme(strip.text = element_text(face="bold", size=20),
+              plot.title = element_text(size = 20),
+              axis.title = element_text(size = 25),
+              legend.text = element_text(size = 20),
+              legend.title=element_blank(),
+              axis.text.y=element_text(size = 20),
+              axis.text.x=element_text(size = 20),
+              axis.ticks.y=element_blank(),
+              legend.position="bottom", legend.box = "horizontal")
+    ggsave("images/KSstats_katz.pdf",
+           width = 18, height = 10, units = c("in"))
+
+
+
+    aa.pgr <-  filter(aa, grepl("pgr",Centrality), V1=="Cancer" )
+
+    ggplot(aa.pgr,aes(cent_value,color = Centrality)) +
+        stat_ecdf(geom = "point") +
+        labs(x = "Quantile", y = "Cumulative Density")+
+        guides(colour = guide_legend(override.aes = list(size=10))) +
+        theme(strip.text = element_text(face="bold", size=20),
+              plot.title = element_text(size = 20),
+              axis.title = element_text(size = 25),
+              legend.text = element_text(size = 20),
+              legend.title=element_blank(),
+              axis.text.y=element_text(size = 20),
+              axis.text.x=element_text(size = 20),
+              axis.ticks.y=element_blank(),
+              legend.position="bottom", legend.box = "horizontal")
+    ggsave("images/KSstats_pgr.pdf",
+           width = 18, height = 10, units = c("in"))
+
+
+
+    aa.lap <-  filter(aa, grepl("lap",Centrality), V1=="Cancer" )
+
+    ggplot(aa.lap,aes(cent_value,color = Centrality)) +
+        stat_ecdf(geom = "point") +
+        labs(x = "Quantile", y = "Cumulative Density")+
+        guides(colour = guide_legend(override.aes = list(size=10))) +
+        theme(strip.text = element_text(face="bold", size=20),
+              plot.title = element_text(size = 20),
+              axis.title = element_text(size = 25),
+              legend.text = element_text(size = 20),
+              legend.title=element_blank(),
+              axis.text.y=element_text(size = 20),
+              axis.text.x=element_text(size = 20),
+              axis.ticks.y=element_blank(),
+              legend.position="bottom", legend.box = "horizontal")
+    ggsave("images/KSstats_lap.pdf",
+           width = 18, height = 10, units = c("in"))
+
+
+    ggplot(gene.essential4,aes(pgr.quant2, color = Description)) +
+        stat_ecdf(geom = "point", size =2) + theme_bw() + labs(x = "Quantile", y = "Cumulative Density")+
+        guides(colour = guide_legend(override.aes = list(size=10))) +
+        theme(strip.text = element_text(face="bold", size=20),
+              plot.title = element_text(size = 20),
+              axis.title = element_text(size = 25),
+              legend.text = element_text(size = 20),
+              legend.title=element_blank(),
+              axis.text.y=element_text(size = 20),
+              axis.text.x=element_text(size = 20),
+              axis.ticks.y=element_blank(),
+              legend.position="bottom", legend.box = "horizontal") +
+        annotate("text",x=50, y= 1, size = 10,  label= "KS p-value < 4e-04")
+
+
+
+    p.vals.process <- gene.essential
+    feature.list <-  grep("norm",names(gene.essential), value = T)
+    feature.list <- feature.list[-c(4,6,7,8,9)]
+
+    p.vals.process <- p.vals.process %>%
+        gather_(., key = "Centrality", value = "cent_value",feature.list)%>%
+        group_by(pathway.name,Centrality) %>%
+        do(pval =tidy(wilcox.test( cent_value~ Description,
+                              alternative = "greater",paired = F,exact=FALSE, data = .))) %>%
+        unnest()  %>%
+        group_by(Centrality) %>%
+        mutate(., fdr = p.adjust(p.value)) %>%
+        filter(., fdr < 0.05)
+
+
+    # Creating confusion matrix
+    mat1 <- table(p.vals.process$Centrality,p.vals.process$pathway.name)
+    mat2 <- table(p.vals.process$pathway.name,p.vals.process$Centrality)
+
+
+    confusion <- as.matrix(mat1) %*% as.matrix(mat2)
+    colnames(confusion) <- gsub(".norm","",colnames(confusion))
+    rownames(confusion) <- colnames(confusion)
+
+    print(xtable(confusion,digits=0,rotate.colnames = TRUE))
+
+
+
+
 
 
 
