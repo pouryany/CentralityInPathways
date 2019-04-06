@@ -1,3 +1,5 @@
+### There is something wrong with this test that I cannot tell. 
+rm(list = ls())
 require(dplyr)
 require(ggplot2)
 require(Hmisc)
@@ -5,6 +7,8 @@ require(tidyr)
 require(broom)
 require(xtable)
 gene.essential <- readRDS("gene_essentials.rds")
+
+
 
 sum(gene.essential$beet.sink.norm == gene.essential$beet.source.norm)
 
@@ -77,6 +81,74 @@ ggplot(aa3,aes(cent_value,color = V1)) +
 
 colnames(aa)
 
+
+
+## You want a measure to say generally something works better on cancer genes. 
+## If you had a measure that could measure the area under CDF curve would have 
+## been nice. 
+
+## Remember to fix the names of pgr.source and pgr.sink
+
+
+aa.cancer <-  filter(aa,  V1=="Cancer" )
+aa.cancer$Centrality <- gsub(".norm","",aa.cancer$Centrality)
+
+feat.list <- unique(aa.cancer$Centrality)
+feat.list <- feat.list[-7]
+ks.cancer.list <- list()
+for (i in feat.list){
+    temp <- aa.cancer
+    temp <- as.numeric(pull(temp))
+    
+    this.test <- ks.test(temp[aa.cancer$Centrality == "pgr.ssc"],
+                         temp[aa.cancer$Centrality == i],
+                         alternative = "greater")
+    ks.cancer.list <- rbind(ks.cancer.list,this.test$p.value)
+}
+
+ks.cancer.list  <- data.frame(cbind(feat.list,ks.cancer.list))
+
+ks.pvals <- formatC(unlist(ks.cancer.list$V2), digits = 2)
+ks.pgr.table <- cbind(feat.list,ks.pvals,ks.pvals1)
+print(xtable(ks.pgr.table,digits=0),include.rownames = F)
+
+
+
+ks.pvals <- paste("KS p-value =",ks.pvals)
+
+
+
+?brewer.pal
+
+library(RColorBrewer)
+set.seed(2)
+myColors <- brewer.pal(12,"Paired")[sample(1:12,12)]
+names(myColors) <- levels(as.factor(aa.cancer$Centrality))
+colScale <- scale_colour_manual(name = "grp",values = myColors)
+
+
+ggplot(aa.cancer,aes(cent_value,color = Centrality)) +
+    stat_ecdf(geom = "line") +
+    colScale +
+    labs(x = "Quantile", y = "Cumulative Density")+
+    guides(colour = guide_legend(override.aes = list(size=10))) +
+    theme_bw()+
+    theme(strip.text = element_text(face="bold", size=20),
+          plot.title = element_text(size = 20),
+          axis.title = element_text(size = 25),
+          legend.text = element_text(size = 20),
+          legend.title=element_blank(),
+          axis.text.y=element_text(size = 20),
+          axis.text.x=element_text(size = 20),
+          axis.ticks.y=element_blank(),
+          legend.position="bottom", legend.box = "horizontal")
+ggsave("images/KSstats_PGRvsAll.pdf",
+       width = 18, height = 10, units = c("in"))
+
+
+
+
+
     aa.katz <-  filter(aa, grepl("katz",Centrality), V1=="Cancer" )
 
     ggplot(aa.katz,aes(cent_value,color = Centrality)) +
@@ -92,6 +164,8 @@ colnames(aa)
               axis.text.x=element_text(size = 20),
               axis.ticks.y=element_blank(),
               legend.position="bottom", legend.box = "horizontal")
+    
+    
     ggsave("images/KSstats_katz.pdf",
            width = 18, height = 10, units = c("in"))
 

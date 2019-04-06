@@ -16,69 +16,6 @@ gene.essential <- readRDS("gene_essentials.rds")
 gene.essential$Description <- factor(gene.essential$Description)
 # levels(gene.temp$Description)
  gene.essential$Description <- relevel(gene.essential$Description,ref = "Normal")
-feature.list <-  grep("quant",names(gene.essential))
--c(1,2,3,4,58,59,60,61)
-
-reg.table <- gene.essential %>%
-    gather(., key = "Centrality", value = "cent_value",
-            gather_cols=feature.list) %>%
-    group_by(Centrality) %>%
-    do(fit =tidy(glm(as.factor(Description) ~ cent_value, family="binomial", data = .))) %>%
-    unnest()  %>%
-    group_by(Centrality)
-
-
-    mutate(., fdr = p.adjust(p.value)) %>%
-    filter(., fdr < 0.05)
-
-
-bbb <- reg.table %>% filter(., term != "(Intercept)") %>%
-    mutate(., estimate = exp(estimate))
-levels(gene.essential$Description) <- c(0,1)
-
-glm(as.factor(Description) ~ pgr.source.norm + pgr.sink.norm, family= binomial, data = gene.essential)
-
-
-
-log(log(log(katz.ssc.vec)) +2)
-as.logical(factor(gene.essential$Description))
-log(100)
-exp(0.37)
-ggplot(gene.essential,aes(x =katz.ssc.vec ,   colour = Description)) +
-    geom_density( kernel = "g")+
-    theme_bw()
-
-ggplot(gene.essential,aes(x =log(katz.source.vec) , y = log(katz.sink.vec),
-                          colour = Description)) + geom_point()
-ggplot(gene.essential,aes(x =rgamma(nrow(gene.essential),3.27839639,1.00738148 ))) +
-    geom_density( kernel = "g")
-
-
-?dgamma
-
-library(MASS)
-my.mle<-fitdistr(gene.essential$katz.ssc.vec, densfun="gamma")
-my.mle$sd
-BIC(my.mle)
-
-
-feature.list <-  grep("quant",names(gene.essential),value = T)
-feature.list <- feature.list[-2]
-reg.res <- gene.essential %>% mutate(., deg.quant = all.degree)
-reg.res <-    gene.essential %>%
-    gather_(., key = "Centrality", value = "cent_value",
-           gather_cols=feature.list)
-
-
-reg.res %>% group_by(Centrality) %>% group_by(Description,cent_value) %>%
-             summarise(n = n()) %>%
-             mutate(freq = n/ sum(n)) %>%
-             filter(., Description== "Cancer") %>% mutate(.,Models = Centrality)
-
-
-reg.res %>% group_by(., Centrality) %>%
-do(fit = lm(freq ~ as.numeric(cent_value), data=.)) %>%    glance(fit)
-
 
 
 ## The regression analysis
@@ -123,6 +60,7 @@ c4 <- gene.essential %>% group_by(beet.und.quant,Description)  %>%
     filter(., Description== "Cancer")  %>%
     mutate(Centrality = "Between-Und",quant = beet.und.quant )
 
+
 d1 <- gene.essential %>% group_by(pgr.source.quant,Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer") %>%
@@ -166,7 +104,12 @@ h4 <- gene.essential %>% group_by(lap.und.quant,Description)  %>%
 
 
 total <- rbind(a1,a2,a3,b,c1,c2,c3,c4,d1,d2,d3,d4,h1,h2,h3,h4)
+total <- rbind(a1,a2,a3)
+total <- rbind(b)
+total <- rbind(d1,d2,d3,d4)
+total <- rbind(h1,h2,h3,h4)
 
+total <- rbind(a1,a2,a3,b,d1,d2,d3,d4,h1,h2,h3,h4)
 
 #rm(a1,a2,a3,b,c1,c2,c3,c4,d1,d2,d3,d4,h1,h2,h3,h4)
 
@@ -175,6 +118,8 @@ total <- rbind(a1,a2,a3,b,c1,c2,c3,c4,d1,d2,d3,d4,h1,h2,h3,h4)
 
 overall.cors <- total %>% group_by(Centrality) %>%
     do(fit = lm(freq ~ as.numeric(quant), data=.)) %>%  glance(fit)
+
+
 
 overall.cors <- overall.cors[,c(1,2,3,6)]
 overall.cors[,4] <- formatC(unlist(pull(overall.cors[,4])), format = "e", digits = 2)
@@ -187,7 +132,8 @@ overall.cors$label <- text.vals
 
 ggplot(total, aes(y = freq, x= quant)) + geom_point()+
     geom_smooth(method= "lm") + #geom_smooth(method= "loess", color="green" , fill = "red") +
-    facet_wrap(~Centrality ,ncol = 2) +theme_bw()+ labs(x = "Quantile Score", y = "Fraction of Cancer Genes")+
+    facet_wrap(~Centrality ,ncol = 2) +theme_bw()+ 
+    labs(x = "Quantile Score", y = "Fraction of Cancer Genes")+
     theme(strip.text = element_text(face="bold", size=20),
           plot.title = element_text(size = 20),
           axis.title = element_text(size = 30),
@@ -195,8 +141,131 @@ ggplot(total, aes(y = freq, x= quant)) + geom_point()+
           legend.title=element_text(face = "bold", size = 9),
           axis.text.y=element_text(size = 12),
           axis.text.x=element_text(size = 12),
-          axis.ticks.y=element_blank()) +  geom_text(data=overall.cors, x = 50,
-                                                     y =0.4,
-                                                     aes(x,y,label=label),size = 6, inherit.aes=FALSE)
-#ggsave("images/Degree-regression.pdf",
-#       width = 18, height = 10, units = c("in"))
+          axis.ticks.y=element_blank()) +  
+    geom_text(data=overall.cors, x = 50, y =0.4,
+              aes(x,y,label=label),size = 6, inherit.aes=FALSE)
+
+ggsave("images/Laplacian-regression.pdf",
+       width = 18, height = 10, units = c("in"))
+
+
+overall.regs <- total %>% group_by(Centrality) %>%
+    do(fit = lm(freq ~ as.numeric(quant), data=.)) %>%  tidy(fit) 
+
+
+overall.regs$term[overall.regs$term == "as.numeric(quant)"] <- "Coefficient"
+
+overall.regs[,c(3,4,5,6)] <- sapply(overall.regs[,c(3,4,5,6)], FUN = formatC,
+                                    format = "e", digits = 2
+                                    )
+    
+
+print(xtable(overall.regs), include.rownames = F, digits = 2, 
+      display=c("s","s", "s", "s","g"),
+      math.style.exponents = T)
+
+### Functionalize the above code at some point. Use the chunks below 
+
+
+var  <- "katz.ssc.quant"
+cent <- "Katz_Source_Sink"
+Desc <- "Description"
+
+quant.sorter <- function(data,var, Desc,cent){
+    
+    varval1 <- lazyeval::interp(~quant, quant = as.name(var))
+    varval2 <- lazyeval::interp(~Centrality, Centrality = cent)
+    sorted  <- gene.essential %>% group_by_(var, as.name(Desc))  %>%
+        summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
+        filter_(., ~Description == "Cancer") %>%
+        mutate_(.dots = setNames(list(varval1,varval2), 
+                                 c("quant", "Centrality")))
+    
+    return(sorted)
+}
+
+
+model.vars <-  c("katz.ssc.quant", "katz.source.quant","katz.sink.quant",
+                 "deg.quant","beet.source.quant","beet.sink.quant",
+                 "beet.ssc.quant","beet.und.quant","pgr.source.quant",
+                 "pgr.sink.quant","pgr.ssc.quant","pgr.und.quant",
+                 "lap.source.quant","lap.sink.quant","lap.ssc.quant",
+                 "lap.und.quant")
+
+model.names <-  c("katz_ssc", "katz_source","katz_sink",
+                  "deg","beet_source","beet_sink",
+                  "beet_ssc","beet_und","pgr_source",
+                  "pgr_sink","pgr_ssc","pgr_und",
+                  "lap_source","lap_sink","lap_ssc",
+                  "lap_und")
+
+
+
+
+
+
+
+feature.list <-  grep("quant",names(gene.essential))
+-c(1,2,3,4,58,59,60,61)
+
+reg.table <- gene.essential %>%
+    gather(., key = "Centrality", value = "cent_value",
+           gather_cols=feature.list) %>%
+    group_by(Centrality) %>%
+    do(fit =tidy(glm(as.factor(Description) ~ cent_value, family="binomial", data = .))) %>%
+    unnest()  %>%
+    group_by(Centrality)
+
+
+mutate(., fdr = p.adjust(p.value)) %>%
+    filter(., fdr < 0.05)
+
+
+bbb <- reg.table %>% filter(., term != "(Intercept)") %>%
+    mutate(., estimate = exp(estimate))
+levels(gene.essential$Description) <- c(0,1)
+
+glm(as.factor(Description) ~ katz.sink.norm + pgr.sink.norm, family= binomial, data = gene.essential)
+
+
+
+log(log(log(katz.ssc.vec)) +2)
+as.logical(factor(gene.essential$Description))
+log(100)
+exp(0.37)
+ggplot(gene.essential,aes(x =katz.ssc.vec ,   colour = Description)) +
+    geom_density( kernel = "g")+
+    theme_bw()
+
+ggplot(gene.essential,aes(x =log(katz.source.vec) , y = log(katz.sink.vec),
+                          colour = Description)) + geom_point()
+ggplot(gene.essential,aes(x =rgamma(nrow(gene.essential),3.27839639,1.00738148 ))) +
+    geom_density( kernel = "g")
+
+
+?dgamma
+
+library(MASS)
+my.mle<-fitdistr(gene.essential$katz.ssc.vec, densfun="gamma")
+my.mle$sd
+BIC(my.mle)
+
+
+feature.list <-  grep("quant",names(gene.essential),value = T)
+feature.list <- feature.list[-2]
+reg.res <- gene.essential %>% mutate(., deg.quant = all.degree)
+reg.res <-    gene.essential %>%
+    gather_(., key = "Centrality", value = "cent_value",
+            gather_cols=feature.list)
+
+
+reg.res %>% group_by(Centrality) %>% group_by(Description,cent_value) %>%
+    summarise(n = n()) %>%
+    mutate(freq = n/ sum(n)) %>%
+    filter(., Description== "Cancer") %>% mutate(.,Models = Centrality)
+
+
+reg.res %>% group_by(., Centrality) %>%
+    do(fit = lm(freq ~ as.numeric(cent_value), data=.)) %>%    glance(fit)
+
+

@@ -33,7 +33,6 @@ gene.essential %>% distinct(.,pathway.name)
 
 
 
-
 ## Total Number of cancer genes found in all genes
 ##gene.essential %>% filter(., Description == "Cancer") %>% distinct(.,node.genes)
 
@@ -51,6 +50,9 @@ gene.essential %>% distinct(.,pathway.name)
         distinct(., pathway.name)
 
 
-gene.essential <- gene.essential[!(gene.essential$pathway.name %in% unlist(no.cancers)),]
+
+gene.essential <- gene.essential[ !(gene.essential$pathway.name %in% unlist(no.cancers))  ,]
+
 
 saveRDS(gene.essential, file = "gene_essentials.rds")
+

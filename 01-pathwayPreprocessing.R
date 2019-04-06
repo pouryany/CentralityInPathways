@@ -186,9 +186,13 @@ for (i in 1:length(graphs.homo)){
     homo.mat    <- as(homo.Graph,"matrix")
 
 
-
-    #Source/Sink Katz Centrality processing
-    cent.mat          <- newpath.centrality(homo.mat,alpha = 0.1, beta = 1)
+    
+    #Alpha <- paths.summary  %>% dplyr::select(., eigen)  %>% slice(.,i) %>% pull
+    #Alpha <- max(min(0.5,(1/Alpha) - 0.1),0.1)
+    Alpha <- 0.1
+    
+    #Source/Sink Katz Centrality processing, Check the alpha 
+    cent.mat          <- newpath.centrality(homo.mat,alpha = Alpha, beta = 1)
     katz.ssc.vec      <- rowSums(cent.mat$SSC)
     katz.ssc.rank     <- rank(katz.ssc.vec, ties.method = "min")
     katz.ssc.norm     <- zero.one.normalize(katz.ssc.vec)
@@ -239,16 +243,16 @@ for (i in 1:length(graphs.homo)){
     igraph.obj3  <- igraph::graph_from_adjacency_matrix(t(homo.mat),mode = "undirected")
 
     ### Source Directed pageRank
-    pgr.source.vec   <- igraph::page.rank(igraph.obj,damping = 0.9)
-    pgr.source.vec   <- pgr.source.vec$vector
+    pgr.sink.vec   <- igraph::page.rank(igraph.obj,damping = 0.85)
+    pgr.sink.vec   <- pgr.sink.vec$vector
 
     ###Source-Sink pageRank
-    pgr.sink.vec     <- igraph::page.rank(igraph.obj2,damping = 0.9)
-    pgr.sink.vec     <- pgr.sink.vec$vector
+    pgr.source.vec   <- igraph::page.rank(igraph.obj2,damping = 0.85)
+    pgr.source.vec   <- pgr.source.vec$vector
     pgr.ssc.vec      <- pgr.source.vec + pgr.sink.vec
 
     ###Undirected pageRank
-    pgr.und.vec      <- igraph::page.rank(igraph.obj3,damping = 0.9)
+    pgr.und.vec      <- igraph::page.rank(igraph.obj3,damping = 0.85)
     pgr.und.vec      <- pgr.und.vec$vector
 
 
@@ -309,6 +313,17 @@ for (i in 1:length(graphs.homo)){
 
     # Some quality control
     print(i)
+    if(as.character(min(lap.sink.vec)) == as.character(max(lap.sink.vec))){
+        print(paste("Catch This Cat",i))
+        j <- j+1
+        next
+    }
+    
+    if(as.character(min(lap.und.vec)) == as.character(max(lap.und.vec))){
+        j <- j+1
+        next
+    }
+    
     if(as.character(min(katz.ssc.vec)) == as.character(max(katz.ssc.vec))){
         j <- j+1
         next

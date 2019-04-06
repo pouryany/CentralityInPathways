@@ -1,8 +1,9 @@
 ###
 ###  Pathway wise testing
 ###  Gene essential is cleaned and without cancer-less pathways
-
+rm(list = ls())
 library(dplyr)
+library(tidyr)
 library(broom)
 library(ggplot2)
 library(xtable)
@@ -22,17 +23,36 @@ distinct(p.vals.process,pathway.name)
 
 # You can change the t.test to wilcox.test in the below formula to compute
 # Nonparametric statistics. In that case, log values would not differ.
-p.vals.process <- p.vals.process %>%
+# For publication remember to add the other possible alternative hypothesis.
+p.vals.process <- gene.essential %>%
     gather(., key = "Centrality", value = "cent_value",
-           pgr.ssc.vec,pgr.source.vec,pgr.und.vec,degree.norm,
-           katz.ssc.vec,katz.source.norm)%>%
+           pgr.ssc.vec,pgr.source.vec,pgr.sink.vec,pgr.und.vec,
+           degree.norm,
+           katz.ssc.vec,katz.source.norm,katz.sink.norm,
+          lap.ssc.vec,lap.sink.vec,lap.source.vec,lap.und.norm)%>%
     group_by(pathway.name,Centrality) %>%
     do(pval =tidy(t.test( cent_value~ Description,
-                          alternative = "greater",paired = F,exact=FALSE, data = .))) %>%
+                          alternative = "less",paired = F,exact=FALSE, data = .))) %>%
     unnest()  %>%
     group_by(Centrality) %>%
     mutate(., fdr = p.adjust(p.value)) %>%
     filter(., fdr < 0.05)
+
+
+# This plot is intended to investigate false positives. Include later
+# You have to take out the fdr filter from the above if you want it work
+
+ggplot(p.vals.process, aes(x= p.value)) +
+    geom_density(adjust = 1/4) + #geom_smooth(method= "loess", color="green" , fill = "red") +
+    facet_wrap(~Centrality ,ncol = 4) +theme_bw()+ 
+    theme(strip.text = element_text(face="bold", size=20),
+          plot.title = element_text(size = 20),
+          axis.title = element_text(size = 30),
+          legend.text = element_text(size = 9),
+          legend.title=element_text(face = "bold", size = 9),
+          axis.text.y=element_text(size = 12),
+          axis.text.x=element_text(size = 12),
+          axis.ticks.y=element_blank()) 
 
 
 # Creating confusion matrix
@@ -41,7 +61,10 @@ mat2 <- table(p.vals.process$pathway.name,p.vals.process$Centrality)
 
 
 confusion <- as.matrix(mat1) %*% as.matrix(mat2)
-colnames(confusion) <- c("Degree", "Katz", "PageRank","SS-PageRank", "Und. PageRank")
+
+colnames(confusion) <- c("Degree", "Katz-Sink", "Katz-Source","Katz-SSC",
+                        "Lap-Sink","Lap-Source","Lap-SSC","Lap-Und",
+                        "Pgr-Sink","Pgr-Source", "Pgr-SSC", "Pgr-Und")
 rownames(confusion) <- colnames(confusion)
 
 # The following line only for nonparametrix you have to remove the log values
@@ -53,7 +76,7 @@ rownames(confusion) <- colnames(confusion)
 
 #confusion2[lower.tri(confusion2,diag = F)] <- ""
 confusion[lower.tri(confusion,diag = F)] <- ""
-xtable(confusion2)
+xtable(confusion)
 
 # gene.temp <- gene.essential
 # gene.temp$Description <- factor(gene.temp$Description)

@@ -65,19 +65,23 @@ for (i in quant.names){
 # Plotting Correlations
 #biocLite("GGally")
 library(GGally)
-gene.cor.data <- gene.essential %>% dplyr::select(., deg.quant,katz.ssc.quant,
-                                                  pgr.source.quant,pgr.ssc.quant,
-                                                  pgr.und.quant,lap.ssc.quant)
+gene.cor.data <- gene.essential %>% 
+                 dplyr::select(., deg.quant,
+                               katz.sink.quant,katz.source.quant,katz.ssc.quant,
+                               lap.sink.quant,lap.source.quant ,lap.ssc.quant, lap.und.quant,
+                               pgr.sink.quant,pgr.source.quant, pgr.ssc.quant, pgr.und.quant)                               
 ggpairs(gene.cor.data, method = "pearson", columns = 1:ncol(gene.cor.data),
-        columnLabels = c("Degree","Source-Sink Katz","PageRank",
-                         "Source-Sink PageRank","Undirected PageRank","SSC Laplace"),
+        columnLabels = c("Degree", "Katz-Sink", "Katz-Source","Katz-SSC",
+                         "Lap-Sink","Lap-Source","Lap-SSC","Lap-Und",
+                         "Pgr-Source","Pgr-Sink", "Pgr-SSC", "Pgr-Und"),
         title = "",
         axisLabels = "internal",
         diag  = list(continuous=wrap("text", labelSize=30)),
-        upper = list(continuous=wrap(ggally_cor,size=10)),
+        upper = list(continuous=wrap(ggally_cor,size=5)),
         lower = list(continuous = wrap("points", alpha = 0.3,    size=0.1))
 )  + theme_bw()
-
+ggsave("images/corrsALL.pdf",
+       width = 18, height = 10, units = c("in"))
 
 
 

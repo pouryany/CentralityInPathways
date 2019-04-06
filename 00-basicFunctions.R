@@ -32,10 +32,12 @@ zero.one.normalize    <- function(cent.list){
 ### Semi laplace calculator, works with normalized connectivty matrix
 semi.laplace <- function(some.Matrix){
 
-    inv.diag <- 1/(rowSums(some.Matrix) + 0.01)
-    inv.diag[!is.finite(inv.diag)] <- 0
-    norm.laplace.esque <-  diag(1,length(inv.diag)) - (diag(inv.diag) %*% some.Matrix)
+    #inv.diag <- 1/(rowSums(some.Matrix) + 0.01)
+    #inv.diag[!is.finite(inv.diag)] <- 0
+    inv.diag <- 1/(rowSums(some.Matrix))
+    inv.diag[!is.finite(inv.diag)] <- 1
+    norm.laplace.esque <-  diag(1,length(inv.diag)) - 0.85 *(diag(inv.diag) %*% some.Matrix)
     #norm.laplace.esque <-  Ginv(norm.laplace.esque)
-    norm.laplace.esque <-  solve(norm.laplace.esque)
+    norm.laplace.esque <-  solve(norm.laplace.esque) 
     return(norm.laplace.esque)
 }
