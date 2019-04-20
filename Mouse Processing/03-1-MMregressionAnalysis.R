@@ -40,25 +40,6 @@ b <- gene.essential %>% group_by(deg.quant,Description)  %>%
     filter(., Description== "Lethal") %>%
     mutate(Centrality = "Degree",quant = deg.quant )
 
-c1 <- gene.essential %>% group_by(beet.source.quant,Description)  %>%
-    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
-    filter(., Description== "Lethal") %>%
-    mutate(Centrality = "Bet-Source" ,quant = beet.source.quant)
-
-c2 <- gene.essential %>% group_by(beet.sink.quant,Description)  %>%
-    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
-    filter(., Description== "Lethal") %>%
-    mutate(Centrality = "Bet-Sink" ,quant = beet.sink.quant)
-
-c3 <- gene.essential %>% group_by(beet.ssc.quant,Description)  %>%
-    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
-    filter(., Description== "Lethal") %>%
-    mutate(Centrality = "Bet-SSC" ,quant = beet.ssc.quant)
-
-c4 <- gene.essential %>% group_by(beet.und.quant,Description)  %>%
-    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
-    filter(., Description== "Lethal")  %>%
-    mutate(Centrality = "Between-Und",quant = beet.und.quant )
 
 
 d1 <- gene.essential %>% group_by(pgr.source.quant,Description)  %>%
@@ -97,19 +78,9 @@ h3 <- gene.essential %>% group_by(lap.ssc.quant,Description)  %>%
     filter(., Description== "Lethal")  %>%
     mutate(Centrality = "Lap-SSC",quant = lap.ssc.quant )
 
-h4 <- gene.essential %>% group_by(lap.und.quant,Description)  %>%
-    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
-    filter(., Description== "Lethal")  %>%
-    mutate(Centrality = "Lap-Und",quant = lap.und.quant )
 
 
-total <- rbind(a1,a2,a3,b,c1,c2,c3,c4,d1,d2,d3,d4,h1,h2,h3,h4)
-total <- rbind(a1,a2,a3)
-total <- rbind(b)
-total <- rbind(d1,d2,d3,d4)
-total <- rbind(h1,h2,h3,h4)
-
-total <- rbind(a1,a2,a3,b,d1,d2,d3,d4,h1,h2,h3,h4)
+total <- rbind(a1,a2,a3,b,d1,d2,d3,d4,h1,h2,h3)
 
 #rm(a1,a2,a3,b,c1,c2,c3,c4,d1,d2,d3,d4,h1,h2,h3,h4)
 
@@ -145,8 +116,8 @@ ggplot(total, aes(y = freq, x= quant)) + geom_point()+
     geom_text(data=overall.cors, x = 50, y =0.2,
               aes(x,y,label=label),size = 6, inherit.aes=FALSE)
 
-ggsave("images/Laplacian-regression.pdf",
-       width = 18, height = 10, units = c("in"))
+ggsave("images/MouseRegression.pdf",
+       width = 10, height = 18, units = c("in"))
 
 
 overall.regs <- total %>% group_by(Centrality) %>%

@@ -186,12 +186,12 @@ for (i in 1:length(graphs.homo)){
     homo.mat    <- as(homo.Graph,"matrix")
 
 
-    
+
     #Alpha <- paths.summary  %>% dplyr::select(., eigen)  %>% slice(.,i) %>% pull
     #Alpha <- max(min(0.5,(1/Alpha) - 0.1),0.1)
     Alpha <- 0.1
-    
-    #Source/Sink Katz Centrality processing, Check the alpha 
+
+    #Source/Sink Katz Centrality processing, Check the alpha
     cent.mat          <- newpath.centrality(homo.mat,alpha = Alpha, beta = 1)
     katz.ssc.vec      <- rowSums(cent.mat$SSC)
     katz.ssc.rank     <- rank(katz.ssc.vec, ties.method = "min")
@@ -298,9 +298,9 @@ for (i in 1:length(graphs.homo)){
     lap.ssc.norm       <- zero.one.normalize(lap.ssc.vec)
 
 
-    lap.und.vec        <- rowSums(und.lap)
-    lap.und.rank       <- rank(lap.und.vec, ties.method = "min")
-    lap.und.norm       <- zero.one.normalize(lap.und.vec)
+    # lap.und.vec        <- rowSums(und.lap)
+    # lap.und.rank       <- rank(lap.und.vec, ties.method = "min")
+    # lap.und.norm       <- zero.one.normalize(lap.und.vec)
 
 
 
@@ -318,12 +318,12 @@ for (i in 1:length(graphs.homo)){
         j <- j+1
         next
     }
-    
-    if(as.character(min(lap.und.vec)) == as.character(max(lap.und.vec))){
-        j <- j+1
-        next
-    }
-    
+
+    # if(as.character(min(lap.und.vec)) == as.character(max(lap.und.vec))){
+    #     j <- j+1
+    #     next
+    # }
+
     if(as.character(min(katz.ssc.vec)) == as.character(max(katz.ssc.vec))){
         j <- j+1
         next
@@ -345,12 +345,7 @@ for (i in 1:length(graphs.homo)){
         j <- j+1
         next
     }
-    else{
-        beet.buckets <- cut(beet.source.vec,breaks = seq(min(beet.source.vec), max(beet.source.vec)
-                                                         ,len =21), include.lowest = TRUE)
-        levels(beet.buckets) <- 1:20
 
-    }
 
     homo.info <- data_frame(pathway.name, total.node,total.edge,node.genes,
                             katz.source.vec, katz.source.rank, katz.source.norm,
@@ -368,9 +363,8 @@ for (i in 1:length(graphs.homo)){
                             pgr.und.vec, pgr.und.norm, pgr.und.rank,
                             lap.source.vec, lap.source.rank, lap.source.norm,
                             lap.sink.vec, lap.sink.rank, lap.sink.norm,
-                            lap.ssc.vec, lap.ssc.rank, lap.ssc.norm,
-                            lap.und.vec, lap.und.rank, lap.und.norm,
-                            ssc.buckets, beet.buckets, deg.buckets)
+                            lap.ssc.vec, lap.ssc.rank, lap.ssc.norm)
+
 
     #homo.info %<>% filter(., node.genes %in% b$Gene) %>%
     #    inner_join(.,b, by = c("node.genes" = "Gene"))

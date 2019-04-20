@@ -103,46 +103,6 @@ colnames(paths.summary) <- c("pathway_name", "num_nodes", "num_edges","eigen")
 
 ### Generating some pre analysis reports.
 
-
-        ggplot(paths.summary, aes(x = num_nodes, y = num_edges)) + geom_point()+
-            theme_bw() + labs(x= "Nodes", y = "Edges") +
-            theme(strip.text = element_text(face="bold", size=20),
-                  plot.title = element_text(size = 20),
-                  axis.title = element_text(size = 25),
-                  legend.text = element_text(size = 20),
-                  legend.title=element_blank(),
-                  axis.text.y=element_text(size = 20),
-                  axis.text.x=element_text(size = 20),
-                  axis.ticks.y=element_blank())
-        ggsave("images/pathways_node_edge_unfiltered.pdf",
-               width = 18, height = 10, units = c("in"))
-
-        ggplot(paths.summary, aes(x = num_nodes, y = eigen)) + geom_point()+
-            theme_bw() + labs(x= "Nodes", y = "Eigen-values") +
-            theme(strip.text = element_text(face="bold", size=20),
-                  plot.title = element_text(size = 20),
-                  axis.title = element_text(size = 25),
-                  legend.text = element_text(size = 20),
-                  legend.title=element_blank(),
-                  axis.text.y=element_text(size = 20),
-                  axis.text.x=element_text(size = 20),
-                  axis.ticks.y=element_blank())
-        ggsave("images/pathways_node_eigen_unfiltered.pdf",
-               width = 18, height = 10, units = c("in"))
-
-
-        add.to.row <- list(pos = list(0), command = NULL)
-        command <- paste0("\\hline \n \\endhead\n",
-                          "\\hline\n",
-                          "{\\footnotesize Continued on next page}\n",
-                          "\\endfoot\n",
-                          "\\endlastfoot\n")
-        add.to.row$command <- command
-        x.big <- (xtable(paths.summary,digits=c(0,0,0,0,2)))
-        print(x.big, hline.after=c(0), add.to.row = add.to.row,
-              tabular.environment = "longtable")
-
-
 # Mouse Lethal Genes from JAXLABS
         lethal.list <- read.csv(file="Mouse Processing/MouseGeneInfo.csv")
         lethal.list <- lethal.list[lethal.list$IMPC_viability_DR7.0 == "Lethal",]
@@ -272,7 +232,6 @@ for (i in 1:length(graphs.mouse)){
         source.lap <- semi.laplace(mouse.mat)
         sink.lap   <- semi.laplace(t(mouse.mat))
         ssc.lap    <- source.lap + sink.lap
-        und.lap    <- semi.laplace(igraph::as_adj(igraph.obj3,sparse = F))
         k <- k+1
     } , error = function(e){print("err"); next}, finally = {print("Grrr")})
 
@@ -291,11 +250,6 @@ for (i in 1:length(graphs.mouse)){
     lap.ssc.norm       <- zero.one.normalize(lap.ssc.vec)
 
 
-    lap.und.vec        <- rowSums(und.lap)
-    lap.und.rank       <- rank(lap.und.vec, ties.method = "min")
-    lap.und.norm       <- zero.one.normalize(lap.und.vec)
-
-
 
     pathway.name <- all.path.names[[i]]
     pathway.name <- rep(pathway.name,length(node.genes))
@@ -308,11 +262,6 @@ for (i in 1:length(graphs.mouse)){
     print(i)
     if(as.character(min(lap.sink.vec)) == as.character(max(lap.sink.vec))){
         print(paste("Catch This Cat",i))
-        j <- j+1
-        next
-    }
-
-    if(as.character(min(lap.und.vec)) == as.character(max(lap.und.vec))){
         j <- j+1
         next
     }
@@ -338,12 +287,6 @@ for (i in 1:length(graphs.mouse)){
         j <- j+1
         next
     }
-    else{
-        beet.buckets <- cut(beet.source.vec,breaks = seq(min(beet.source.vec), max(beet.source.vec)
-                                                         ,len =21), include.lowest = TRUE)
-        levels(beet.buckets) <- 1:20
-
-    }
 
     mouse.info <- data_frame(pathway.name, total.node,total.edge,node.genes,
                             katz.source.vec, katz.source.rank, katz.source.norm,
@@ -361,9 +304,7 @@ for (i in 1:length(graphs.mouse)){
                             pgr.und.vec, pgr.und.norm, pgr.und.rank,
                             lap.source.vec, lap.source.rank, lap.source.norm,
                             lap.sink.vec, lap.sink.rank, lap.sink.norm,
-                            lap.ssc.vec, lap.ssc.rank, lap.ssc.norm,
-                            lap.und.vec, lap.und.rank, lap.und.norm,
-                            ssc.buckets, beet.buckets, deg.buckets)
+                            lap.ssc.vec, lap.ssc.rank, lap.ssc.norm)
 
     #mouse.info %<>% filter(., node.genes %in% b$Gene) %>%
     #    inner_join(.,b, by = c("node.genes" = "Gene"))

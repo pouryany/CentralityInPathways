@@ -40,27 +40,6 @@ b <- gene.essential %>% group_by(deg.quant,Description)  %>%
     filter(., Description== "Cancer") %>%
     mutate(Centrality = "Degree",quant = deg.quant )
 
-c1 <- gene.essential %>% group_by(beet.source.quant,Description)  %>%
-    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
-    filter(., Description== "Cancer") %>%
-    mutate(Centrality = "Bet-Source" ,quant = beet.source.quant)
-
-c2 <- gene.essential %>% group_by(beet.sink.quant,Description)  %>%
-    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
-    filter(., Description== "Cancer") %>%
-    mutate(Centrality = "Bet-Sink" ,quant = beet.sink.quant)
-
-c3 <- gene.essential %>% group_by(beet.ssc.quant,Description)  %>%
-    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
-    filter(., Description== "Cancer") %>%
-    mutate(Centrality = "Bet-SSC" ,quant = beet.ssc.quant)
-
-c4 <- gene.essential %>% group_by(beet.und.quant,Description)  %>%
-    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
-    filter(., Description== "Cancer")  %>%
-    mutate(Centrality = "Between-Und",quant = beet.und.quant )
-
-
 d1 <- gene.essential %>% group_by(pgr.source.quant,Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer") %>%
@@ -97,19 +76,10 @@ h3 <- gene.essential %>% group_by(lap.ssc.quant,Description)  %>%
     filter(., Description== "Cancer")  %>%
     mutate(Centrality = "Lap-SSC",quant = lap.ssc.quant )
 
-h4 <- gene.essential %>% group_by(lap.und.quant,Description)  %>%
-    summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
-    filter(., Description== "Cancer")  %>%
-    mutate(Centrality = "Lap-Und",quant = lap.und.quant )
 
 
-total <- rbind(a1,a2,a3,b,c1,c2,c3,c4,d1,d2,d3,d4,h1,h2,h3,h4)
-total <- rbind(a1,a2,a3)
-total <- rbind(b)
-total <- rbind(d1,d2,d3,d4)
-total <- rbind(h1,h2,h3,h4)
 
-total <- rbind(a1,a2,a3,b,d1,d2,d3,d4,h1,h2,h3,h4)
+total <- rbind(a1,a2,a3,b,d1,d2,d3,d4,h1,h2,h3)
 
 #rm(a1,a2,a3,b,c1,c2,c3,c4,d1,d2,d3,d4,h1,h2,h3,h4)
 
@@ -132,7 +102,7 @@ overall.cors$label <- text.vals
 
 ggplot(total, aes(y = freq, x= quant)) + geom_point()+
     geom_smooth(method= "lm") + #geom_smooth(method= "loess", color="green" , fill = "red") +
-    facet_wrap(~Centrality ,ncol = 2) +theme_bw()+ 
+    facet_wrap(~Centrality ,ncol = 2) +theme_bw()+
     labs(x = "Quantile Score", y = "Fraction of Cancer Genes")+
     theme(strip.text = element_text(face="bold", size=20),
           plot.title = element_text(size = 20),
@@ -141,16 +111,16 @@ ggplot(total, aes(y = freq, x= quant)) + geom_point()+
           legend.title=element_text(face = "bold", size = 9),
           axis.text.y=element_text(size = 12),
           axis.text.x=element_text(size = 12),
-          axis.ticks.y=element_blank()) +  
-    geom_text(data=overall.cors, x = 50, y =0.4,
+          axis.ticks.y=element_blank()) +
+    geom_text(data=overall.cors, x = 50, y =0.8,
               aes(x,y,label=label),size = 6, inherit.aes=FALSE)
 
-ggsave("images/Laplacian-regression.pdf",
-       width = 18, height = 10, units = c("in"))
+ggsave("images/Regression.pdf",
+       width = 10, height = 18, units = c("in"))
 
 
 overall.regs <- total %>% group_by(Centrality) %>%
-    do(fit = lm(freq ~ as.numeric(quant), data=.)) %>%  tidy(fit) 
+    do(fit = lm(freq ~ as.numeric(quant), data=.)) %>%  tidy(fit)
 
 
 overall.regs$term[overall.regs$term == "as.numeric(quant)"] <- "Coefficient"
@@ -158,13 +128,13 @@ overall.regs$term[overall.regs$term == "as.numeric(quant)"] <- "Coefficient"
 overall.regs[,c(3,4,5,6)] <- sapply(overall.regs[,c(3,4,5,6)], FUN = formatC,
                                     format = "e", digits = 2
                                     )
-    
 
-print(xtable(overall.regs), include.rownames = F, digits = 2, 
+
+print(xtable(overall.regs), include.rownames = F, digits = 2,
       display=c("s","s", "s", "s","g"),
       math.style.exponents = T)
 
-### Functionalize the above code at some point. Use the chunks below 
+### Functionalize the above code at some point. Use the chunks below
 
 
 var  <- "katz.ssc.quant"
@@ -172,15 +142,15 @@ cent <- "Katz_Source_Sink"
 Desc <- "Description"
 
 quant.sorter <- function(data,var, Desc,cent){
-    
+
     varval1 <- lazyeval::interp(~quant, quant = as.name(var))
     varval2 <- lazyeval::interp(~Centrality, Centrality = cent)
     sorted  <- gene.essential %>% group_by_(var, as.name(Desc))  %>%
         summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
         filter_(., ~Description == "Cancer") %>%
-        mutate_(.dots = setNames(list(varval1,varval2), 
+        mutate_(.dots = setNames(list(varval1,varval2),
                                  c("quant", "Centrality")))
-    
+
     return(sorted)
 }
 
@@ -189,15 +159,13 @@ model.vars <-  c("katz.ssc.quant", "katz.source.quant","katz.sink.quant",
                  "deg.quant","beet.source.quant","beet.sink.quant",
                  "beet.ssc.quant","beet.und.quant","pgr.source.quant",
                  "pgr.sink.quant","pgr.ssc.quant","pgr.und.quant",
-                 "lap.source.quant","lap.sink.quant","lap.ssc.quant",
-                 "lap.und.quant")
+                 "lap.source.quant","lap.sink.quant","lap.ssc.quant")
 
 model.names <-  c("katz_ssc", "katz_source","katz_sink",
                   "deg","beet_source","beet_sink",
                   "beet_ssc","beet_und","pgr_source",
                   "pgr_sink","pgr_ssc","pgr_und",
-                  "lap_source","lap_sink","lap_ssc",
-                  "lap_und")
+                  "lap_source","lap_sink","lap_ssc")
 
 
 

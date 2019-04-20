@@ -24,11 +24,10 @@ gene.essential %<>% filter(.,total.node < 1000, total.node >20, total.edge > 20,
            pgr.und.quant =     round((pgr.und.rank/total.node)*100),
            lap.ssc.quant =     round((lap.ssc.rank/total.node)*100),
            lap.source.quant =  round((lap.source.rank/total.node)*100),
-           lap.sink.quant =    round((lap.sink.rank/total.node)*100),
-           lap.und.quant =     round((lap.und.rank/total.node)*100))
+           lap.sink.quant =    round((lap.sink.rank/total.node)*100) )
 
 
-### A total of 219 pathways passed the criteria
+### A total of 212 pathways passed the criteria
 gene.essential %>% distinct(.,pathway.name)
 
 

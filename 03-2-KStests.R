@@ -1,4 +1,4 @@
-### There is something wrong with this test that I cannot tell. 
+### There is something wrong with this test that I cannot tell.
 rm(list = ls())
 require(dplyr)
 require(ggplot2)
@@ -14,7 +14,6 @@ sum(gene.essential$beet.sink.norm == gene.essential$beet.source.norm)
 
 #### Getting quantiles across the data
 
-??gather
 feature.list <-  grep("norm",names(gene.essential), value = T)
 feature.list <- feature.list[-c(4,6,7,8,9)]
 
@@ -30,21 +29,21 @@ aa <-     gene.essential %>%
     aa <- cbind(aa,gene.essential$Description)
     aa <- as_data_frame(aa)
     aa2 <- as_data_frame(aa)
-    aa <- gather(aa, key = "Centrality", value = "cent_value",-c(13))
+    aa <- gather(aa, key = "Centrality", value = "cent_value",-c(12))
 
     aa$cent_value <- as.numeric(aa$cent_value)
 
 
     feat.list <- colnames(aa2)
 
-feat.list <- feat.list[-13]
+feat.list <- feat.list[-12]
 ks.list <- list()
 for (i in feat.list){
     temp <- aa2[,i]
     temp <- as.numeric(pull(temp))
 
-    this.test <- ks.test(temp[aa2$V1 == "Cancer"],
-                         temp[aa2$V1 == "Normal"],
+    this.test <- ks.test(temp[aa2$V12 == "Cancer"],
+                         temp[aa2$V12 == "Normal"],
                          alternative = "less")
     ks.list <- rbind(ks.list,this.test$p.value)
 }
@@ -55,9 +54,9 @@ ks.pvals <- formatC(unlist(ks.list$V2), digits = 3)
 ks.pvals <- paste("KS p-value <",ks.pvals)
 
 
-aa3 <- rbind(aa,mutate(aa,V1= "All Genes"))
+aa3 <- rbind(aa,mutate(aa,V12= "All Genes"))
 
-ggplot(aa3,aes(cent_value,color = V1)) +
+ggplot(aa3,aes(cent_value,color = V12)) +
     stat_ecdf(geom = "point") + facet_wrap(~Centrality ,ncol = 4)+theme_bw() +
     labs(x = "Quantile", y = "Cumulative Density")+
     guides(colour = guide_legend(override.aes = list(size=10))) +
@@ -83,14 +82,14 @@ colnames(aa)
 
 
 
-## You want a measure to say generally something works better on cancer genes. 
-## If you had a measure that could measure the area under CDF curve would have 
-## been nice. 
+## You want a measure to say generally something works better on cancer genes.
+## If you had a measure that could measure the area under CDF curve would have
+## been nice.
 
 ## Remember to fix the names of pgr.source and pgr.sink
 
 
-aa.cancer <-  filter(aa,  V1=="Cancer" )
+aa.cancer <-  filter(aa,  V12=="Cancer" )
 aa.cancer$Centrality <- gsub(".norm","",aa.cancer$Centrality)
 
 feat.list <- unique(aa.cancer$Centrality)
@@ -99,7 +98,7 @@ ks.cancer.list <- list()
 for (i in feat.list){
     temp <- aa.cancer
     temp <- as.numeric(pull(temp))
-    
+
     this.test <- ks.test(temp[aa.cancer$Centrality == "pgr.ssc"],
                          temp[aa.cancer$Centrality == i],
                          alternative = "greater")
@@ -164,8 +163,8 @@ ggsave("images/KSstats_PGRvsAll.pdf",
               axis.text.x=element_text(size = 20),
               axis.ticks.y=element_blank(),
               legend.position="bottom", legend.box = "horizontal")
-    
-    
+
+
     ggsave("images/KSstats_katz.pdf",
            width = 18, height = 10, units = c("in"))
 
