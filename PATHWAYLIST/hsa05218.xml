@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Apr 11, 2018 17:04:35 +0900 (GMT+9) -->
+<!-- Creation date: Nov 5, 2018 16:12:42 +0900 (GMT+9) -->
 <pathway name="path:hsa05218" org="hsa" number="05218"
          title="Melanoma"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa05218.png"
@@ -162,7 +162,7 @@
     </entry>
     <entry id="32" name="hsa:3265 hsa:3845 hsa:4893" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:3265+hsa:3845+hsa:4893">
-        <graphics name="HRAS, C-BAS/HAS, C-H-RAS, C-HA-RAS1, CTLO, H-RASIDX, HAMSV, HRAS1, RASH1, p21ras..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="HRAS, C-BAS/HAS, C-H-RAS, C-HA-RAS1, CTLO, H-RASIDX, HAMSV, HRAS1, KRAS, KRAS2, Ki-Ras, RASH1, RASK2, c-K-ras, c-Ki-ras, p21ras..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="295" y="197" width="46" height="17"/>
     </entry>
     <entry id="33" name="path:hsa04151" type="map"

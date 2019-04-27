@@ -125,8 +125,8 @@
         <graphics name="PHGDH, 3-PGDH, 3PGDH, HEL-S-113, NLS, NLS1, PDG, PGAD, PGD, PGDH, PHGDHD, SERA" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="403" y="193" width="46" height="17"/>
     </entry>
-    <entry id="71" name="ko:K00018 ko:K15893 ko:K15919" type="ortholog" reaction="rn:R01388"
-        link="http://www.kegg.jp/dbget-bin/www_bget?K00018+K15893+K15919">
+    <entry id="71" name="ko:K00018 ko:K15893" type="ortholog" reaction="rn:R01388"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K00018+K15893">
         <graphics name="K00018..." fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="139" y="182" width="46" height="17"/>
     </entry>
@@ -137,7 +137,7 @@
     </entry>
     <entry id="73" name="hsa:102724560 hsa:875" type="gene" reaction="rn:R01290"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:102724560+hsa:875">
-        <graphics name="CBSL..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="CBSL, CBS..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="460" y="326" width="46" height="17"/>
     </entry>
     <entry id="74" name="hsa:1491" type="gene" reaction="rn:R01001"
@@ -602,7 +602,7 @@
     </entry>
     <entry id="180" name="hsa:102724560 hsa:875" type="gene" reaction="rn:R00891"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:102724560+hsa:875">
-        <graphics name="CBSL..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="CBSL, CBS..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="512" y="358" width="46" height="17"/>
     </entry>
     <entry id="181" name="path:hsa00260" type="map"

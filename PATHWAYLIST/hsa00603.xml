@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Jun 1, 2018 11:05:08 +0900 (GMT+9) -->
+<!-- Creation date: Mar 14, 2019 17:37:00 +0900 (GMT+9) -->
 <pathway name="path:hsa00603" org="hsa" number="00603"
          title="Glycosphingolipid biosynthesis - globo and isoglobo series"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00603.png"

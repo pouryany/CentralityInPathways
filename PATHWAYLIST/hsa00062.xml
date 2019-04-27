@@ -15,9 +15,9 @@
         <graphics name="TITLE:Fatty acid elongation" fgcolor="#000000" bgcolor="#FFFFFF"
              type="roundrectangle" x="145" y="58" width="209" height="25"/>
     </entry>
-    <entry id="29" name="hsa:51104 hsa:5538 hsa:58489 hsa:81926 hsa:9374" type="gene" reaction="rn:R01274"
-        link="http://www.kegg.jp/dbget-bin/www_bget?hsa:51104+hsa:5538+hsa:58489+hsa:81926+hsa:9374">
-        <graphics name="ABHD17B, C9orf77, CGI-67, FAM108B1..." fgcolor="#000000" bgcolor="#BFFFBF"
+    <entry id="29" name="hsa:5538 hsa:9374" type="gene" reaction="rn:R01274"
+        link="http://www.kegg.jp/dbget-bin/www_bget?hsa:5538+hsa:9374">
+        <graphics name="PPT1, CLN1, INCL, PPT..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="836" y="539" width="46" height="17"/>
     </entry>
     <entry id="30" name="hsa:51102" type="gene" reaction="rn:R01278"
@@ -395,9 +395,9 @@
         <graphics name="Fatty acid degradation" fgcolor="#000000" bgcolor="#FFFFFF"
              type="roundrectangle" x="136" y="1125" width="77" height="34"/>
     </entry>
-    <entry id="137" name="hsa:51104 hsa:5538 hsa:58489 hsa:81926 hsa:9374" type="gene" reaction="rn:R01274"
-        link="http://www.kegg.jp/dbget-bin/www_bget?hsa:51104+hsa:5538+hsa:58489+hsa:81926+hsa:9374">
-        <graphics name="ABHD17B, C9orf77, CGI-67, FAM108B1..." fgcolor="#000000" bgcolor="#BFFFBF"
+    <entry id="137" name="hsa:5538 hsa:9374" type="gene" reaction="rn:R01274"
+        link="http://www.kegg.jp/dbget-bin/www_bget?hsa:5538+hsa:9374">
+        <graphics name="PPT1, CLN1, INCL, PPT..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="215" y="1081" width="46" height="17"/>
     </entry>
     <entry id="138" name="cpd:C00249 cpd:C00162" type="compound"

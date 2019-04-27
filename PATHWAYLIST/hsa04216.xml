@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Jun 27, 2017 09:27:53 +0900 (GMT+9) -->
+<!-- Creation date: Apr 12, 2019 14:18:29 +0900 (GMT+9) -->
 <pathway name="path:hsa04216" org="hsa" number="04216"
          title="Ferroptosis"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa04216.png"
@@ -27,7 +27,7 @@
     </entry>
     <entry id="5" name="hsa:7157" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:7157">
-        <graphics name="TP53, BCC7, LFS1, P53, TRP53" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="TP53, BCC7, BMFS5, LFS1, P53, TRP53" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="270" y="231" width="46" height="17"/>
     </entry>
     <entry id="6" name="hsa:2879" type="gene"
@@ -222,7 +222,7 @@
     </entry>
     <entry id="44" name="hsa:23516 hsa:64116" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:23516+hsa:64116">
-        <graphics name="SLC39A14, HMNDYT2, LZT-Hs4, NET34, ZIP14, cig19..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="SLC39A14, HCIN, HMNDYT2, LZT-Hs4, NET34, ZIP14, cig19..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="479" y="373" width="46" height="17"/>
     </entry>
     <entry id="45" name="hsa:4891" type="gene"
@@ -247,7 +247,7 @@
     </entry>
     <entry id="49" name="hsa:23516 hsa:64116" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:23516+hsa:64116">
-        <graphics name="SLC39A14, HMNDYT2, LZT-Hs4, NET34, ZIP14, cig19..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="SLC39A14, HCIN, HMNDYT2, LZT-Hs4, NET34, ZIP14, cig19..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="199" y="483" width="46" height="17"/>
     </entry>
     <entry id="50" name="cpd:C14818" type="compound"
@@ -317,7 +317,7 @@
     </entry>
     <entry id="63" name="hsa:246" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:246">
-        <graphics name="ALOX15, 12-LOX, 15-LOX-1, 15LOX-1" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="ALOX15, 12-LOX, 15-LOX, 15-LOX-1, LOG15" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="775" y="191" width="46" height="17"/>
     </entry>
     <entry id="64" name="cpd:C00219 cpd:C16527" type="compound"
@@ -327,7 +327,7 @@
     </entry>
     <entry id="65" name="hsa:7157" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:7157">
-        <graphics name="TP53, BCC7, LFS1, P53, TRP53" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="TP53, BCC7, BMFS5, LFS1, P53, TRP53" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="964" y="150" width="46" height="17"/>
     </entry>
     <entry id="66" name="cpd:C00010" type="compound"
@@ -390,37 +390,28 @@
         <graphics name="C21482" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="711" y="150" width="8" height="8"/>
     </entry>
+    <entry id="78" name="undefined" type="group">
+        <graphics fgcolor="#000000" bgcolor="#FFFFFF"
+             type="rectangle" x="199" y="184" width="46" height="34"/>
+        <component id="13"/>
+        <component id="2"/>
+    </entry>
     <relation entry1="5" entry2="2" type="GErel">
         <subtype name="repression" value="--|"/>
     </relation>
     <relation entry1="65" entry2="48" type="GErel">
         <subtype name="expression" value="--&gt;"/>
     </relation>
-    <relation entry1="48" entry2="63" type="PPrel">
-        <subtype name="indirect effect" value="..&gt;"/>
-    </relation>
-    <relation entry1="9" entry2="13" type="PCrel">
+    <relation entry1="9" entry2="78" type="PCrel">
         <subtype name="inhibition" value="--|"/>
     </relation>
-    <relation entry1="56" entry2="13" type="PCrel">
+    <relation entry1="56" entry2="78" type="PCrel">
         <subtype name="inhibition" value="--|"/>
     </relation>
-    <relation entry1="68" entry2="13" type="PCrel">
+    <relation entry1="68" entry2="78" type="PCrel">
         <subtype name="inhibition" value="--|"/>
     </relation>
-    <relation entry1="57" entry2="13" type="PCrel">
-        <subtype name="inhibition" value="--|"/>
-    </relation>
-    <relation entry1="9" entry2="2" type="PCrel">
-        <subtype name="inhibition" value="--|"/>
-    </relation>
-    <relation entry1="56" entry2="2" type="PCrel">
-        <subtype name="inhibition" value="--|"/>
-    </relation>
-    <relation entry1="68" entry2="2" type="PCrel">
-        <subtype name="inhibition" value="--|"/>
-    </relation>
-    <relation entry1="57" entry2="2" type="PCrel">
+    <relation entry1="57" entry2="78" type="PCrel">
         <subtype name="inhibition" value="--|"/>
     </relation>
     <relation entry1="67" entry2="6" type="PCrel">
@@ -476,6 +467,10 @@
         <subtype name="indirect effect" value="..&gt;"/>
     </relation>
     <relation entry1="55" entry2="58" type="PCrel">
+        <subtype name="activation" value="--&gt;"/>
+        <subtype name="indirect effect" value="..&gt;"/>
+    </relation>
+    <relation entry1="48" entry2="63" type="PPrel">
         <subtype name="activation" value="--&gt;"/>
         <subtype name="indirect effect" value="..&gt;"/>
     </relation>

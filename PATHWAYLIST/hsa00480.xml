@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Apr 10, 2018 15:08:41 +0900 (GMT+9) -->
+<!-- Creation date: Mar 19, 2019 09:52:12 +0900 (GMT+9) -->
 <pathway name="path:hsa00480" org="hsa" number="00480"
          title="Glutathione metabolism"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00480.png"
@@ -34,6 +34,11 @@
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa00270">
         <graphics name="Cysteine and methionine metabolism" fgcolor="#000000" bgcolor="#FFFFFF"
              type="roundrectangle" x="329" y="206" width="82" height="45"/>
+    </entry>
+    <entry id="32" name="ko:K03423" type="ortholog" reaction="rn:R02742"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K03423">
+        <graphics name="K03423" fgcolor="#000000" bgcolor="#FFFFFF"
+             type="rectangle" x="662" y="460" width="46" height="17"/>
     </entry>
     <entry id="33" name="hsa:290" type="gene" reaction="rn:R04951"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:290">
@@ -252,7 +257,7 @@
     </entry>
     <entry id="87" name="hsa:2936" type="gene" reaction="rn:R00115"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:2936">
-        <graphics name="GSR, HEL-75, HEL-S-122m" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="GSR, GR, HEL-75, HEL-S-122m" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="169" y="458" width="46" height="17"/>
     </entry>
     <entry id="92" name="cpd:C00077" type="compound"
@@ -803,8 +808,8 @@
     <reaction id="87" name="rn:R00115" type="irreversible">
         <substrate id="70" name="cpd:C00127"/>
         <substrate id="71" name="cpd:C00005"/>
-        <product id="67" name="cpd:C00051"/>
         <product id="72" name="cpd:C00006"/>
+        <product id="67" name="cpd:C00051"/>
     </reaction>
     <reaction id="48" name="rn:R00497" type="irreversible">
         <substrate id="64" name="cpd:C00037"/>

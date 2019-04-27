@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Dec 19, 2017 16:02:17 +0900 (GMT+9) -->
+<!-- Creation date: Sep 14, 2018 11:26:05 +0900 (GMT+9) -->
 <pathway name="path:hsa00520" org="hsa" number="00520"
          title="Amino sugar and nucleotide sugar metabolism"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00520.png"
@@ -120,10 +120,15 @@
         <graphics name="Lipopolysaccharide biosynthesis" fgcolor="#000000" bgcolor="#FFFFFF"
              type="roundrectangle" x="598" y="418" width="109" height="34"/>
     </entry>
-    <entry id="59" name="ko:K13015" type="ortholog" reaction="rn:R00421"
-        link="http://www.kegg.jp/dbget-bin/www_bget?K13015">
-        <graphics name="K13015" fgcolor="#000000" bgcolor="#FFFFFF"
+    <entry id="59" name="ko:K13015 ko:K22926" type="ortholog" reaction="rn:R00421"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K13015+K22926">
+        <graphics name="K13015..." fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="767" y="424" width="46" height="17"/>
+    </entry>
+    <entry id="61" name="ko:K22925" type="ortholog" reaction="rn:R08706"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K22925">
+        <graphics name="K22925" fgcolor="#000000" bgcolor="#FFFFFF"
+             type="rectangle" x="917" y="449" width="46" height="17"/>
     </entry>
     <entry id="62" name="path:hsa00051" type="map"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa00051">
@@ -577,7 +582,7 @@
     </entry>
     <entry id="194" name="hsa:5372 hsa:5373" type="gene" reaction="rn:R01818"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:5372+hsa:5373">
-        <graphics name="PMM1, Sec53..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="PMM1, PMM_1, PMMH-22, Sec53..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="508" y="1385" width="46" height="17"/>
     </entry>
     <entry id="196" name="hsa:5236 hsa:55276" type="gene" reaction="rn:R00959"

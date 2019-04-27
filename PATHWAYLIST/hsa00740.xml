@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Jan 19, 2018 10:41:54 +0900 (GMT+9) -->
+<!-- Creation date: Aug 21, 2018 15:49:05 +0900 (GMT+9) -->
 <pathway name="path:hsa00740" org="hsa" number="00740"
          title="Riboflavin metabolism"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00740.png"
@@ -23,12 +23,12 @@
     <entry id="5" name="path:hsa00740" type="map"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa00740">
         <graphics name="TITLE:Riboflavin metabolism" fgcolor="#000000" bgcolor="#FFFFFF"
-             type="roundrectangle" x="138" y="58" width="196" height="25"/>
+             type="roundrectangle" x="136" y="58" width="191" height="25"/>
     </entry>
     <entry id="6" name="path:hsa00040" type="map"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa00040">
         <graphics name="Pentose and glucuronate interconversions" fgcolor="#000000" bgcolor="#FFFFFF"
-             type="roundrectangle" x="837" y="95" width="142" height="34"/>
+             type="roundrectangle" x="835" y="95" width="138" height="34"/>
     </entry>
     <entry id="7" name="path:hsa00230" type="map"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa00230">
@@ -130,9 +130,9 @@
         <graphics name="K00793" fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="642" y="206" width="46" height="17"/>
     </entry>
-    <entry id="43" name="ko:K20860 ko:K20861 ko:K20862 ko:K21063 ko:K21064" type="ortholog" reaction="rn:R07280"
-        link="http://www.kegg.jp/dbget-bin/www_bget?K20860+K20861+K20862+K21063+K21064">
-        <graphics name="K20860..." fgcolor="#000000" bgcolor="#FFFFFF"
+    <entry id="43" name="ko:K22912 ko:K20860 ko:K20861 ko:K20862 ko:K21063 ko:K21064" type="ortholog" reaction="rn:R07280"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K22912+K20860+K20861+K20862+K21063+K21064">
+        <graphics name="K22912..." fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="430" y="206" width="46" height="17"/>
     </entry>
     <entry id="44" name="ko:K07732" type="ortholog" reaction="rn:R08574"

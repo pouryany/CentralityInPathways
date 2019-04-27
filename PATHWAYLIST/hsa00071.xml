@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Aug 2, 2018 11:44:21 +0900 (GMT+9) -->
+<!-- Creation date: Feb 6, 2019 16:50:43 +0900 (GMT+9) -->
 <pathway name="path:hsa00071" org="hsa" number="00071"
          title="Fatty acid degradation"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00071.png"
@@ -198,7 +198,7 @@
     <entry id="74" name="hsa:10449 hsa:30 hsa:3032" type="gene" reaction="rn:R04742"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10449+hsa:30+hsa:3032">
         <graphics name="ACAA2, DSAEC..." fgcolor="#000000" bgcolor="#BFFFBF"
-             type="rectangle" x="429" y="658" width="46" height="17"/>
+             type="rectangle" x="429" y="659" width="46" height="17"/>
     </entry>
     <entry id="75" name="hsa:1962 hsa:3033" type="gene" reaction="rn:R04741"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:1962+hsa:3033">
@@ -258,7 +258,7 @@
     <entry id="89" name="hsa:10449 hsa:30 hsa:3032" type="gene" reaction="rn:R03858"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10449+hsa:30+hsa:3032">
         <graphics name="ACAA2, DSAEC..." fgcolor="#000000" bgcolor="#BFFFBF"
-             type="rectangle" x="304" y="658" width="46" height="17"/>
+             type="rectangle" x="304" y="659" width="46" height="17"/>
     </entry>
     <entry id="90" name="hsa:1892 hsa:1962 hsa:3030" type="gene" reaction="rn:R04740"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:1892+hsa:1962+hsa:3030">
@@ -658,7 +658,7 @@
     <entry id="195" name="hsa:38 hsa:39" type="gene" reaction="rn:R00238"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:38+hsa:39">
         <graphics name="ACAT1, ACAT, MAT, T2, THIL..." fgcolor="#000000" bgcolor="#BFFFBF"
-             type="rectangle" x="898" y="660" width="46" height="17"/>
+             type="rectangle" x="923" y="659" width="46" height="17"/>
     </entry>
     <entry id="196" name="hsa:37" type="gene" reaction="rn:R01279"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:37">
@@ -704,6 +704,11 @@
         link="http://www.kegg.jp/dbget-bin/www_bget?K00496">
         <graphics name="K00496" fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="656" y="904" width="46" height="17"/>
+    </entry>
+    <entry id="208" name="hsa:10449 hsa:30 hsa:3032" type="gene" reaction="rn:R00238"
+        link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10449+hsa:30+hsa:3032">
+        <graphics name="ACAA2, DSAEC..." fgcolor="#000000" bgcolor="#BFFFBF"
+             type="rectangle" x="873" y="659" width="46" height="17"/>
     </entry>
     <relation entry1="195" entry2="41" type="ECrel">
         <subtype name="compound" value="125"/>
@@ -1155,6 +1160,24 @@
     <relation entry1="206" entry2="100" type="maplink">
         <subtype name="compound" value="191"/>
     </relation>
+    <relation entry1="208" entry2="41" type="ECrel">
+        <subtype name="compound" value="125"/>
+    </relation>
+    <relation entry1="208" entry2="43" type="maplink">
+        <subtype name="compound" value="125"/>
+    </relation>
+    <relation entry1="208" entry2="78" type="maplink">
+        <subtype name="compound" value="191"/>
+    </relation>
+    <relation entry1="208" entry2="206" type="maplink">
+        <subtype name="compound" value="191"/>
+    </relation>
+    <relation entry1="208" entry2="198" type="maplink">
+        <subtype name="compound" value="191"/>
+    </relation>
+    <relation entry1="208" entry2="73" type="maplink">
+        <subtype name="compound" value="191"/>
+    </relation>
     <reaction id="38" name="rn:R04751" type="irreversible">
         <substrate id="132" name="cpd:C05270"/>
         <product id="129" name="cpd:C05271"/>
@@ -1416,5 +1439,9 @@
     <reaction id="200" name="rn:R01923" type="irreversible">
         <substrate id="167" name="cpd:C00154"/>
         <product id="119" name="cpd:C02990"/>
+    </reaction>
+    <reaction id="208" name="rn:R00238" type="reversible">
+        <substrate id="191" name="cpd:C00024"/>
+        <product id="125" name="cpd:C00332"/>
     </reaction>
 </pathway>

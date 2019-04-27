@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Mar 9, 2018 16:28:57 +0900 (GMT+9) -->
+<!-- Creation date: Mar 13, 2019 11:01:46 +0900 (GMT+9) -->
 <pathway name="path:hsa00190" org="hsa" number="00190"
          title="Oxidative phosphorylation"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00190.png"
@@ -132,7 +132,7 @@
     </entry>
     <entry id="26" name="hsa:4697 hsa:56901" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:4697+hsa:56901">
-        <graphics name="NDUFA4, CI-9k, CI-MLRQ, MLRQ..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="NDUFA4, CI-9k, CI-MLRQ, COXFA4, MLRQ..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="228" y="590" width="46" height="17"/>
     </entry>
     <entry id="27" name="hsa:4696" type="gene"
@@ -902,7 +902,7 @@
     </entry>
     <entry id="181" name="hsa:513" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:513">
-        <graphics name="ATP5F1D, ATP5D" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="ATP5F1D, ATP5D, MC5DN5" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="1046" y="605" width="46" height="17"/>
     </entry>
     <entry id="182" name="hsa:514" type="gene"
@@ -947,7 +947,7 @@
     </entry>
     <entry id="190" name="hsa:10476" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10476">
-        <graphics name="ATP5PD, ATP5H, ATPQ" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="ATP5PD, APT5H, ATP5H, ATPQ" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="1092" y="622" width="46" height="17"/>
     </entry>
     <entry id="191" name="ko:K02143" type="ortholog"
@@ -1002,7 +1002,7 @@
     </entry>
     <entry id="201" name="hsa:523" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:523">
-        <graphics name="ATP6V1A, ARCL2D, ATP6A1, ATP6V1A1, HO68, VA68, VPP2, Vma1" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="ATP6V1A, ARCL2D, ATP6A1, ATP6V1A1, HO68, IECEE3, VA68, VPP2, Vma1" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="908" y="797" width="46" height="17"/>
     </entry>
     <entry id="202" name="hsa:525 hsa:526" type="gene"

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Apr 22, 2013 13:37:49 +0900 (GMT+09:00) -->
+<!-- Creation date: Feb 8, 2019 15:35:44 +0900 (GMT+9) -->
 <pathway name="path:hsa04913" org="hsa" number="04913"
          title="Ovarian steroidogenesis"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa04913.png"
@@ -62,22 +62,22 @@
     </entry>
     <entry id="12" name="hsa:3283 hsa:3284" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:3283+hsa:3284">
-        <graphics name="HSD3B1, 3BETAHSD, HSD3B, HSDB3, HSDB3A, I, SDR11E1..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="HSD3B1, 3BETAHSD, HSD3B, HSDB3, HSDB3A, SDR11E1..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="488" y="455" width="46" height="17"/>
     </entry>
     <entry id="13" name="hsa:3283 hsa:3284" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:3283+hsa:3284">
-        <graphics name="HSD3B1, 3BETAHSD, HSD3B, HSDB3, HSDB3A, I, SDR11E1..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="HSD3B1, 3BETAHSD, HSD3B, HSDB3, HSDB3A, SDR11E1..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="603" y="455" width="46" height="17"/>
     </entry>
     <entry id="14" name="hsa:3283 hsa:3284" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:3283+hsa:3284">
-        <graphics name="HSD3B1, 3BETAHSD, HSD3B, HSDB3, HSDB3A, I, SDR11E1..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="HSD3B1, 3BETAHSD, HSD3B, HSDB3, HSDB3A, SDR11E1..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="716" y="455" width="46" height="17"/>
     </entry>
     <entry id="15" name="hsa:3283 hsa:3284" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:3283+hsa:3284">
-        <graphics name="HSD3B1, 3BETAHSD, HSD3B, HSDB3, HSDB3A, I, SDR11E1..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="HSD3B1, 3BETAHSD, HSD3B, HSDB3, HSDB3A, SDR11E1..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="827" y="455" width="46" height="17"/>
     </entry>
     <entry id="16" name="hsa:3294 hsa:8644" type="gene"
@@ -125,9 +125,9 @@
         <graphics name="ADCY1, AC1, DFNB44..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="389" y="245" width="46" height="17"/>
     </entry>
-    <entry id="25" name="hsa:2488" type="gene"
-        link="http://www.kegg.jp/dbget-bin/www_bget?hsa:2488">
-        <graphics name="FSHB, HH24" fgcolor="#000000" bgcolor="#BFFFBF"
+    <entry id="25" name="hsa:1081 hsa:2488" type="gene"
+        link="http://www.kegg.jp/dbget-bin/www_bget?hsa:1081+hsa:2488">
+        <graphics name="CGA, CG-ALPHA, FSHA, GPHA1, GPHa, HCG, LHA, TSHA..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="131" y="895" width="46" height="17"/>
     </entry>
     <entry id="26" name="hsa:2492" type="gene"

@@ -87,19 +87,24 @@ total <- rbind(a1,a2,a3,b,d1,d2,d3,d4,h1,h2,h3)
 
 # Reporting
 
+
 overall.cors <- total %>% group_by(Centrality) %>%
     do(fit = lm(freq ~ as.numeric(quant), data=.)) %>%  glance(fit)
 
 
 
-overall.cors <- overall.cors[,c(1,2,3,6)]
+overall.cors  <- overall.cors[,c(1,2,3,6)]
+adjusted.pval <- p.adjust(unlist(overall.cors[,4]),method = "fdr")
+adjusted.pval <- formatC(adjusted.pval, format = "e", digits = 2)
 overall.cors[,4] <- formatC(unlist(pull(overall.cors[,4])), format = "e", digits = 2)
 print(xtable(overall.cors), include.rownames = F)
 
 text.vals <- paste("Adjusted r-squared:",formatC(pull(overall.cors[,2]),digits = 2),
-                   "\n p-value:", pull(overall.cors[,4]))
+                   "\n p-value:", pull(overall.cors[,4]), "\n Adj p-value:",
+                   adjusted.pval)
 
 overall.cors$label <- text.vals
+
 
 ggplot(total, aes(y = freq, x= quant)) + geom_point()+
     geom_smooth(method= "lm") + #geom_smooth(method= "loess", color="green" , fill = "red") +
@@ -113,7 +118,7 @@ ggplot(total, aes(y = freq, x= quant)) + geom_point()+
           axis.text.y=element_text(size = 12),
           axis.text.x=element_text(size = 12),
           axis.ticks.y=element_blank()) +
-    geom_text(data=overall.cors, x = 50, y =0.2,
+    geom_text(data=overall.cors, x = 50, y =0.3,
               aes(x,y,label=label),size = 6, inherit.aes=FALSE)
 
 ggsave("images/MouseRegression.pdf",

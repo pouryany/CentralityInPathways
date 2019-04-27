@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Aug 3, 2018 10:05:19 +0900 (GMT+9) -->
+<!-- Creation date: Mar 14, 2019 17:26:43 +0900 (GMT+9) -->
 <pathway name="path:hsa00512" org="hsa" number="00512"
          title="Mucin type O-glycan biosynthesis"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00512.png"
@@ -107,7 +107,7 @@
     </entry>
     <entry id="35" name="hsa:100528030 hsa:11226 hsa:11227 hsa:114805 hsa:117248 hsa:168391 hsa:2589 hsa:2590 hsa:2591 hsa:26290 hsa:374378 hsa:442117 hsa:50614 hsa:51809 hsa:55568 hsa:57452 hsa:63917 hsa:64409 hsa:79623 hsa:79695 hsa:8693" type="gene" reaction="rn:R05907"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:100528030+hsa:11226+hsa:11227+hsa:114805+hsa:117248+hsa:168391+hsa:2589+hsa:2590+hsa:2591+hsa:26290+hsa:374378+hsa:442117+hsa:50614+hsa:51809+hsa:55568+hsa:57452+hsa:63917+hsa:64409+hsa:79623+hsa:79695+hsa:8693">
-        <graphics name="POC1B-GALNT4..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="POC1B-GALNT4, GALNT4, GalNAc-T4..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="149" y="243" width="46" height="17"/>
     </entry>
     <entry id="36" name="hsa:29071 hsa:56913" type="gene" reaction="rn:R05908"
@@ -157,12 +157,12 @@
     </entry>
     <entry id="47" name="hsa:100528030 hsa:11226 hsa:11227 hsa:114805 hsa:117248 hsa:168391 hsa:2589 hsa:2590 hsa:2591 hsa:26290 hsa:374378 hsa:442117 hsa:50614 hsa:51809 hsa:55568 hsa:57452 hsa:63917 hsa:64409 hsa:79623 hsa:79695 hsa:8693" type="gene" reaction="rn:R05907"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:100528030+hsa:11226+hsa:11227+hsa:114805+hsa:117248+hsa:168391+hsa:2589+hsa:2590+hsa:2591+hsa:26290+hsa:374378+hsa:442117+hsa:50614+hsa:51809+hsa:55568+hsa:57452+hsa:63917+hsa:64409+hsa:79623+hsa:79695+hsa:8693">
-        <graphics name="POC1B-GALNT4..." fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POC1B-GALNT4, GALNT4, GalNAc-T4..." fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="497,987,517,987"/>
     </entry>
     <entry id="49" name="hsa:100528030 hsa:11226 hsa:11227 hsa:114805 hsa:117248 hsa:168391 hsa:2589 hsa:2590 hsa:2591 hsa:26290 hsa:374378 hsa:442117 hsa:50614 hsa:51809 hsa:55568 hsa:57452 hsa:63917 hsa:64409 hsa:79623 hsa:79695 hsa:8693" type="gene" reaction="rn:R05907"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:100528030+hsa:11226+hsa:11227+hsa:114805+hsa:117248+hsa:168391+hsa:2589+hsa:2590+hsa:2591+hsa:26290+hsa:374378+hsa:442117+hsa:50614+hsa:51809+hsa:55568+hsa:57452+hsa:63917+hsa:64409+hsa:79623+hsa:79695+hsa:8693">
-        <graphics name="POC1B-GALNT4..." fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POC1B-GALNT4, GALNT4, GalNAc-T4..." fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="518,930,538,930"/>
     </entry>
     <entry id="50" name="hsa:2650" type="gene" reaction="rn:R05910"
@@ -172,12 +172,12 @@
     </entry>
     <entry id="51" name="hsa:100528030 hsa:11226 hsa:11227 hsa:114805 hsa:117248 hsa:168391 hsa:2589 hsa:2590 hsa:2591 hsa:26290 hsa:374378 hsa:442117 hsa:50614 hsa:51809 hsa:55568 hsa:57452 hsa:63917 hsa:64409 hsa:79623 hsa:79695 hsa:8693" type="gene" reaction="rn:R05907"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:100528030+hsa:11226+hsa:11227+hsa:114805+hsa:117248+hsa:168391+hsa:2589+hsa:2590+hsa:2591+hsa:26290+hsa:374378+hsa:442117+hsa:50614+hsa:51809+hsa:55568+hsa:57452+hsa:63917+hsa:64409+hsa:79623+hsa:79695+hsa:8693">
-        <graphics name="POC1B-GALNT4..." fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POC1B-GALNT4, GALNT4, GalNAc-T4..." fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="579,860,599,860"/>
     </entry>
     <entry id="53" name="hsa:100528030 hsa:11226 hsa:11227 hsa:114805 hsa:117248 hsa:168391 hsa:2589 hsa:2590 hsa:2591 hsa:26290 hsa:374378 hsa:442117 hsa:50614 hsa:51809 hsa:55568 hsa:57452 hsa:63917 hsa:64409 hsa:79623 hsa:79695 hsa:8693" type="gene" reaction="rn:R05907"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:100528030+hsa:11226+hsa:11227+hsa:114805+hsa:117248+hsa:168391+hsa:2589+hsa:2590+hsa:2591+hsa:26290+hsa:374378+hsa:442117+hsa:50614+hsa:51809+hsa:55568+hsa:57452+hsa:63917+hsa:64409+hsa:79623+hsa:79695+hsa:8693">
-        <graphics name="POC1B-GALNT4..." fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POC1B-GALNT4, GALNT4, GalNAc-T4..." fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="519,801,539,801"/>
     </entry>
     <entry id="54" name="hsa:9245" type="gene" reaction="rn:R05915"
@@ -187,7 +187,7 @@
     </entry>
     <entry id="55" name="hsa:100528030 hsa:11226 hsa:11227 hsa:114805 hsa:117248 hsa:168391 hsa:2589 hsa:2590 hsa:2591 hsa:26290 hsa:374378 hsa:442117 hsa:50614 hsa:51809 hsa:55568 hsa:57452 hsa:63917 hsa:64409 hsa:79623 hsa:79695 hsa:8693" type="gene" reaction="rn:R05907"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:100528030+hsa:11226+hsa:11227+hsa:114805+hsa:117248+hsa:168391+hsa:2589+hsa:2590+hsa:2591+hsa:26290+hsa:374378+hsa:442117+hsa:50614+hsa:51809+hsa:55568+hsa:57452+hsa:63917+hsa:64409+hsa:79623+hsa:79695+hsa:8693">
-        <graphics name="POC1B-GALNT4..." fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POC1B-GALNT4, GALNT4, GalNAc-T4..." fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="506,726,526,726"/>
     </entry>
     <entry id="56" name="hsa:29071 hsa:56913" type="gene" reaction="rn:R05908"
@@ -202,7 +202,7 @@
     </entry>
     <entry id="58" name="hsa:100528030 hsa:11226 hsa:11227 hsa:114805 hsa:117248 hsa:168391 hsa:2589 hsa:2590 hsa:2591 hsa:26290 hsa:374378 hsa:442117 hsa:50614 hsa:51809 hsa:55568 hsa:57452 hsa:63917 hsa:64409 hsa:79623 hsa:79695 hsa:8693" type="gene" reaction="rn:R05907"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:100528030+hsa:11226+hsa:11227+hsa:114805+hsa:117248+hsa:168391+hsa:2589+hsa:2590+hsa:2591+hsa:26290+hsa:374378+hsa:442117+hsa:50614+hsa:51809+hsa:55568+hsa:57452+hsa:63917+hsa:64409+hsa:79623+hsa:79695+hsa:8693">
-        <graphics name="POC1B-GALNT4..." fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POC1B-GALNT4, GALNT4, GalNAc-T4..." fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="507,623,527,623"/>
     </entry>
     <entry id="59" name="hsa:29071 hsa:56913" type="gene" reaction="rn:R05908"
@@ -217,17 +217,17 @@
     </entry>
     <entry id="61" name="hsa:100528030 hsa:11226 hsa:11227 hsa:114805 hsa:117248 hsa:168391 hsa:2589 hsa:2590 hsa:2591 hsa:26290 hsa:374378 hsa:442117 hsa:50614 hsa:51809 hsa:55568 hsa:57452 hsa:63917 hsa:64409 hsa:79623 hsa:79695 hsa:8693" type="gene" reaction="rn:R05907"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:100528030+hsa:11226+hsa:11227+hsa:114805+hsa:117248+hsa:168391+hsa:2589+hsa:2590+hsa:2591+hsa:26290+hsa:374378+hsa:442117+hsa:50614+hsa:51809+hsa:55568+hsa:57452+hsa:63917+hsa:64409+hsa:79623+hsa:79695+hsa:8693">
-        <graphics name="POC1B-GALNT4..." fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POC1B-GALNT4, GALNT4, GalNAc-T4..." fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="266,773,286,773"/>
     </entry>
     <entry id="62" name="hsa:100528030 hsa:11226 hsa:11227 hsa:114805 hsa:117248 hsa:168391 hsa:2589 hsa:2590 hsa:2591 hsa:26290 hsa:374378 hsa:442117 hsa:50614 hsa:51809 hsa:55568 hsa:57452 hsa:63917 hsa:64409 hsa:79623 hsa:79695 hsa:8693" type="gene" reaction="rn:R05907"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:100528030+hsa:11226+hsa:11227+hsa:114805+hsa:117248+hsa:168391+hsa:2589+hsa:2590+hsa:2591+hsa:26290+hsa:374378+hsa:442117+hsa:50614+hsa:51809+hsa:55568+hsa:57452+hsa:63917+hsa:64409+hsa:79623+hsa:79695+hsa:8693">
-        <graphics name="POC1B-GALNT4..." fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POC1B-GALNT4, GALNT4, GalNAc-T4..." fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="217,678,237,678"/>
     </entry>
     <entry id="63" name="hsa:100528030 hsa:11226 hsa:11227 hsa:114805 hsa:117248 hsa:168391 hsa:2589 hsa:2590 hsa:2591 hsa:26290 hsa:374378 hsa:442117 hsa:50614 hsa:51809 hsa:55568 hsa:57452 hsa:63917 hsa:64409 hsa:79623 hsa:79695 hsa:8693" type="gene" reaction="rn:R05907"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:100528030+hsa:11226+hsa:11227+hsa:114805+hsa:117248+hsa:168391+hsa:2589+hsa:2590+hsa:2591+hsa:26290+hsa:374378+hsa:442117+hsa:50614+hsa:51809+hsa:55568+hsa:57452+hsa:63917+hsa:64409+hsa:79623+hsa:79695+hsa:8693">
-        <graphics name="POC1B-GALNT4..." fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POC1B-GALNT4, GALNT4, GalNAc-T4..." fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="131,604,151,604"/>
     </entry>
     <entry id="64" name="gl:G00024" type="compound"

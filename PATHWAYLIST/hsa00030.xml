@@ -160,9 +160,9 @@
         <graphics name="K00115..." fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="242" y="214" width="46" height="17"/>
     </entry>
-    <entry id="68" name="ko:K00034" type="ortholog" reaction="rn:R01520 rn:R01521"
-        link="http://www.kegg.jp/dbget-bin/www_bget?K00034">
-        <graphics name="K00034" fgcolor="#000000" bgcolor="#FFFFFF"
+    <entry id="68" name="ko:K00034 ko:K22969" type="ortholog" reaction="rn:R01520 rn:R01521"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K00034+K22969">
+        <graphics name="K00034..." fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="267" y="125" width="46" height="17"/>
     </entry>
     <entry id="69" name="path:hsa00010" type="map"

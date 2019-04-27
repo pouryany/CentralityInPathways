@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Jan 19, 2018 10:23:04 +0900 (GMT+9) -->
+<!-- Creation date: Mar 6, 2019 16:27:39 +0900 (GMT+9) -->
 <pathway name="path:hsa00440" org="hsa" number="00440"
          title="Phosphonate and phosphinate metabolism"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00440.png"
@@ -499,6 +499,11 @@
         link="http://www.kegg.jp/dbget-bin/www_bget?K21934">
         <graphics name="K21934" fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="336" y="215" width="46" height="17"/>
+    </entry>
+    <entry id="158" name="ko:K00206" type="ortholog" reaction="rn:R04251"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K00206">
+        <graphics name="K00206" fgcolor="#000000" bgcolor="#FFFFFF"
+             type="rectangle" x="253" y="323" width="46" height="17"/>
     </entry>
     <relation entry1="114" entry2="79" type="ECrel">
         <subtype name="compound" value="45"/>

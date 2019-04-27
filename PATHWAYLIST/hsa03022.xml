@@ -52,7 +52,7 @@
     </entry>
     <entry id="10" name="hsa:129685" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:129685">
-        <graphics name="TAF8, II, TAF, TAFII-43, TAFII43, TBN" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="TAF8, II, TAF, TAF(II)43, TAFII-43, TAFII43, TBN" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="210" y="568" width="46" height="17"/>
     </entry>
     <entry id="11" name="hsa:51616 hsa:6880" type="gene"
@@ -147,7 +147,7 @@
     </entry>
     <entry id="29" name="hsa:6884" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:6884">
-        <graphics name="TAF13, TAF(II)18, TAF2K, TAFII-18, TAFII18" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="TAF13, MRT60, TAF(II)18, TAF2K, TAFII-18, TAFII18" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="348" y="585" width="46" height="17"/>
     </entry>
     <entry id="30" name="ko:K03140" type="ortholog"

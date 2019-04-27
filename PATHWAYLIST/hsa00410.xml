@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Feb 10, 2015 10:46:20 +0900 (GMT+9) -->
+<!-- Creation date: Jan 29, 2019 13:27:40 +0900 (GMT+9) -->
 <pathway name="path:hsa00410" org="hsa" number="00410"
          title="beta-Alanine metabolism"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00410.png"
@@ -30,7 +30,7 @@
         <graphics name="Pyrimidine metabolism" fgcolor="#000000" bgcolor="#FFFFFF"
              type="roundrectangle" x="72" y="327" width="74" height="34"/>
     </entry>
-    <entry id="38" name="hsa:34" type="gene" reaction="rn:R00924"
+    <entry id="38" name="hsa:34" type="gene" reaction="rn:R04432"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:34">
         <graphics name="ACADM, ACAD1, MCAD, MCADH" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="789" y="642" width="46" height="17"/>
@@ -38,12 +38,17 @@
     <entry id="39" name="hsa:1892 hsa:1962 hsa:3030" type="gene" reaction="rn:R03045"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:1892+hsa:1962+hsa:3030">
         <graphics name="ECHS1, ECHS1D, SCEH..." fgcolor="#000000" bgcolor="#BFFFBF"
-             type="rectangle" x="659" y="642" width="46" height="17"/>
+             type="rectangle" x="659" y="631" width="46" height="17"/>
     </entry>
     <entry id="40" name="hsa:26275" type="gene" reaction="rn:R03158"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:26275">
         <graphics name="HIBCH, HIBYLCOAH" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="528" y="642" width="46" height="17"/>
+    </entry>
+    <entry id="41" name="ko:K23146" type="ortholog" reaction="rn:R01608"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K23146">
+        <graphics name="K23146" fgcolor="#000000" bgcolor="#FFFFFF"
+             type="rectangle" x="398" y="642" width="46" height="17"/>
     </entry>
     <entry id="44" name="hsa:23417" type="gene" reaction="rn:R00233"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:23417">
@@ -112,7 +117,7 @@
     </entry>
     <entry id="60" name="hsa:314 hsa:8639" type="gene" reaction="rn:R03139"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:314+hsa:8639">
-        <graphics name="AOC2, DAO2, RAO..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="AOC2, DAO2, RAO, SSAO..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="577" y="293" width="46" height="17"/>
     </entry>
     <entry id="61" name="hsa:217 hsa:219 hsa:223 hsa:224 hsa:501" type="gene" reaction="rn:R00904"
@@ -374,6 +379,11 @@
         link="http://www.kegg.jp/dbget-bin/www_bget?K09722">
         <graphics name="K09722" fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="385" y="549" width="46" height="17"/>
+    </entry>
+    <entry id="124" name="ko:K14729" type="ortholog" reaction="rn:R03045"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K14729">
+        <graphics name="K14729" fgcolor="#000000" bgcolor="#FFFFFF"
+             type="rectangle" x="659" y="652" width="46" height="17"/>
     </entry>
     <relation entry1="63" entry2="64" type="ECrel">
         <subtype name="compound" value="76"/>
@@ -660,9 +670,9 @@
     <relation entry1="60" entry2="120" type="ECrel">
         <subtype name="compound" value="85"/>
     </relation>
-    <reaction id="38" name="rn:R00924" type="reversible">
-        <substrate id="94" name="cpd:C00894"/>
-        <product id="95" name="cpd:C00100"/>
+    <reaction id="38" name="rn:R04432" type="reversible">
+        <substrate id="95" name="cpd:C00100"/>
+        <product id="94" name="cpd:C00894"/>
     </reaction>
     <reaction id="39" name="rn:R03045" type="reversible">
         <substrate id="93" name="cpd:C05668"/>

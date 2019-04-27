@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Apr 5, 2018 14:47:51 +0900 (GMT+9) -->
+<!-- Creation date: Nov 9, 2018 09:48:56 +0900 (GMT+9) -->
 <pathway name="path:hsa04146" org="hsa" number="04146"
          title="Peroxisome"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa04146.png"
@@ -212,7 +212,7 @@
     </entry>
     <entry id="42" name="hsa:1384" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:1384">
-        <graphics name="CRAT, CAT, CAT1" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="CRAT, CAT, CAT1, NBIA8" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="123" y="914" width="46" height="17"/>
     </entry>
     <entry id="43" name="hsa:1610" type="gene"

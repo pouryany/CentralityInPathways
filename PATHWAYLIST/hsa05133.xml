@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Jan 18, 2016 13:44:07 +0900 (GMT+9) -->
+<!-- Creation date: Oct 2, 2018 17:51:04 +0900 (GMT+9) -->
 <pathway name="path:hsa05133" org="hsa" number="05133"
          title="Pertussis"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa05133.png"
@@ -55,9 +55,9 @@
         <graphics name="ITGB2, CD18, LAD, LCAMB, LFA-1, MAC-1, MF17, MFI7" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="624" y="388" width="46" height="17"/>
     </entry>
-    <entry id="11" name="ko:K11029" type="ortholog"
-        link="http://www.kegg.jp/dbget-bin/www_bget?K11029">
-        <graphics name="K11029" fgcolor="#000000" bgcolor="#FFFFFF"
+    <entry id="11" name="ko:K22944" type="ortholog"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K22944">
+        <graphics name="K22944" fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="485" y="428" width="46" height="17"/>
     </entry>
     <entry id="12" name="ko:K07389" type="ortholog"
@@ -65,9 +65,9 @@
         <graphics name="K07389" fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="391" y="456" width="46" height="17"/>
     </entry>
-    <entry id="13" name="ko:K11029" type="ortholog"
-        link="http://www.kegg.jp/dbget-bin/www_bget?K11029">
-        <graphics name="K11029" fgcolor="#000000" bgcolor="#FFFFFF"
+    <entry id="13" name="ko:K22944" type="ortholog"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K22944">
+        <graphics name="K22944" fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="770" y="428" width="46" height="17"/>
     </entry>
     <entry id="14" name="hsa:163688 hsa:51806 hsa:801 hsa:805 hsa:808 hsa:810 hsa:91860" type="gene"
@@ -122,7 +122,7 @@
     </entry>
     <entry id="24" name="hsa:4790 hsa:5970" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:4790+hsa:5970">
-        <graphics name="NFKB1, CVID12, EBP-1, KBF1, NF-kB1, NF-kappa-B, NF-kappaB, NFKB-p105, NFKB-p50, NFkappaB, p105, p50..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="NFKB1, CVID12, EBP-1, KBF1, NF-kB1, NF-kappa-B1, NF-kappaB, NFKB-p105, NFKB-p50, NFkappaB, p105, p50..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="1182" y="771" width="46" height="17"/>
     </entry>
     <entry id="25" name="hsa:4615" type="gene"
@@ -257,12 +257,12 @@
     </entry>
     <entry id="51" name="hsa:715" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:715">
-        <graphics name="C1R" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="C1R, EDSPD1" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="429" y="625" width="46" height="17"/>
     </entry>
     <entry id="52" name="hsa:716" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:716">
-        <graphics name="C1S" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="C1S, EDSPD2" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="429" y="642" width="46" height="17"/>
     </entry>
     <entry id="53" name="hsa:712 hsa:713 hsa:714" type="gene"
@@ -467,7 +467,7 @@
     </entry>
     <entry id="93" name="hsa:114548" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:114548">
-        <graphics name="NLRP3, AGTAVPRL, AII, AVP, C1orf7, CIAS1, CLR1.1, FCAS, FCAS1, FCU, MWS, NALP3, PYPAF1" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="NLRP3, AGTAVPRL, AII, AVP, C1orf7, CIAS1, CLR1.1, DFNA34, FCAS, FCAS1, FCU, KEFH, MWS, NALP3, PYPAF1" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="872" y="609" width="46" height="17"/>
     </entry>
     <entry id="94" name="hsa:3592 hsa:3593" type="gene"

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Oct 23, 2015 10:07:58 +0900 (GMT+9) -->
+<!-- Creation date: Jan 9, 2019 15:48:08 +0900 (GMT+9) -->
 <pathway name="path:hsa04727" org="hsa" number="04727"
          title="GABAergic synapse"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa04727.png"
@@ -55,9 +55,9 @@
         <graphics name="GAD1, CPSQ1, GAD, SCP..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="152" y="570" width="46" height="17"/>
     </entry>
-    <entry id="11" name="hsa:6529" type="gene"
-        link="http://www.kegg.jp/dbget-bin/www_bget?hsa:6529">
-        <graphics name="SLC6A1, GABATHG, GABATR, GAT1, MAE" fgcolor="#000000" bgcolor="#BFFFBF"
+    <entry id="11" name="hsa:6529 hsa:6538 hsa:6539 hsa:6540" type="gene"
+        link="http://www.kegg.jp/dbget-bin/www_bget?hsa:6529+hsa:6538+hsa:6539+hsa:6540">
+        <graphics name="SLC6A1, GABATHG, GABATR, GAT1, MAE..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="623" y="794" width="46" height="17"/>
     </entry>
     <entry id="12" name="cpd:C00334" type="compound"
@@ -287,7 +287,7 @@
     </entry>
     <entry id="57" name="hsa:5578 hsa:5579 hsa:5582" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:5578+hsa:5579+hsa:5582">
-        <graphics name="PRKCA, AAG6, PKC-alpha, PKCA, PRKACA..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="PRKCA, AAG6, PKC-alpha, PKCA, PKCI+/-, PKCalpha, PRKACA..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="812" y="530" width="46" height="17"/>
     </entry>
     <entry id="58" name="hsa:6714" type="gene"

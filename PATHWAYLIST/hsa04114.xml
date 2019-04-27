@@ -15,8 +15,8 @@
         <graphics name="CDK1, CDC2, CDC28A, P34CDC2" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="437" y="713" width="46" height="17"/>
     </entry>
-    <entry id="3" name="hsa:10459 hsa:4085" type="gene"
-        link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10459+hsa:4085">
+    <entry id="3" name="hsa:10459 hsa:4085 hsa:8379" type="gene"
+        link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10459+hsa:4085+hsa:8379">
         <graphics name="MAD2L2, FANCV, MAD2B, POLZ2, REV7..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="925" y="544" width="46" height="17"/>
     </entry>
@@ -152,7 +152,7 @@
     </entry>
     <entry id="30" name="hsa:815 hsa:816 hsa:817 hsa:818" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:815+hsa:816+hsa:817+hsa:818">
-        <graphics name="CAMK2A, CAMKA..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="CAMK2A, CAMKA, CaMKIINalpha, MRD53, MRT63..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="1129" y="466" width="46" height="17"/>
     </entry>
     <entry id="31" name="hsa:5347" type="gene"
@@ -202,7 +202,7 @@
     </entry>
     <entry id="40" name="hsa:5530 hsa:5532 hsa:5533 hsa:5534 hsa:5535" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:5530+hsa:5532+hsa:5533+hsa:5534+hsa:5535">
-        <graphics name="PPP3CA, CALN, CALNA, CALNA1, CCN1, CNA1, PPP2B..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="PPP3CA, CALN, CALNA, CALNA1, CCN1, CNA1, IECEE, IECEE1, PPP2B..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="1066" y="466" width="46" height="17"/>
     </entry>
     <entry id="41" name="hsa:132864 hsa:22849 hsa:64506 hsa:80315" type="gene"
@@ -352,7 +352,7 @@
     </entry>
     <entry id="71" name="hsa:3479" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:3479">
-        <graphics name="IGF1, IGF-I, IGFI, MGF" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="IGF1, IGF, IGF-I, IGFI, MGF" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="123" y="103" width="46" height="17"/>
     </entry>
     <entry id="72" name="hsa:100310812 hsa:100505767 hsa:100996746 hsa:102723555 hsa:102723849 hsa:245711 hsa:285955 hsa:387778 hsa:388333 hsa:441272 hsa:441273 hsa:442590 hsa:729597" type="gene"

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Nov 22, 2017 09:02:55 +0900 (GMT+9) -->
+<!-- Creation date: Aug 16, 2018 13:46:51 +0900 (GMT+9) -->
 <pathway name="path:hsa00100" org="hsa" number="00100"
          title="Steroid biosynthesis"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00100.png"

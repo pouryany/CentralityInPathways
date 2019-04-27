@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Dec 7, 2017 10:54:48 +0900 (GMT+9) -->
+<!-- Creation date: Oct 5, 2018 10:20:07 +0900 (GMT+9) -->
 <pathway name="path:hsa00340" org="hsa" number="00340"
          title="Histidine metabolism"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00340.png"
@@ -140,10 +140,10 @@
         <graphics name="TITLE:Histidine metabolism" fgcolor="#000000" bgcolor="#FFFFFF"
              type="roundrectangle" x="130" y="58" width="179" height="25"/>
     </entry>
-    <entry id="69" name="ko:K02500 ko:K01663" type="ortholog" reaction="rn:R04558"
-        link="http://www.kegg.jp/dbget-bin/www_bget?K02500+K01663">
+    <entry id="69" name="ko:K02500 ko:K02501 ko:K01663" type="ortholog" reaction="rn:R04558"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K02500+K02501+K01663">
         <graphics name="K02500..." fgcolor="#000000" bgcolor="#FFFFFF"
-             type="rectangle" x="500" y="127" width="46" height="17"/>
+             type="rectangle" x="500" y="135" width="46" height="17"/>
     </entry>
     <entry id="70" name="path:hsa00230" type="map"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa00230">
@@ -390,57 +390,52 @@
         <graphics name="C05829" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="735" y="638" width="8" height="8"/>
     </entry>
-    <entry id="124" name="ko:K02501 ko:K01663" type="ortholog" reaction="rn:R04558"
-        link="http://www.kegg.jp/dbget-bin/www_bget?K02501+K01663">
-        <graphics name="K02501..." fgcolor="#000000" bgcolor="#FFFFFF"
-             type="rectangle" x="500" y="144" width="46" height="17"/>
-    </entry>
-    <entry id="140" name="cpd:C20522" type="compound"
+    <entry id="139" name="cpd:C20522" type="compound"
         link="http://www.kegg.jp/dbget-bin/www_bget?C20522">
         <graphics name="C20522" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="976" y="413" width="8" height="8"/>
     </entry>
-    <entry id="141" name="ko:K17363" type="ortholog" reaction="rn:R10330"
+    <entry id="140" name="ko:K17363" type="ortholog" reaction="rn:R10330"
         link="http://www.kegg.jp/dbget-bin/www_bget?K17363">
         <graphics name="K17363" fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="899" y="414" width="46" height="17"/>
     </entry>
-    <entry id="142" name="ko:K20246 ko:K18911" type="ortholog" reaction="rn:R01169"
+    <entry id="141" name="ko:K20246 ko:K18911" type="ortholog" reaction="rn:R01169"
         link="http://www.kegg.jp/dbget-bin/www_bget?K20246+K18911">
         <graphics name="K20246..." fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="870" y="341" width="46" height="17"/>
     </entry>
-    <entry id="143" name="ko:K18912" type="ortholog" reaction="rn:R11013"
+    <entry id="142" name="ko:K18912" type="ortholog" reaction="rn:R11013"
         link="http://www.kegg.jp/dbget-bin/www_bget?K18912">
         <graphics name="K18912" fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="960" y="341" width="46" height="17"/>
     </entry>
-    <entry id="144" name="cpd:C20995" type="compound"
+    <entry id="143" name="cpd:C20995" type="compound"
         link="http://www.kegg.jp/dbget-bin/www_bget?C20995">
         <graphics name="C20995" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="1011" y="340" width="8" height="8"/>
     </entry>
-    <entry id="146" name="ko:K07008" type="ortholog" reaction="rn:R11021"
+    <entry id="145" name="ko:K07008" type="ortholog" reaction="rn:R11021"
         link="http://www.kegg.jp/dbget-bin/www_bget?K07008">
         <graphics name="K07008" fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="1051" y="341" width="46" height="17"/>
     </entry>
-    <entry id="147" name="cpd:C20994" type="compound"
+    <entry id="146" name="cpd:C20994" type="compound"
         link="http://www.kegg.jp/dbget-bin/www_bget?C20994">
         <graphics name="C20994" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="1101" y="340" width="8" height="8"/>
     </entry>
-    <entry id="149" name="ko:K20247 ko:K18913" type="ortholog" reaction="rn:R11023"
+    <entry id="148" name="ko:K20247 ko:K18913" type="ortholog" reaction="rn:R11023"
         link="http://www.kegg.jp/dbget-bin/www_bget?K20247+K18913">
         <graphics name="K20247..." fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="1143" y="341" width="46" height="17"/>
     </entry>
-    <entry id="151" name="ko:K20246" type="ortholog" reaction="rn:R11014"
+    <entry id="150" name="ko:K20246" type="ortholog" reaction="rn:R11014"
         link="http://www.kegg.jp/dbget-bin/www_bget?K20246">
         <graphics name="K20246" fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="1010" y="374" width="46" height="17"/>
     </entry>
-    <entry id="152" name="hsa:3067" type="gene" reaction="rn:R01167"
+    <entry id="151" name="hsa:3067" type="gene" reaction="rn:R01167"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:3067">
         <graphics name="HDC" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="657" y="341" width="46" height="17"/>
@@ -460,22 +455,22 @@
     <relation entry1="44" entry2="48" type="ECrel">
         <subtype name="compound" value="103"/>
     </relation>
-    <relation entry1="48" entry2="152" type="ECrel">
+    <relation entry1="48" entry2="151" type="ECrel">
         <subtype name="compound" value="103"/>
     </relation>
     <relation entry1="44" entry2="47" type="ECrel">
         <subtype name="compound" value="103"/>
     </relation>
-    <relation entry1="47" entry2="152" type="ECrel">
+    <relation entry1="47" entry2="151" type="ECrel">
         <subtype name="compound" value="103"/>
     </relation>
     <relation entry1="44" entry2="73" type="ECrel">
         <subtype name="compound" value="103"/>
     </relation>
-    <relation entry1="152" entry2="73" type="ECrel">
+    <relation entry1="151" entry2="73" type="ECrel">
         <subtype name="compound" value="103"/>
     </relation>
-    <relation entry1="44" entry2="152" type="ECrel">
+    <relation entry1="44" entry2="151" type="ECrel">
         <subtype name="compound" value="103"/>
     </relation>
     <relation entry1="43" entry2="44" type="ECrel">
@@ -493,10 +488,10 @@
     <relation entry1="55" entry2="56" type="ECrel">
         <subtype name="compound" value="98"/>
     </relation>
-    <relation entry1="152" entry2="55" type="ECrel">
+    <relation entry1="151" entry2="55" type="ECrel">
         <subtype name="compound" value="98"/>
     </relation>
-    <relation entry1="152" entry2="56" type="ECrel">
+    <relation entry1="151" entry2="56" type="ECrel">
         <subtype name="compound" value="98"/>
     </relation>
     <relation entry1="53" entry2="56" type="ECrel">
@@ -545,7 +540,7 @@
         <substrate id="103" name="cpd:C00135"/>
         <product id="102" name="cpd:C00386"/>
     </reaction>
-    <reaction id="152" name="rn:R01167" type="irreversible">
+    <reaction id="151" name="rn:R01167" type="irreversible">
         <substrate id="103" name="cpd:C00135"/>
         <product id="98" name="cpd:C00388"/>
     </reaction>

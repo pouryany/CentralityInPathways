@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Sep 23, 2016 09:24:21 +0900 (GMT+9) -->
+<!-- Creation date: Oct 31, 2018 17:17:33 +0900 (GMT+9) -->
 <pathway name="path:hsa00120" org="hsa" number="00120"
          title="Primary bile acid biosynthesis"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00120.png"
@@ -42,12 +42,12 @@
     </entry>
     <entry id="31" name="hsa:23600" type="gene" reaction="rn:R08734"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:23600">
-        <graphics name="AMACR, AMACRD, CBAS4, RACE, RM" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="AMACR, AMACRD, CBAS4, P504S, RACE, RM" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="516" y="856" width="46" height="17"/>
     </entry>
     <entry id="33" name="hsa:8309" type="gene" reaction="rn:R08735"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:8309">
-        <graphics name="ACOX2, BCOX, BRCACOX, BRCOX, THCCox" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="ACOX2, BCOX, BRCACOX, BRCOX, CBAS6, THCCox" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="516" y="913" width="46" height="17"/>
     </entry>
     <entry id="38" name="hsa:1109" type="gene" reaction="rn:R04818 rn:R04819"
@@ -192,12 +192,12 @@
     </entry>
     <entry id="90" name="hsa:23600" type="gene" reaction="rn:R08739"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:23600">
-        <graphics name="AMACR, AMACRD, CBAS4, RACE, RM" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="AMACR, AMACRD, CBAS4, P504S, RACE, RM" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="202" y="857" width="46" height="17"/>
     </entry>
     <entry id="91" name="hsa:8309" type="gene" reaction="rn:R08740"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:8309">
-        <graphics name="ACOX2, BCOX, BRCACOX, BRCOX, THCCox" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="ACOX2, BCOX, BRCACOX, BRCOX, CBAS6, THCCox" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="202" y="911" width="46" height="17"/>
     </entry>
     <entry id="92" name="hsa:3295" type="gene" reaction="rn:R04809"
@@ -495,9 +495,9 @@
         <graphics name="C05448" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="202" y="999" width="8" height="8"/>
     </entry>
-    <entry id="156" name="cpd:C05450" type="compound"
-        link="http://www.kegg.jp/dbget-bin/www_bget?C05450">
-        <graphics name="C05450" fgcolor="#000000" bgcolor="#FFFFFF"
+    <entry id="156" name="cpd:C15614" type="compound"
+        link="http://www.kegg.jp/dbget-bin/www_bget?C15614">
+        <graphics name="C15614" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="517" y="999" width="8" height="8"/>
     </entry>
     <entry id="157" name="cpd:C15518" type="compound"
@@ -519,6 +519,11 @@
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10005">
         <graphics name="ACOT8, HNAACTE, NAP1, PTE-1, PTE-2, PTE1, PTE2, hACTE-III, hTE" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="222" y="1175" width="46" height="17"/>
+    </entry>
+    <entry id="164" name="hsa:1582" type="gene" reaction="rn:R07204"
+        link="http://www.kegg.jp/dbget-bin/www_bget?hsa:1582">
+        <graphics name="CYP8B1, CP8B, CYP12" fgcolor="#000000" bgcolor="#BFFFBF"
+             type="rectangle" x="359" y="615" width="46" height="17"/>
     </entry>
     <relation entry1="45" entry2="14" type="ECrel">
         <subtype name="compound" value="111"/>
@@ -673,6 +678,39 @@
     <relation entry1="160" entry2="50" type="ECrel">
         <subtype name="compound" value="126"/>
     </relation>
+    <relation entry1="38" entry2="164" type="ECrel">
+        <subtype name="compound" value="135"/>
+    </relation>
+    <relation entry1="87" entry2="164" type="ECrel">
+        <subtype name="compound" value="135"/>
+    </relation>
+    <relation entry1="164" entry2="24" type="ECrel">
+        <subtype name="compound" value="123"/>
+    </relation>
+    <relation entry1="164" entry2="26" type="ECrel">
+        <subtype name="compound" value="123"/>
+    </relation>
+    <relation entry1="103" entry2="92" type="ECrel">
+        <subtype name="compound" value="155"/>
+    </relation>
+    <relation entry1="104" entry2="48" type="ECrel">
+        <subtype name="compound" value="156"/>
+    </relation>
+    <relation entry1="106" entry2="85" type="ECrel">
+        <subtype name="compound" value="157"/>
+    </relation>
+    <relation entry1="69" entry2="107" type="maplink">
+        <subtype name="compound" value="143"/>
+    </relation>
+    <relation entry1="59" entry2="107" type="maplink">
+        <subtype name="compound" value="146"/>
+    </relation>
+    <relation entry1="82" entry2="107" type="maplink">
+        <subtype name="compound" value="148"/>
+    </relation>
+    <relation entry1="78" entry2="107" type="maplink">
+        <subtype name="compound" value="151"/>
+    </relation>
     <reaction id="47" name="rn:R01463" type="irreversible">
         <substrate id="108" name="cpd:C00187"/>
         <product id="109" name="cpd:C03594"/>
@@ -727,7 +765,7 @@
     </reaction>
     <reaction id="48" name="rn:R04813" type="irreversible">
         <substrate id="133" name="cpd:C05460"/>
-        <product id="156" name="cpd:C05450"/>
+        <product id="156" name="cpd:C15614"/>
     </reaction>
     <reaction id="50" name="rn:R03719" type="irreversible">
         <substrate id="134" name="cpd:C05467"/>
@@ -747,8 +785,8 @@
         <product id="146" name="cpd:C05466"/>
     </reaction>
     <reaction id="69" name="rn:R08745" type="irreversible">
-        <substrate id="127" name="cpd:C05337"/>
         <substrate id="144" name="cpd:C00245"/>
+        <substrate id="127" name="cpd:C05337"/>
         <product id="143" name="cpd:C05465"/>
     </reaction>
     <reaction id="61" name="rn:R08759" type="irreversible">
@@ -793,8 +831,8 @@
         <product id="151" name="cpd:C01921"/>
     </reaction>
     <reaction id="82" name="rn:R03720" type="irreversible">
-        <substrate id="126" name="cpd:C01794"/>
         <substrate id="149" name="cpd:C00245"/>
+        <substrate id="126" name="cpd:C01794"/>
         <product id="148" name="cpd:C05122"/>
     </reaction>
     <reaction id="85" name="rn:R07208" type="irreversible">
@@ -838,7 +876,7 @@
         <product id="124" name="cpd:C05449"/>
     </reaction>
     <reaction id="104" name="rn:R04812" type="irreversible">
-        <substrate id="156" name="cpd:C05450"/>
+        <substrate id="156" name="cpd:C15614"/>
         <product id="134" name="cpd:C05467"/>
     </reaction>
     <reaction id="105" name="rn:R08727" type="irreversible">
@@ -856,5 +894,9 @@
     <reaction id="162" name="rn:R03974" type="irreversible">
         <substrate id="127" name="cpd:C05337"/>
         <product id="145" name="cpd:C02528"/>
+    </reaction>
+    <reaction id="164" name="rn:R07204" type="irreversible">
+        <substrate id="135" name="cpd:C05452"/>
+        <product id="123" name="cpd:C05454"/>
     </reaction>
 </pathway>

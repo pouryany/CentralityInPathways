@@ -170,6 +170,9 @@ ggsave("images/KSstats_PGRvsAll.pdf",
 
 
 
+## Code below to be revisied.
+
+
     aa.pgr <-  filter(aa, grepl("pgr",Centrality), V1=="Cancer" )
 
     ggplot(aa.pgr,aes(cent_value,color = Centrality)) +

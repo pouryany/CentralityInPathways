@@ -23,7 +23,7 @@ gene.essential$Description <- factor(gene.essential$Description)
 a1 <- gene.essential %>% group_by(katz.ssc.quant, Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Cancer") %>%
-    mutate(., Centrality = "Katz-Source-Sink",quant = katz.ssc.quant)
+    mutate(., Centrality = "Katz-SSC",quant = katz.ssc.quant)
 
 a2 <- gene.essential %>% group_by(katz.source.quant, Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
@@ -91,12 +91,15 @@ overall.cors <- total %>% group_by(Centrality) %>%
 
 
 
-overall.cors <- overall.cors[,c(1,2,3,6)]
+overall.cors  <- overall.cors[,c(1,2,3,6)]
+adjusted.pval <- p.adjust(unlist(overall.cors[,4]),method = "fdr")
+adjusted.pval <- formatC(adjusted.pval, format = "e", digits = 2)
 overall.cors[,4] <- formatC(unlist(pull(overall.cors[,4])), format = "e", digits = 2)
 print(xtable(overall.cors), include.rownames = F)
 
 text.vals <- paste("Adjusted r-squared:",formatC(pull(overall.cors[,2]),digits = 2),
-                   "\n p-value:", pull(overall.cors[,4]))
+                   "\n p-value:", pull(overall.cors[,4]), "\n Adj p-value:",
+                   adjusted.pval)
 
 overall.cors$label <- text.vals
 
@@ -112,7 +115,7 @@ ggplot(total, aes(y = freq, x= quant)) + geom_point()+
           axis.text.y=element_text(size = 12),
           axis.text.x=element_text(size = 12),
           axis.ticks.y=element_blank()) +
-    geom_text(data=overall.cors, x = 50, y =0.8,
+    geom_text(data=overall.cors, x = 50, y =0.7,
               aes(x,y,label=label),size = 6, inherit.aes=FALSE)
 
 ggsave("images/Regression.pdf",
@@ -133,6 +136,9 @@ overall.regs[,c(3,4,5,6)] <- sapply(overall.regs[,c(3,4,5,6)], FUN = formatC,
 print(xtable(overall.regs), include.rownames = F, digits = 2,
       display=c("s","s", "s", "s","g"),
       math.style.exponents = T)
+
+
+
 
 ### Functionalize the above code at some point. Use the chunks below
 

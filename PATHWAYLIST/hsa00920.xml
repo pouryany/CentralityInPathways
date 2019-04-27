@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Jun 25, 2018 16:58:16 +0900 (GMT+9) -->
+<!-- Creation date: Mar 13, 2019 13:43:44 +0900 (GMT+9) -->
 <pathway name="path:hsa00920" org="hsa" number="00920"
          title="Sulfur metabolism"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00920.png"
@@ -64,6 +64,16 @@
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:9060+hsa:9061">
         <graphics name="PAPSS2, ATPSK2, BCYM4, SK2..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="80" y="464" width="46" height="17"/>
+    </entry>
+    <entry id="40" name="ko:K22966" type="ortholog" reaction="rn:R00531"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K22966">
+        <graphics name="K22966" fgcolor="#000000" bgcolor="#FFFFFF"
+             type="rectangle" x="156" y="353" width="46" height="17"/>
+    </entry>
+    <entry id="41" name="ko:K00988 ko:K22966" type="ortholog" reaction="rn:R00530"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K00988+K22966">
+        <graphics name="K00988..." fgcolor="#000000" bgcolor="#FFFFFF"
+             type="rectangle" x="105" y="353" width="46" height="17"/>
     </entry>
     <entry id="42" name="hsa:9060 hsa:9061" type="gene" reaction="rn:R00529"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:9060+hsa:9061">
@@ -285,9 +295,9 @@
         <graphics name="Carbon fixation pathways in prokaryotes" fgcolor="#000000" bgcolor="#FFFFFF"
              type="roundrectangle" x="984" y="226" width="138" height="34"/>
     </entry>
-    <entry id="109" name="ko:K00640" type="ortholog" reaction="rn:R00586"
-        link="http://www.kegg.jp/dbget-bin/www_bget?K00640">
-        <graphics name="K00640" fgcolor="#000000" bgcolor="#FFFFFF"
+    <entry id="109" name="ko:K00640 ko:K23304" type="ortholog" reaction="rn:R00586"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K00640+K23304">
+        <graphics name="K00640..." fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="786" y="212" width="46" height="17"/>
     </entry>
     <entry id="110" name="cpd:C00065" type="compound"
@@ -385,8 +395,8 @@
         <graphics name="K04091..." fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="304" y="253" width="46" height="17"/>
     </entry>
-    <entry id="133" name="ko:K02048 ko:K02046 ko:K02047 ko:K02045" type="ortholog"
-        link="http://www.kegg.jp/dbget-bin/www_bget?K02048+K02046+K02047+K02045">
+    <entry id="133" name="ko:K02048 ko:K23163 ko:K02046 ko:K02047 ko:K02045" type="ortholog"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K02048+K23163+K02046+K02047+K02045">
         <graphics name="K02048..." fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="80" y="178" width="46" height="17"/>
     </entry>

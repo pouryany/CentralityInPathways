@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Apr 25, 2014 11:07:39 +0900 (GMT+09:00) -->
+<!-- Creation date: Jan 11, 2019 11:48:16 +0900 (GMT+9) -->
 <pathway name="path:hsa04721" org="hsa" number="04721"
          title="Synaptic vesicle cycle"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa04721.png"
@@ -12,7 +12,7 @@
     </entry>
     <entry id="2" name="hsa:773 hsa:774" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:773+hsa:774">
-        <graphics name="CACNA1A, APCA, BI, CACNL1A4, CAV2.1, EA2, FHM, HPCA, MHP, MHP1, SCA6..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="CACNA1A, APCA, BI, CACNL1A4, CAV2.1, EA2, EIEE42, FHM, HPCA, MHP, MHP1, SCA6..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="656" y="698" width="46" height="17"/>
     </entry>
     <entry id="3" name="cpd:C00076" type="compound"
@@ -92,7 +92,7 @@
     </entry>
     <entry id="18" name="hsa:4905" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:4905">
-        <graphics name="NSF, SKD2" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="NSF, SEC18, SKD2" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="1154" y="623" width="46" height="17"/>
     </entry>
     <entry id="19" name="hsa:6857" type="gene"
@@ -204,6 +204,16 @@
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10312+hsa:127124+hsa:155066+hsa:23545+hsa:245972+hsa:245973+hsa:50617+hsa:51382+hsa:51606+hsa:523+hsa:525+hsa:526+hsa:527+hsa:528+hsa:529+hsa:533+hsa:534+hsa:535+hsa:8992+hsa:90423+hsa:9114+hsa:9296+hsa:9550">
         <graphics name="TCIRG1, ATP6N1C, ATP6V0A3, Atp6i, OC-116kDa, OC116, OPTB1, Stv1, TIRC7, Vph1, a3..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="1177" y="235" width="46" height="17"/>
+    </entry>
+    <entry id="41" name="hsa:6505 hsa:6506 hsa:6507 hsa:6511 hsa:6512 hsa:6529 hsa:6530 hsa:6531 hsa:6532 hsa:6534 hsa:6536 hsa:6538 hsa:6539 hsa:6540 hsa:9152" type="gene"
+        link="http://www.kegg.jp/dbget-bin/www_bget?hsa:6505+hsa:6506+hsa:6507+hsa:6511+hsa:6512+hsa:6529+hsa:6530+hsa:6531+hsa:6532+hsa:6534+hsa:6536+hsa:6538+hsa:6539+hsa:6540+hsa:9152">
+        <graphics name="SLC1A1, DCBXA, EAAC1, EAAT3, SCZD18..." fgcolor="#000000" bgcolor="#BFFFBF"
+             type="rectangle" x="122" y="438" width="46" height="17"/>
+    </entry>
+    <entry id="42" name="cpd:C03758 cpd:C01996 cpd:C00334 cpd:C00025 cpd:C16041 cpd:C00037 cpd:C00547 cpd:C00780 cpd:C00002 cpd:C00388" type="compound"
+        link="http://www.kegg.jp/dbget-bin/www_bget?C03758+C01996+C00334+C00025+C16041+C00037+C00547+C00780+C00002+C00388">
+        <graphics name="C03758..." fgcolor="#000000" bgcolor="#FFFFFF"
+             type="circle" x="68" y="437" width="8" height="8"/>
     </entry>
     <relation entry1="3" entry2="19" type="PCrel">
         <subtype name="binding/association" value="---"/>

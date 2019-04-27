@@ -27,12 +27,12 @@
     </entry>
     <entry id="59" name="hsa:23438 hsa:3035" type="gene" reaction="rn:R03655"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:23438+hsa:3035">
-        <graphics name="HARS2, HARSL, HARSR, HO3, PRLTS2..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="HARS2, HARSL, HARSR, HO3, HisRS, PRLTS2..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="875" y="790" width="46" height="17"/>
     </entry>
     <entry id="60" name="hsa:10056 hsa:10667 hsa:2193" type="gene" reaction="rn:R03660"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10056+hsa:10667+hsa:2193">
-        <graphics name="FARSB, FARSLB, FRSB, HSPC173, PheHB, PheRS..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="FARSB, FARSLB, FRSB, HSPC173, NEDBLLA, PheHB, PheRS..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="875" y="879" width="46" height="17"/>
     </entry>
     <entry id="61" name="hsa:57038 hsa:5917" type="gene" reaction="rn:R03646"
@@ -112,7 +112,7 @@
     </entry>
     <entry id="76" name="hsa:2058 hsa:25973" type="gene" reaction="rn:R03661"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:2058+hsa:25973">
-        <graphics name="EPRS, EARS, GLUPRORS, PARS, PIG32, QARS, QPRS..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="EPRS, EARS, GLUPRORS, HLD15, PARS, PIG32, QARS, QPRS..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="875" y="701" width="46" height="17"/>
     </entry>
     <entry id="77" name="hsa:124454 hsa:2058" type="gene" reaction="rn:R05578"

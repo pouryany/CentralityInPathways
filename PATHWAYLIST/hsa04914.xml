@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Jun 19, 2017 16:22:32 +0900 (GMT+9) -->
+<!-- Creation date: Nov 16, 2018 09:53:42 +0900 (GMT+9) -->
 <pathway name="path:hsa04914" org="hsa" number="04914"
          title="Progesterone-mediated oocyte maturation"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa04914.png"
@@ -12,7 +12,7 @@
     </entry>
     <entry id="2" name="hsa:3479" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:3479">
-        <graphics name="IGF1, IGF-I, IGFI, MGF" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="IGF1, IGF, IGF-I, IGFI, MGF" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="78" y="491" width="46" height="17"/>
     </entry>
     <entry id="3" name="hsa:3630" type="gene"
@@ -47,7 +47,7 @@
     </entry>
     <entry id="9" name="hsa:3845" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:3845">
-        <graphics name="KRAS, C-K-RAS, CFC2, K-RAS2A, K-RAS2B, K-RAS4A, K-RAS4B, KI-RAS, KRAS1, KRAS2, NS, NS3, RALD, RASK2, c-Ki-ras2" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="KRAS, C-K-RAS, CFC2, K-RAS2A, K-RAS2B, K-RAS4A, K-RAS4B, K-Ras, KI-RAS, KRAS1, KRAS2, NS, NS3, RALD, RASK2, c-Ki-ras2" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="272" y="525" width="46" height="17"/>
     </entry>
     <entry id="10" name="hsa:5290 hsa:5291 hsa:5293 hsa:5295 hsa:5296 hsa:8503" type="gene"

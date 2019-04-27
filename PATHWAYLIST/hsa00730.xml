@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: May 23, 2018 11:46:29 +0900 (GMT+9) -->
+<!-- Creation date: Aug 21, 2018 15:21:16 +0900 (GMT+9) -->
 <pathway name="path:hsa00730" org="hsa" number="00730"
          title="Thiamine metabolism"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00730.png"
@@ -142,7 +142,7 @@
     </entry>
     <entry id="59" name="hsa:122481 hsa:158067 hsa:203 hsa:204 hsa:205 hsa:26289 hsa:390877" type="gene" reaction="rn:R11319"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:122481+hsa:158067+hsa:203+hsa:204+hsa:205+hsa:26289+hsa:390877">
-        <graphics name="AK7, AK_7..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="AK7, AK_7, SPGF27..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="835" y="612" width="46" height="17"/>
     </entry>
     <entry id="62" name="hsa:84284" type="gene" reaction="rn:R00615"
@@ -165,9 +165,9 @@
         <graphics name="K07251" fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="678" y="657" width="46" height="17"/>
     </entry>
-    <entry id="66" name="ko:K06949" type="ortholog" reaction="rn:R02135"
-        link="http://www.kegg.jp/dbget-bin/www_bget?K06949">
-        <graphics name="K06949" fgcolor="#000000" bgcolor="#FFFFFF"
+    <entry id="66" name="ko:K06949 ko:K22911" type="ortholog" reaction="rn:R02135"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K06949+K22911">
+        <graphics name="K06949..." fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="623" y="652" width="46" height="17"/>
     </entry>
     <entry id="67" name="ko:K10811" type="ortholog" reaction="rn:R02863"
@@ -338,12 +338,12 @@
     <entry id="110" name="ko:K03707 ko:K00877" type="ortholog" reaction="rn:R09993"
         link="http://www.kegg.jp/dbget-bin/www_bget?K03707+K00877">
         <graphics name="K03707..." fgcolor="#000000" bgcolor="#FFFFFF"
-             type="rectangle" x="371" y="730" width="46" height="17"/>
+             type="rectangle" x="371" y="721" width="46" height="17"/>
     </entry>
     <entry id="111" name="ko:K20896" type="ortholog" reaction="rn:R09993"
         link="http://www.kegg.jp/dbget-bin/www_bget?K20896">
         <graphics name="K20896" fgcolor="#000000" bgcolor="#FFFFFF"
-             type="rectangle" x="371" y="751" width="46" height="17"/>
+             type="rectangle" x="371" y="741" width="46" height="17"/>
     </entry>
     <entry id="112" name="ko:K20896" type="ortholog" reaction="rn:R11313"
         link="http://www.kegg.jp/dbget-bin/www_bget?K20896">
@@ -364,6 +364,11 @@
         link="http://www.kegg.jp/dbget-bin/www_bget?K22699">
         <graphics name="K22699" fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="206" y="547" width="46" height="17"/>
+    </entry>
+    <entry id="116" name="ko:K22911" type="ortholog" reaction="rn:R09993"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K22911">
+        <graphics name="K22911" fgcolor="#000000" bgcolor="#FFFFFF"
+             type="rectangle" x="371" y="760" width="46" height="17"/>
     </entry>
     <relation entry1="58" entry2="62" type="ECrel">
         <subtype name="compound" value="37"/>

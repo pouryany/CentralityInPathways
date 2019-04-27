@@ -235,13 +235,13 @@
         <graphics name="PGP, AUM, G3PP, PGPase" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="598" y="603" width="46" height="17"/>
     </entry>
-    <entry id="141" name="ko:K00018" type="ortholog" reaction="rn:R00717"
-        link="http://www.kegg.jp/dbget-bin/www_bget?K00018">
-        <graphics name="K00018" fgcolor="#000000" bgcolor="#FFFFFF"
+    <entry id="141" name="ko:K00018 ko:K15893" type="ortholog" reaction="rn:R00717"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K00018+K15893">
+        <graphics name="K00018..." fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="786" y="601" width="46" height="17"/>
     </entry>
-    <entry id="142" name="ko:K00018 ko:K15893 ko:K15919" type="ortholog" reaction="rn:R01388"
-        link="http://www.kegg.jp/dbget-bin/www_bget?K00018+K15893+K15919">
+    <entry id="142" name="ko:K00018 ko:K15893" type="ortholog" reaction="rn:R01388"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K00018+K15893">
         <graphics name="K00018..." fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="302" y="609" width="46" height="17"/>
     </entry>

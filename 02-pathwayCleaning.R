@@ -27,7 +27,7 @@ gene.essential %<>% filter(.,total.node < 1000, total.node >20, total.edge > 20,
            lap.sink.quant =    round((lap.sink.rank/total.node)*100) )
 
 
-### A total of 212 pathways passed the criteria
+### A total of 216 pathways passed the criteria
 gene.essential %>% distinct(.,pathway.name)
 
 

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Jun 26, 2018 16:23:11 +0900 (GMT+9) -->
+<!-- Creation date: Mar 27, 2019 10:38:47 +0900 (GMT+9) -->
 <pathway name="path:hsa00900" org="hsa" number="00900"
          title="Terpenoid backbone biosynthesis"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00900.png"
@@ -10,9 +10,9 @@
         <graphics name="C05859" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="324" y="1172" width="8" height="8"/>
     </entry>
-    <entry id="52" name="cpd:C00621" type="compound"
-        link="http://www.kegg.jp/dbget-bin/www_bget?C00621">
-        <graphics name="C00621" fgcolor="#000000" bgcolor="#FFFFFF"
+    <entry id="52" name="cpd:C06081" type="compound"
+        link="http://www.kegg.jp/dbget-bin/www_bget?C06081">
+        <graphics name="C06081" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="252" y="1172" width="8" height="8"/>
     </entry>
     <entry id="53" name="path:hsa00010" type="map"
@@ -273,7 +273,7 @@
     <entry id="106" name="ko:K00806" type="ortholog" reaction="rn:R06447"
         link="http://www.kegg.jp/dbget-bin/www_bget?K00806">
         <graphics name="K00806" fgcolor="#000000" bgcolor="#FFFFFF"
-             type="rectangle" x="340" y="1234" width="46" height="17"/>
+             type="rectangle" x="379" y="1235" width="46" height="17"/>
     </entry>
     <entry id="107" name="path:map00902" type="map"
         link="http://www.kegg.jp/dbget-bin/www_bget?map00902">
@@ -323,7 +323,7 @@
     <entry id="119" name="hsa:116150 hsa:79947" type="gene" reaction="rn:R05556"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:116150+hsa:79947">
         <graphics name="NUS1, C6orf68, CDG1AA, MGC:7199, MRD55, NgBR, TANGO14..." fgcolor="#000000" bgcolor="#BFFFBF"
-             type="rectangle" x="382" y="1172" width="46" height="17"/>
+             type="rectangle" x="379" y="1173" width="46" height="17"/>
     </entry>
     <entry id="120" name="hsa:23590 hsa:57107" type="gene" reaction="rn:R09249"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:23590+hsa:57107">
@@ -333,7 +333,7 @@
     <entry id="121" name="path:hsa00510" type="map"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa00510">
         <graphics name="N-Glycan biosynthesis" fgcolor="#000000" bgcolor="#FFFFFF"
-             type="roundrectangle" x="136" y="1172" width="88" height="34"/>
+             type="roundrectangle" x="139" y="1172" width="82" height="34"/>
     </entry>
     <entry id="122" name="ko:K02523" type="ortholog" reaction="rn:R09248"
         link="http://www.kegg.jp/dbget-bin/www_bget?K02523">
@@ -393,7 +393,7 @@
     <entry id="133" name="hsa:2339 hsa:2342" type="gene" reaction="rn:R09844"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:2339+hsa:2342">
         <graphics name="FNTA, FPTA, PGGT1A, PTAR2..." fgcolor="#000000" bgcolor="#BFFFBF"
-             type="rectangle" x="368" y="1052" width="46" height="17"/>
+             type="rectangle" x="379" y="1052" width="46" height="17"/>
     </entry>
     <entry id="134" name="hsa:9986" type="gene" reaction="rn:R09845"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:9986">

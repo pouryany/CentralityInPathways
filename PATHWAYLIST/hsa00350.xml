@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Jun 26, 2018 10:06:25 +0900 (GMT+9) -->
+<!-- Creation date: Jan 18, 2019 16:26:42 +0900 (GMT+9) -->
 <pathway name="path:hsa00350" org="hsa" number="00350"
          title="Tyrosine metabolism"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00350.png"
@@ -180,10 +180,15 @@
         <graphics name="K00135" fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="382" y="846" width="46" height="17"/>
     </entry>
-    <entry id="91" name="ko:K18606" type="ortholog" reaction="rn:R03336"
+    <entry id="91" name="ko:K18606" type="ortholog" reaction="rn:R03337 rn:R03339"
         link="http://www.kegg.jp/dbget-bin/www_bget?K18606">
         <graphics name="K18606" fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="609" y="410" width="46" height="17"/>
+    </entry>
+    <entry id="92" name="ko:K23109" type="ortholog" reaction="rn:R03337"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K23109">
+        <graphics name="K23109" fgcolor="#000000" bgcolor="#FFFFFF"
+             type="rectangle" x="609" y="389" width="46" height="17"/>
     </entry>
     <entry id="93" name="ko:K00151" type="ortholog" reaction="rn:R04418"
         link="http://www.kegg.jp/dbget-bin/www_bget?K00151">
@@ -345,9 +350,9 @@
         <graphics name="C05585" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="629" y="501" width="8" height="8"/>
     </entry>
-    <entry id="130" name="cpd:C03672" type="compound"
-        link="http://www.kegg.jp/dbget-bin/www_bget?C03672">
-        <graphics name="C03672" fgcolor="#000000" bgcolor="#FFFFFF"
+    <entry id="130" name="cpd:C03964" type="compound"
+        link="http://www.kegg.jp/dbget-bin/www_bget?C03964">
+        <graphics name="C03964" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="659" y="399" width="8" height="8"/>
     </entry>
     <entry id="131" name="cpd:C03765" type="compound"
@@ -605,7 +610,7 @@
         <graphics name="K00422" fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="725" y="245" width="46" height="17"/>
     </entry>
-    <entry id="227" name="ko:K18606" type="ortholog" reaction="rn:R03373"
+    <entry id="227" name="ko:K18606" type="ortholog" reaction="rn:R03373 rn:R12252"
         link="http://www.kegg.jp/dbget-bin/www_bget?K18606">
         <graphics name="K18606" fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="778" y="416" width="46" height="17"/>
@@ -740,9 +745,9 @@
         <graphics name="C05594" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="1123" y="596" width="8" height="8"/>
     </entry>
-    <entry id="255" name="cpd:C01207" type="compound"
-        link="http://www.kegg.jp/dbget-bin/www_bget?C01207">
-        <graphics name="C01207" fgcolor="#000000" bgcolor="#FFFFFF"
+    <entry id="255" name="cpd:C22038" type="compound"
+        link="http://www.kegg.jp/dbget-bin/www_bget?C22038">
+        <graphics name="C22038" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="778" y="458" width="8" height="8"/>
     </entry>
     <entry id="256" name="cpd:C04797" type="compound"

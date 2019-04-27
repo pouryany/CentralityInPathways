@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Jul 12, 2017 13:18:43 +0900 (GMT+9) -->
+<!-- Creation date: Nov 9, 2018 14:41:57 +0900 (GMT+9) -->
 <pathway name="path:hsa00053" org="hsa" number="00053"
          title="Ascorbate and aldarate metabolism"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00053.png"
@@ -499,6 +499,36 @@
         link="http://www.kegg.jp/dbget-bin/www_bget?K13873+K19660">
         <graphics name="K13873..." fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="1080" y="545" width="46" height="17"/>
+    </entry>
+    <entry id="173" name="cpd:C21955" type="compound"
+        link="http://www.kegg.jp/dbget-bin/www_bget?C21955">
+        <graphics name="C21955" fgcolor="#000000" bgcolor="#FFFFFF"
+             type="circle" x="346" y="567" width="8" height="8"/>
+    </entry>
+    <entry id="175" name="ko:K23004" type="ortholog" reaction="rn:R12155"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K23004">
+        <graphics name="K23004" fgcolor="#000000" bgcolor="#FFFFFF"
+             type="rectangle" x="383" y="568" width="46" height="17"/>
+    </entry>
+    <entry id="177" name="cpd:C00558" type="compound"
+        link="http://www.kegg.jp/dbget-bin/www_bget?C00558">
+        <graphics name="C00558" fgcolor="#000000" bgcolor="#FFFFFF"
+             type="circle" x="346" y="672" width="8" height="8"/>
+    </entry>
+    <entry id="178" name="path:hsa00040" type="map"
+        link="http://www.kegg.jp/dbget-bin/www_bget?hsa00040">
+        <graphics name="Pentose and glucuronate interconversions" fgcolor="#000000" bgcolor="#FFFFFF"
+             type="roundrectangle" x="388" y="741" width="133" height="34"/>
+    </entry>
+    <entry id="179" name="ko:K23003" type="ortholog" reaction="rn:R12156"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K23003">
+        <graphics name="K23003" fgcolor="#000000" bgcolor="#FFFFFF"
+             type="rectangle" x="346" y="499" width="46" height="17"/>
+    </entry>
+    <entry id="180" name="ko:K23007 ko:K23005" type="ortholog" reaction="rn:R12146"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K23007+K23005">
+        <graphics name="K23007..." fgcolor="#000000" bgcolor="#FFFFFF"
+             type="rectangle" x="346" y="619" width="46" height="17"/>
     </entry>
     <relation entry1="88" entry2="97" type="maplink">
         <subtype name="compound" value="110"/>

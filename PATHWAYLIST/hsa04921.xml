@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Feb 15, 2017 15:31:34 +0900 (GMT+9) -->
+<!-- Creation date: Feb 5, 2019 13:15:51 +0900 (GMT+9) -->
 <pathway name="path:hsa04921" org="hsa" number="04921"
          title="Oxytocin signaling pathway"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa04921.png"
@@ -87,12 +87,12 @@
     </entry>
     <entry id="17" name="hsa:5578 hsa:5579 hsa:5582" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:5578+hsa:5579+hsa:5582">
-        <graphics name="PRKCA, AAG6, PKC-alpha, PKCA, PRKACA..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="PRKCA, AAG6, PKC-alpha, PKCA, PKCI+/-, PKCalpha, PRKACA..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="678" y="493" width="46" height="17"/>
     </entry>
     <entry id="18" name="hsa:3265 hsa:3845 hsa:4893" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:3265+hsa:3845+hsa:4893">
-        <graphics name="HRAS, C-BAS/HAS, C-H-RAS, C-HA-RAS1, CTLO, H-RASIDX, HAMSV, HRAS1, RASH1, p21ras..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="HRAS, C-BAS/HAS, C-H-RAS, C-HA-RAS1, CTLO, H-RASIDX, HAMSV, HRAS1, KRAS, KRAS2, Ki-Ras, RASH1, RASK2, c-K-ras, c-Ki-ras, p21ras..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="411" y="243" width="46" height="17"/>
     </entry>
     <entry id="19" name="hsa:5894" type="gene"
@@ -137,7 +137,7 @@
     </entry>
     <entry id="27" name="hsa:29904" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:29904">
-        <graphics name="EEF2K, HSU93850, eEF-2K" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="EEF2K, CaMKIII, HSU93850, eEF-2K" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="793" y="466" width="46" height="17"/>
     </entry>
     <entry id="28" name="hsa:1938" type="gene"
@@ -410,10 +410,10 @@
         <graphics name="C00238" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="308" y="463" width="8" height="8"/>
     </entry>
-    <entry id="82" name="cpd:C16003" type="compound"
-        link="http://www.kegg.jp/dbget-bin/www_bget?C16003">
-        <graphics name="C16003" fgcolor="#000000" bgcolor="#FFFFFF"
-             type="circle" x="434" y="652" width="8" height="8"/>
+    <entry id="82" name="hsa:4878" type="gene"
+        link="http://www.kegg.jp/dbget-bin/www_bget?hsa:4878">
+        <graphics name="NPPA, ANF, ANP, ATFB6, ATRST2, CDD, CDD-ANF, CDP, PND" fgcolor="#000000" bgcolor="#BFFFBF"
+             type="rectangle" x="442" y="655" width="46" height="17"/>
     </entry>
     <relation entry1="15" entry2="14" type="PPrel">
         <subtype name="activation" value="--&gt;"/>
@@ -507,9 +507,6 @@
         <subtype name="activation" value="--&gt;"/>
     </relation>
     <relation entry1="9" entry2="7" type="PPrel">
-        <subtype name="activation" value="--&gt;"/>
-    </relation>
-    <relation entry1="82" entry2="45" type="PCrel">
         <subtype name="activation" value="--&gt;"/>
     </relation>
     <relation entry1="45" entry2="46" type="PCrel">
@@ -651,5 +648,8 @@
     <relation entry1="51" entry2="52" type="PPrel">
         <subtype name="activation" value="--&gt;"/>
         <subtype name="dephosphorylation" value="-p"/>
+    </relation>
+    <relation entry1="82" entry2="45" type="PPrel">
+        <subtype name="activation" value="--&gt;"/>
     </relation>
 </pathway>

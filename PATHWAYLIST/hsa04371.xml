@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Dec 5, 2017 14:04:31 +0900 (GMT+9) -->
+<!-- Creation date: Apr 12, 2019 13:25:00 +0900 (GMT+9) -->
 <pathway name="path:hsa04371" org="hsa" number="04371"
          title="Apelin signaling pathway"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa04371.png"
@@ -117,12 +117,12 @@
     </entry>
     <entry id="23" name="hsa:7046" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:7046">
-        <graphics name="TGFBR1, AAT5, ACVRLK4, ALK-5, ALK5, ESS1, LDS1, LDS1A, LDS2A, MSSE, SKR4, TGFR-1, tbetaR-I" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="TGFBR1, AAT5, ACVRLK4, ALK-5, ALK5, ESS1, LDS1, LDS1A, LDS2A, MSSE, SKR4, TBR-i, TBRI, TGFR-1, tbetaR-I" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="132" y="744" width="46" height="17"/>
     </entry>
     <entry id="24" name="hsa:1490" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:1490">
-        <graphics name="CTGF, CCN2, HCS24, IGFBP8, NOV2" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="CCN2, CTGF, HCS24, IGFBP8, NOV2" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="678" y="776" width="46" height="17"/>
     </entry>
     <entry id="25" name="hsa:10891" type="gene"
@@ -282,7 +282,7 @@
     </entry>
     <entry id="56" name="hsa:182" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:182">
-        <graphics name="JAG1, AGS, AGS1, AHD, AWS, CD339, HJ1, JAGL1" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="JAG1, AGS, AGS1, AHD, AWS, CD339, DCHE, HJ1, JAGL1" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="839" y="410" width="46" height="17"/>
     </entry>
     <entry id="57" name="hsa:5327" type="gene"
@@ -392,7 +392,7 @@
     </entry>
     <entry id="78" name="hsa:814" type="gene"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:814">
-        <graphics name="CAMK4, CaMK_IV, CaMK-GR, caMK" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="CAMK4, CaMK_IV, CaMK-GR, CaMKIV, caMK" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="328" y="697" width="46" height="17"/>
     </entry>
     <entry id="79" name="path:hsa04923" type="map"
@@ -420,6 +420,18 @@
         <graphics name="AGTR1, AG2S, AGTR1B, AT1, AT1AR, AT1B, AT1BR, AT1R, AT2R1, HAT1R" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="131" y="795" width="46" height="17"/>
     </entry>
+    <entry id="84" name="undefined" type="group">
+        <graphics fgcolor="#000000" bgcolor="#FFFFFF"
+             type="rectangle" x="839" y="418" width="46" height="34"/>
+        <component id="55"/>
+        <component id="56"/>
+    </entry>
+    <entry id="85" name="undefined" type="group">
+        <graphics fgcolor="#000000" bgcolor="#FFFFFF"
+             type="rectangle" x="416" y="739" width="223" height="26"/>
+        <component id="59"/>
+        <component id="60"/>
+    </entry>
     <relation entry1="35" entry2="36" type="PCrel">
         <subtype name="activation" value="--&gt;"/>
     </relation>
@@ -445,9 +457,6 @@
         <subtype name="activation" value="--&gt;"/>
     </relation>
     <relation entry1="13" entry2="15" type="PCrel">
-        <subtype name="activation" value="--&gt;"/>
-    </relation>
-    <relation entry1="14" entry2="16" type="PCrel">
         <subtype name="activation" value="--&gt;"/>
     </relation>
     <relation entry1="15" entry2="16" type="PCrel">
@@ -551,9 +560,6 @@
     <relation entry1="4" entry2="80" type="PCrel">
         <subtype name="activation" value="--&gt;"/>
     </relation>
-    <relation entry1="2" entry2="23" type="PPrel">
-        <subtype name="inhibition" value="--|"/>
-    </relation>
     <relation entry1="6" entry2="35" type="PPrel">
         <subtype name="inhibition" value="--|"/>
     </relation>
@@ -600,7 +606,7 @@
     <relation entry1="53" entry2="54" type="GErel">
         <subtype name="expression" value="--&gt;"/>
     </relation>
-    <relation entry1="56" entry2="34" type="GErel">
+    <relation entry1="84" entry2="34" type="GErel">
         <subtype name="expression" value="--&gt;"/>
     </relation>
     <relation entry1="2" entry2="50" type="GErel">
@@ -622,16 +628,13 @@
     <relation entry1="22" entry2="64" type="GErel">
         <subtype name="expression" value="--&gt;"/>
     </relation>
-    <relation entry1="60" entry2="4" type="GErel">
+    <relation entry1="85" entry2="4" type="GErel">
         <subtype name="expression" value="--&gt;"/>
     </relation>
-    <relation entry1="60" entry2="61" type="GErel">
+    <relation entry1="85" entry2="61" type="GErel">
         <subtype name="expression" value="--&gt;"/>
     </relation>
-    <relation entry1="60" entry2="62" type="GErel">
-        <subtype name="expression" value="--&gt;"/>
-    </relation>
-    <relation entry1="60" entry2="24" type="GErel">
+    <relation entry1="85" entry2="24" type="GErel">
         <subtype name="expression" value="--&gt;"/>
     </relation>
     <relation entry1="46" entry2="45" type="GErel">
@@ -662,5 +665,17 @@
     <relation entry1="8" entry2="19" type="PPrel">
         <subtype name="activation" value="--&gt;"/>
         <subtype name="indirect effect" value="..&gt;"/>
+    </relation>
+    <relation entry1="85" entry2="62" type="GErel">
+        <subtype name="repression" value="--|"/>
+    </relation>
+    <relation entry1="82" entry2="23" type="GErel">
+        <subtype name="repression" value="--|"/>
+    </relation>
+    <relation entry1="82" entry2="5" type="GErel">
+        <subtype name="repression" value="--|"/>
+    </relation>
+    <relation entry1="83" entry2="5" type="PPrel">
+        <subtype name="activation" value="--&gt;"/>
     </relation>
 </pathway>

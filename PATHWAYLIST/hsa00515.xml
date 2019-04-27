@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Dec 8, 2016 15:51:10 +0900 (GMT+9) -->
+<!-- Creation date: Apr 1, 2019 10:48:55 +0900 (GMT+9) -->
 <pathway name="path:hsa00515" org="hsa" number="00515"
          title="Mannose type O-glycan biosynthesis"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00515.png"
@@ -15,14 +15,14 @@
         <graphics name="C02189" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="75" y="187" width="8" height="8"/>
     </entry>
-    <entry id="24" name="cpd:C03862" type="compound"
-        link="http://www.kegg.jp/dbget-bin/www_bget?C03862">
-        <graphics name="C03862" fgcolor="#000000" bgcolor="#FFFFFF"
+    <entry id="24" name="gl:G10617" type="compound"
+        link="http://www.kegg.jp/dbget-bin/www_bget?G10617">
+        <graphics name="G10617" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="97" y="123" width="8" height="8"/>
     </entry>
     <entry id="25" name="hsa:10585 hsa:29954" type="gene" reaction="rn:R07620"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10585+hsa:29954">
-        <graphics name="POMT1, LGMD2K, MDDGA1, MDDGB1, MDDGC1, RT..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="POMT1, LGMD2K, LGMDR11, MDDGA1, MDDGB1, MDDGC1, RT..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="153" y="187" width="46" height="17"/>
     </entry>
     <entry id="26" name="gl:G13082" type="compound"
@@ -42,7 +42,7 @@
     </entry>
     <entry id="29" name="hsa:55624" type="gene" reaction="rn:R07619"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:55624">
-        <graphics name="POMGNT1, GNTI.2, GnT_I.2, LGMD2O, MEB, MGAT1.2, RP76, gnT-I.2" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="POMGNT1, GNTI.2, GnT_I.2, LGMD2O, LGMDR15, MEB, MGAT1.2, RP76, gnT-I.2" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="218" y="259" width="46" height="17"/>
     </entry>
     <entry id="30" name="hsa:6487" type="gene"
@@ -92,12 +92,12 @@
     </entry>
     <entry id="39" name="hsa:55624" type="gene" reaction="rn:R07619"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:55624">
-        <graphics name="POMGNT1, GNTI.2, GnT_I.2, LGMD2O, MEB, MGAT1.2, RP76, gnT-I.2" fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POMGNT1, GNTI.2, GnT_I.2, LGMD2O, LGMDR15, MEB, MGAT1.2, RP76, gnT-I.2" fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="290,645,320,645"/>
     </entry>
     <entry id="40" name="hsa:10585 hsa:29954" type="gene" reaction="rn:R07620"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10585+hsa:29954">
-        <graphics name="POMT1, LGMD2K, MDDGA1, MDDGB1, MDDGC1, RT..." fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POMT1, LGMD2K, LGMDR11, MDDGA1, MDDGB1, MDDGC1, RT..." fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="365,645,395,645"/>
     </entry>
     <entry id="41" name="hsa:9486" type="gene"
@@ -117,12 +117,12 @@
     </entry>
     <entry id="44" name="hsa:10585 hsa:29954" type="gene" reaction="rn:R07620"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10585+hsa:29954">
-        <graphics name="POMT1, LGMD2K, MDDGA1, MDDGB1, MDDGC1, RT..." fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POMT1, LGMD2K, LGMDR11, MDDGA1, MDDGB1, MDDGC1, RT..." fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="391,692,421,692"/>
     </entry>
     <entry id="45" name="hsa:55624" type="gene" reaction="rn:R07619"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:55624">
-        <graphics name="POMGNT1, GNTI.2, GnT_I.2, LGMD2O, MEB, MGAT1.2, RP76, gnT-I.2" fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POMGNT1, GNTI.2, GnT_I.2, LGMD2O, LGMDR15, MEB, MGAT1.2, RP76, gnT-I.2" fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="317,692,347,692"/>
     </entry>
     <entry id="46" name="hsa:2683 hsa:8703 hsa:8704" type="gene"
@@ -137,12 +137,12 @@
     </entry>
     <entry id="48" name="hsa:55624" type="gene" reaction="rn:R07619"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:55624">
-        <graphics name="POMGNT1, GNTI.2, GnT_I.2, LGMD2O, MEB, MGAT1.2, RP76, gnT-I.2" fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POMGNT1, GNTI.2, GnT_I.2, LGMD2O, LGMDR15, MEB, MGAT1.2, RP76, gnT-I.2" fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="188,754,218,754"/>
     </entry>
     <entry id="49" name="hsa:10585 hsa:29954" type="gene" reaction="rn:R07620"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10585+hsa:29954">
-        <graphics name="POMT1, LGMD2K, MDDGA1, MDDGB1, MDDGC1, RT..." fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POMT1, LGMD2K, LGMDR11, MDDGA1, MDDGB1, MDDGC1, RT..." fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="262,754,292,754"/>
     </entry>
     <entry id="50" name="gl:G13028" type="compound"
@@ -192,15 +192,15 @@
     </entry>
     <entry id="59" name="hsa:84892" type="gene" reaction="rn:R11407"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:84892">
-        <graphics name="POMGNT2, AGO61, C3orf39, GTDC2, MDDGA8" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="POMGNT2, AGO61, C3orf39, GTDC2, MDDGA8, MDDGC8" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="274" y="187" width="46" height="17"/>
     </entry>
-    <entry id="60" name="hsa:148789" type="gene"
+    <entry id="60" name="hsa:148789" type="gene" reaction="rn:R12292"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:148789">
         <graphics name="B3GALNT2, B3GalNAc-T2, MDDGA11" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="396" y="187" width="46" height="17"/>
     </entry>
-    <entry id="61" name="hsa:84197" type="gene"
+    <entry id="61" name="hsa:84197" type="gene" reaction="rn:R12293"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:84197">
         <graphics name="POMK, MDDGA12, MDDGC12, SGK196" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="512" y="187" width="46" height="17"/>
@@ -215,7 +215,7 @@
         <graphics name="G13093" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="577" y="264" width="8" height="8"/>
     </entry>
-    <entry id="64" name="hsa:120071 hsa:9215" type="gene"
+    <entry id="64" name="hsa:120071 hsa:9215" type="gene" reaction="rn:R12297"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:120071+hsa:9215">
         <graphics name="LARGE2, GYLTL1B, PP5656..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="875" y="341" width="46" height="17"/>
@@ -242,12 +242,12 @@
     </entry>
     <entry id="69" name="hsa:55624" type="gene" reaction="rn:R07619"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:55624">
-        <graphics name="POMGNT1, GNTI.2, GnT_I.2, LGMD2O, MEB, MGAT1.2, RP76, gnT-I.2" fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POMGNT1, GNTI.2, GnT_I.2, LGMD2O, LGMDR15, MEB, MGAT1.2, RP76, gnT-I.2" fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="289,912,306,895"/>
     </entry>
     <entry id="70" name="hsa:10585 hsa:29954" type="gene" reaction="rn:R07620"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10585+hsa:29954">
-        <graphics name="POMT1, LGMD2K, MDDGA1, MDDGB1, MDDGC1, RT..." fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POMT1, LGMD2K, LGMDR11, MDDGA1, MDDGB1, MDDGC1, RT..." fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="352,889,382,889"/>
     </entry>
     <entry id="71" name="hsa:6487" type="gene"
@@ -272,12 +272,12 @@
     </entry>
     <entry id="75" name="hsa:55624" type="gene" reaction="rn:R07619"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:55624">
-        <graphics name="POMGNT1, GNTI.2, GnT_I.2, LGMD2O, MEB, MGAT1.2, RP76, gnT-I.2" fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POMGNT1, GNTI.2, GnT_I.2, LGMD2O, LGMDR15, MEB, MGAT1.2, RP76, gnT-I.2" fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="720,913,737,896"/>
     </entry>
     <entry id="76" name="hsa:10585 hsa:29954" type="gene" reaction="rn:R07620"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10585+hsa:29954">
-        <graphics name="POMT1, LGMD2K, MDDGA1, MDDGB1, MDDGC1, RT..." fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POMT1, LGMD2K, LGMDR11, MDDGA1, MDDGB1, MDDGC1, RT..." fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="783,890,813,890"/>
     </entry>
     <entry id="77" name="hsa:2683 hsa:8703 hsa:8704" type="gene"
@@ -287,15 +287,15 @@
     </entry>
     <entry id="78" name="hsa:10585 hsa:29954" type="gene" reaction="rn:R07620"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10585+hsa:29954">
-        <graphics name="POMT1, LGMD2K, MDDGA1, MDDGB1, MDDGC1, RT..." fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POMT1, LGMD2K, LGMDR11, MDDGA1, MDDGB1, MDDGC1, RT..." fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="1021,1043,1051,1043"/>
     </entry>
     <entry id="79" name="hsa:84892" type="gene" reaction="rn:R11407"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:84892">
-        <graphics name="POMGNT2, AGO61, C3orf39, GTDC2, MDDGA8" fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="POMGNT2, AGO61, C3orf39, GTDC2, MDDGA8, MDDGC8" fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="944,1042,974,1042"/>
     </entry>
-    <entry id="80" name="hsa:148789" type="gene"
+    <entry id="80" name="hsa:148789" type="gene" reaction="rn:R12292"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:148789">
         <graphics name="B3GALNT2, B3GalNAc-T2, MDDGA11" fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="855,1042,885,1042"/>
@@ -315,7 +315,7 @@
         <graphics name="G13096" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="817" y="341" width="8" height="8"/>
     </entry>
-    <entry id="85" name="hsa:11041" type="gene"
+    <entry id="85" name="hsa:11041" type="gene" reaction="rn:R12296"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:11041">
         <graphics name="B4GAT1, B3GN-T1, B3GNT1, B3GNT6, BETA3GNTI, MDDGA13, iGAT, iGNT" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="752" y="341" width="46" height="17"/>
@@ -337,7 +337,7 @@
     </entry>
     <entry id="89" name="hsa:729920" type="gene" reaction="rn:R02921"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:729920">
-        <graphics name="ISPD, MDDGA7, MDDGC7, Nip, hCG_1745121, hISPD" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="ISPD, LGMDR20, MDDGA7, MDDGC7, Nip, hCG_1745121, hISPD, CRPPA" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="637" y="162" width="46" height="17"/>
     </entry>
     <entry id="90" name="cpd:C00789" type="compound"
@@ -345,9 +345,9 @@
         <graphics name="C00789" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="637" y="199" width="8" height="8"/>
     </entry>
-    <entry id="91" name="hsa:2218" type="gene"
+    <entry id="91" name="hsa:2218" type="gene" reaction="rn:R12294"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:2218">
-        <graphics name="FKTN, CMD1X, FCMD, LGMD2M, MDDGA4, MDDGB4, MDDGC4" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="FKTN, CMD1X, FCMD, LGMD2M, LGMDR13, MDDGA4, MDDGB4, MDDGC4" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="577" y="222" width="46" height="17"/>
     </entry>
     <entry id="92" name="gl:G13094" type="compound"
@@ -355,9 +355,9 @@
         <graphics name="G13094" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="577" y="341" width="8" height="8"/>
     </entry>
-    <entry id="93" name="hsa:79147" type="gene"
+    <entry id="93" name="hsa:79147" type="gene" reaction="rn:R12295"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:79147">
-        <graphics name="FKRP, LGMD2I, MDC1C, MDDGA5, MDDGB5, MDDGC5" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="FKRP, LGMD2I, LGMDR9, MDC1C, MDDGA5, MDDGB5, MDDGC5" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="577" y="300" width="46" height="17"/>
     </entry>
     <entry id="94" name="gl:G13095" type="compound"
@@ -365,9 +365,9 @@
         <graphics name="G13095" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="697" y="341" width="8" height="8"/>
     </entry>
-    <entry id="95" name="hsa:10329" type="gene"
+    <entry id="95" name="hsa:10329" type="gene" reaction="rn:R12244"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10329">
-        <graphics name="TMEM5, HP10481, MDDGA10" fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="RXYLT1, HP10481, MDDGA10, TMEM5" fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="632" y="342" width="46" height="17"/>
     </entry>
     <entry id="96" name="path:hsa00515" type="map"
@@ -380,7 +380,7 @@
         <graphics name="G13097" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="937" y="341" width="8" height="8"/>
     </entry>
-    <entry id="102" name="hsa:120071 hsa:9215" type="gene"
+    <entry id="102" name="hsa:120071 hsa:9215" type="gene" reaction="rn:R12298"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:120071+hsa:9215">
         <graphics name="LARGE2, GYLTL1B, PP5656..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="995" y="341" width="46" height="17"/>
@@ -400,37 +400,37 @@
         <graphics name="CHST10, HNK-1ST, HNK1ST" fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="492,862,522,862"/>
     </entry>
-    <entry id="108" name="hsa:84197" type="gene"
+    <entry id="108" name="hsa:84197" type="gene" reaction="rn:R12293"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:84197">
         <graphics name="POMK, MDDGA12, MDDGC12, SGK196" fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="958,1012,976,1030"/>
     </entry>
-    <entry id="109" name="hsa:2218" type="gene"
+    <entry id="109" name="hsa:2218" type="gene" reaction="rn:R12294"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:2218">
-        <graphics name="FKTN, CMD1X, FCMD, LGMD2M, MDDGA4, MDDGB4, MDDGC4" fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="FKTN, CMD1X, FCMD, LGMD2M, LGMDR13, MDDGA4, MDDGB4, MDDGC4" fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="767,1042,797,1042"/>
     </entry>
-    <entry id="110" name="hsa:79147" type="gene"
+    <entry id="110" name="hsa:79147" type="gene" reaction="rn:R12295"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:79147">
-        <graphics name="FKRP, LGMD2I, MDC1C, MDDGA5, MDDGB5, MDDGC5" fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="FKRP, LGMD2I, LGMDR9, MDC1C, MDDGA5, MDDGB5, MDDGC5" fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="696,1042,726,1042"/>
     </entry>
-    <entry id="111" name="hsa:10329" type="gene"
+    <entry id="111" name="hsa:10329" type="gene" reaction="rn:R12244"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10329">
-        <graphics name="TMEM5, HP10481, MDDGA10" fgcolor="#66CC66" bgcolor="#FFFFFF"
+        <graphics name="RXYLT1, HP10481, MDDGA10, TMEM5" fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="625,1042,655,1042"/>
     </entry>
-    <entry id="112" name="hsa:11041" type="gene"
+    <entry id="112" name="hsa:11041" type="gene" reaction="rn:R12296"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:11041">
         <graphics name="B4GAT1, B3GN-T1, B3GNT1, B3GNT6, BETA3GNTI, MDDGA13, iGAT, iGNT" fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="560,1042,590,1042"/>
     </entry>
-    <entry id="113" name="hsa:120071 hsa:9215" type="gene"
+    <entry id="113" name="hsa:120071 hsa:9215" type="gene" reaction="rn:R12297"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:120071+hsa:9215">
         <graphics name="LARGE2, GYLTL1B, PP5656..." fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="486,1042,516,1042"/>
     </entry>
-    <entry id="114" name="hsa:120071 hsa:9215" type="gene"
+    <entry id="114" name="hsa:120071 hsa:9215" type="gene" reaction="rn:R12298"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:120071+hsa:9215">
         <graphics name="LARGE2, GYLTL1B, PP5656..." fgcolor="#66CC66" bgcolor="#FFFFFF"
              type="line" coords="417,1042,447,1042"/>
@@ -523,35 +523,21 @@
     <relation entry1="89" entry2="91" type="ECrel">
         <subtype name="compound" value="90"/>
     </relation>
+    <relation entry1="120" entry2="25" type="maplink">
+        <subtype name="compound" value="24"/>
+    </relation>
+    <relation entry1="59" entry2="29" type="ECrel">
+        <subtype name="compound" value="27"/>
+    </relation>
+    <relation entry1="51" entry2="20" type="ECrel">
+        <subtype name="compound" value="28"/>
+    </relation>
     <reaction id="25" name="rn:R07620" type="irreversible">
+        <substrate id="24" name="gl:G10617"/>
         <substrate id="23" name="cpd:C02189"/>
         <product id="27" name="gl:G13027"/>
     </reaction>
     <reaction id="29" name="rn:R07619" type="irreversible">
-        <substrate id="27" name="gl:G13027"/>
-        <product id="28" name="gl:G13026"/>
-    </reaction>
-    <reaction id="40" name="rn:R07620" type="irreversible">
-        <substrate id="23" name="cpd:C02189"/>
-        <product id="27" name="gl:G13027"/>
-    </reaction>
-    <reaction id="39" name="rn:R07619" type="irreversible">
-        <substrate id="27" name="gl:G13027"/>
-        <product id="28" name="gl:G13026"/>
-    </reaction>
-    <reaction id="45" name="rn:R07619" type="irreversible">
-        <substrate id="27" name="gl:G13027"/>
-        <product id="28" name="gl:G13026"/>
-    </reaction>
-    <reaction id="44" name="rn:R07620" type="irreversible">
-        <substrate id="23" name="cpd:C02189"/>
-        <product id="27" name="gl:G13027"/>
-    </reaction>
-    <reaction id="49" name="rn:R07620" type="irreversible">
-        <substrate id="23" name="cpd:C02189"/>
-        <product id="27" name="gl:G13027"/>
-    </reaction>
-    <reaction id="48" name="rn:R07619" type="irreversible">
         <substrate id="27" name="gl:G13027"/>
         <product id="28" name="gl:G13026"/>
     </reaction>
@@ -563,41 +549,42 @@
         <substrate id="27" name="gl:G13027"/>
         <product id="58" name="gl:G13087"/>
     </reaction>
-    <reaction id="70" name="rn:R07620" type="irreversible">
-        <substrate id="23" name="cpd:C02189"/>
-        <product id="27" name="gl:G13027"/>
+    <reaction id="60" name="rn:R12292" type="irreversible">
+        <substrate id="58" name="gl:G13087"/>
+        <product id="86" name="gl:G13091"/>
     </reaction>
-    <reaction id="69" name="rn:R07619" type="irreversible">
-        <substrate id="27" name="gl:G13027"/>
-        <product id="28" name="gl:G13026"/>
+    <reaction id="61" name="rn:R12293" type="irreversible">
+        <substrate id="86" name="gl:G13091"/>
+        <product id="62" name="gl:G13092"/>
     </reaction>
-    <reaction id="68" name="rn:R07621" type="irreversible">
-        <substrate id="28" name="gl:G13026"/>
-        <product id="50" name="gl:G13028"/>
+    <reaction id="91" name="rn:R12294" type="irreversible">
+        <substrate id="90" name="cpd:C00789"/>
+        <substrate id="62" name="gl:G13092"/>
+        <product id="63" name="gl:G13093"/>
     </reaction>
-    <reaction id="76" name="rn:R07620" type="irreversible">
-        <substrate id="23" name="cpd:C02189"/>
-        <product id="27" name="gl:G13027"/>
+    <reaction id="64" name="rn:R12297" type="irreversible">
+        <substrate id="84" name="gl:G13096"/>
+        <product id="97" name="gl:G13097"/>
     </reaction>
-    <reaction id="75" name="rn:R07619" type="reversible">
-        <substrate id="27" name="gl:G13027"/>
-        <product id="28" name="gl:G13026"/>
-    </reaction>
-    <reaction id="74" name="rn:R07621" type="irreversible">
-        <substrate id="28" name="gl:G13026"/>
-        <product id="50" name="gl:G13028"/>
-    </reaction>
-    <reaction id="78" name="rn:R07620" type="irreversible">
-        <substrate id="23" name="cpd:C02189"/>
-        <product id="27" name="gl:G13027"/>
-    </reaction>
-    <reaction id="79" name="rn:R11407" type="irreversible">
-        <substrate id="27" name="gl:G13027"/>
-        <product id="58" name="gl:G13087"/>
+    <reaction id="85" name="rn:R12296" type="irreversible">
+        <substrate id="94" name="gl:G13095"/>
+        <product id="84" name="gl:G13096"/>
     </reaction>
     <reaction id="89" name="rn:R02921" type="irreversible">
         <substrate id="88" name="cpd:C00063"/>
         <substrate id="87" name="cpd:C01068"/>
         <product id="90" name="cpd:C00789"/>
+    </reaction>
+    <reaction id="93" name="rn:R12295" type="irreversible">
+        <substrate id="63" name="gl:G13093"/>
+        <product id="92" name="gl:G13094"/>
+    </reaction>
+    <reaction id="95" name="rn:R12244" type="irreversible">
+        <substrate id="92" name="gl:G13094"/>
+        <product id="94" name="gl:G13095"/>
+    </reaction>
+    <reaction id="102" name="rn:R12298" type="irreversible">
+        <substrate id="97" name="gl:G13097"/>
+        <product id="103" name="gl:G13098"/>
     </reaction>
 </pathway>

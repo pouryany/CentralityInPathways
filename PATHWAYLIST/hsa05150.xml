@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Mar 26, 2015 17:17:05 +0900 (GMT+9) -->
+<!-- Creation date: Jan 23, 2019 18:03:29 +0900 (GMT+9) -->
 <pathway name="path:hsa05150" org="hsa" number="05150"
          title="Staphylococcus aureus infection"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa05150.png"
@@ -340,20 +340,20 @@
         <graphics name="FPR2, ALXR, FMLP-R-II, FMLPX, FPR2A, FPRH1, FPRH2, FPRL1, HM63, LXA4R..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="732" y="650" width="46" height="17"/>
     </entry>
-    <entry id="70" name="cpd:C16059 cpd:C16060 cpd:C16061 cpd:C16062" type="compound"
-        link="http://www.kegg.jp/dbget-bin/www_bget?C16059+C16060+C16061+C16062">
-        <graphics name="C16059..." fgcolor="#000000" bgcolor="#FFFFFF"
-             type="circle" x="461" y="743" width="8" height="8"/>
+    <entry id="70" name="hsa:100289462 hsa:1672 hsa:1673 hsa:414325 hsa:55894" type="gene"
+        link="http://www.kegg.jp/dbget-bin/www_bget?hsa:100289462+hsa:1672+hsa:1673+hsa:414325+hsa:55894">
+        <graphics name="DEFB4B, DEFB4P..." fgcolor="#000000" bgcolor="#BFFFBF"
+             type="rectangle" x="470" y="743" width="46" height="17"/>
     </entry>
-    <entry id="71" name="cpd:C16054 cpd:C16055 cpd:C16056 cpd:C16057 cpd:C16058" type="compound"
-        link="http://www.kegg.jp/dbget-bin/www_bget?C16054+C16055+C16056+C16057+C16058">
-        <graphics name="C16054..." fgcolor="#000000" bgcolor="#FFFFFF"
-             type="circle" x="461" y="770" width="8" height="8"/>
+    <entry id="71" name="hsa:1667 hsa:1668 hsa:1669 hsa:1670 hsa:1671 hsa:728358" type="gene"
+        link="http://www.kegg.jp/dbget-bin/www_bget?hsa:1667+hsa:1668+hsa:1669+hsa:1670+hsa:1671+hsa:728358">
+        <graphics name="DEFA1, DEF1, DEFA2, HNP-1, HP-1, HP1, MRS..." fgcolor="#000000" bgcolor="#BFFFBF"
+             type="rectangle" x="470" y="770" width="46" height="17"/>
     </entry>
-    <entry id="72" name="cpd:C18313" type="compound"
-        link="http://www.kegg.jp/dbget-bin/www_bget?C18313">
-        <graphics name="C18313" fgcolor="#000000" bgcolor="#FFFFFF"
-             type="circle" x="461" y="796" width="8" height="8"/>
+    <entry id="72" name="hsa:820" type="gene"
+        link="http://www.kegg.jp/dbget-bin/www_bget?hsa:820">
+        <graphics name="CAMP, CAP-18, CAP18, CRAMP, FALL-39, FALL39, HSD26, LL37" fgcolor="#000000" bgcolor="#BFFFBF"
+             type="rectangle" x="470" y="795" width="46" height="17"/>
     </entry>
     <entry id="73" name="undefined" type="group">
         <graphics fgcolor="#000000" bgcolor="#FFFFFF"

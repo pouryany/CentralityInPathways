@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE pathway SYSTEM "http://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<!-- Creation date: Mar 3, 2014 18:00:57 +0900 (GMT+09:00) -->
+<!-- Creation date: Oct 16, 2018 14:26:43 +0900 (GMT+9) -->
 <pathway name="path:hsa00450" org="hsa" number="00450"
          title="Selenocompound metabolism"
          image="http://www.kegg.jp/kegg/pathway/hsa/hsa00450.png"
@@ -12,7 +12,7 @@
     </entry>
     <entry id="11" name="hsa:10587 hsa:114112 hsa:7296" type="gene" reaction="rn:R03596"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10587+hsa:114112+hsa:7296">
-        <graphics name="TXNRD2, SELZ, TR, TR-BETA, TR3, TRXR2..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="TXNRD2, GCCD5, SELZ, TR, TR-BETA, TR3, TRXR2..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="570" y="459" width="46" height="17"/>
     </entry>
     <entry id="12" name="hsa:22928 hsa:22929" type="gene" reaction="rn:R03595"
@@ -110,9 +110,9 @@
         <graphics name="C00017" fgcolor="#000000" bgcolor="#FFFFFF"
              type="circle" x="65" y="331" width="8" height="8"/>
     </entry>
-    <entry id="35" name="ko:K07309 ko:K07310 ko:K12527 ko:K12528 ko:K12529" type="ortholog" reaction="rn:R07229"
-        link="http://www.kegg.jp/dbget-bin/www_bget?K07309+K07310+K12527+K12528+K12529">
-        <graphics name="K07309..." fgcolor="#000000" bgcolor="#FFFFFF"
+    <entry id="35" name="ko:K17050 ko:K17051 ko:K17052 ko:K07309 ko:K07310 ko:K12527 ko:K12528 ko:K12529" type="ortholog" reaction="rn:R07229"
+        link="http://www.kegg.jp/dbget-bin/www_bget?K17050+K17051+K17052+K07309+K07310+K12527+K12528+K12529">
+        <graphics name="K17050..." fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="759" y="392" width="46" height="17"/>
     </entry>
     <entry id="38" name="cpd:C05703" type="compound"
@@ -225,9 +225,9 @@
         <graphics name="K01042" fgcolor="#000000" bgcolor="#FFFFFF"
              type="rectangle" x="125" y="450" width="46" height="17"/>
     </entry>
-    <entry id="81" name="ko:K01760 ko:K14155" type="ortholog" reaction="rn:R04941"
-        link="http://www.kegg.jp/dbget-bin/www_bget?K01760+K14155">
-        <graphics name="K01760..." fgcolor="#000000" bgcolor="#FFFFFF"
+    <entry id="81" name="hsa:56267 hsa:883" type="gene" reaction="rn:R04941"
+        link="http://www.kegg.jp/dbget-bin/www_bget?hsa:56267+hsa:883">
+        <graphics name="KYAT3, CCBL2, KAT3, KATIII..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="199" y="299" width="46" height="17"/>
     </entry>
     <entry id="82" name="hsa:4548" type="gene" reaction="rn:R09365"
@@ -237,7 +237,7 @@
     </entry>
     <entry id="89" name="hsa:10587 hsa:114112 hsa:7296" type="gene" reaction="rn:R09372"
         link="http://www.kegg.jp/dbget-bin/www_bget?hsa:10587+hsa:114112+hsa:7296">
-        <graphics name="TXNRD2, SELZ, TR, TR-BETA, TR3, TRXR2..." fgcolor="#000000" bgcolor="#BFFFBF"
+        <graphics name="TXNRD2, GCCD5, SELZ, TR, TR-BETA, TR3, TRXR2..." fgcolor="#000000" bgcolor="#BFFFBF"
              type="rectangle" x="472" y="176" width="46" height="17"/>
     </entry>
     <entry id="90" name="hsa:11185" type="gene" reaction="rn:R09370"
@@ -282,6 +282,9 @@
     </relation>
     <relation entry1="50" entry2="48" type="ECrel">
         <subtype name="compound" value="46"/>
+    </relation>
+    <relation entry1="82" entry2="81" type="ECrel">
+        <subtype name="compound" value="26"/>
     </relation>
     <relation entry1="44" entry2="91" type="ECrel">
         <subtype name="compound" value="22"/>
@@ -330,6 +333,10 @@
     <reaction id="72" name="rn:R04929" type="irreversible">
         <substrate id="17" name="cpd:C05697"/>
         <product id="71" name="cpd:C05686"/>
+    </reaction>
+    <reaction id="81" name="rn:R04941" type="irreversible">
+        <substrate id="25" name="cpd:C05699"/>
+        <product id="26" name="cpd:C05698"/>
     </reaction>
     <reaction id="82" name="rn:R09365" type="irreversible">
         <substrate id="26" name="cpd:C05698"/>

@@ -49,7 +49,7 @@ source("00-basicFunctions.R")
 # Pathwview stores pathways in the working directory
 
 if(!dir.exists("Mouse Processing/MMPATHWAYLIST/")){
-    a <- CHRONOS::downloadKEGGPathwayList("mmu")
+    a <- CHRONOS::downloadKEGGPathwayList(org = "mmu")
     pathview::download.kegg(pathway.id = a$Id, species = "mmu",
                             kegg.dir = "./Mouse Processing/MMPATHWAYLIST/")
     paths_list  <- as_data_frame(a)
