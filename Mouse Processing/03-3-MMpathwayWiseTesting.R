@@ -31,7 +31,7 @@ p.vals.process <- gene.essential %>%
            katz.ssc.vec,katz.source.norm,katz.sink.norm,
           lap.ssc.vec,lap.sink.vec,lap.source.vec)%>%
     group_by(pathway.name,Centrality) %>%
-    do(pval =tidy(wilcox.test( cent_value~ Description,
+    do(pval =tidy(t.test( cent_value~ Description,
                           alternative = "greater",paired = F,exact=FALSE, data = .))) %>%
     unnest()  %>%
     group_by(Centrality) %>%
@@ -63,9 +63,8 @@ mat2 <- table(p.vals.process$pathway.name,p.vals.process$Centrality)
 
 confusion <- as.matrix(mat1) %*% as.matrix(mat2)
 
-colnames(confusion) <- c("Degree", "Katz-Sink", "Katz-Source","Katz-SSC",
-                        "Lap-Sink","Lap-Source","Lap-SSC",
-                        "Pgr-Sink","Pgr-Source", "Pgr-SSC", "Pgr-Und")
+colnames(confusion) <- c("Lap-Sink","Lap-Source","Lap-SSC",
+                        "Pgr-Sink","Pgr-Source", "Pgr-SSC")
 rownames(confusion) <- colnames(confusion)
 
 # The following line only for nonparametrix you have to remove the log values

@@ -36,7 +36,7 @@ p.vals.process <- gene.essential %>%
     unnest()  %>%
     group_by(Centrality) %>%
     mutate(., fdr = p.adjust(p.value)) %>%
-    filter(., fdr < 0.25)
+    filter(., fdr < 0.05)
 
 
 # This plot is intended to investigate false positives. Include later

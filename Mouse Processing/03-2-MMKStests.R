@@ -6,7 +6,7 @@ require(Hmisc)
 require(tidyr)
 require(broom)
 require(xtable)
-gene.essential <- readRDS("gene_essentials.rds")
+gene.essential <- readRDS("Mouse Processing/MMgene_essentials.rds")
 
 
 
@@ -42,7 +42,7 @@ for (i in feat.list){
     temp <- aa2[,i]
     temp <- as.numeric(pull(temp))
 
-    this.test <- ks.test(temp[aa2$V12 == "Cancer"],
+    this.test <- ks.test(temp[aa2$V12 == "Lethal"],
                          temp[aa2$V12 == "Normal"],
                          alternative = "less")
     ks.list <- rbind(ks.list,this.test$p.value)
@@ -74,7 +74,7 @@ ggplot(aa3,aes(cent_value,color = V12)) +
               aes(x,y,label=label),size = 7, inherit.aes=FALSE)
 
 
-    ggsave("images/KSstats.pdf",
+    ggsave("images/MMKSstats.pdf",
            width = 18, height = 20, units = c("in"))
 
 
