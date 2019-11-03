@@ -6,16 +6,44 @@ require(Hmisc)
 require(tidyr)
 require(broom)
 require(xtable)
-gene.essential <- readRDS("gene_essentials.rds")
+gene.essential <- readRDS("Human Processing/gene_essentials.rds")
 
 
 
-sum(gene.essential$beet.sink.norm == gene.essential$beet.source.norm)
+#sum(gene.essential$beet.sink.norm == gene.essential$beet.source.norm)
 
 #### Getting quantiles across the data
 
 feature.list <-  grep("norm",names(gene.essential), value = T)
 feature.list <- feature.list[-c(4,6,7,8,9)]
+
+
+
+feature.list <- gsub(".norm","",feature.list)
+feature.list <- gsub("[.]","-",feature.list)
+feature.list <- gsub("source","Source",feature.list)
+feature.list <- gsub("sink","Sink",feature.list)
+feature.list <- gsub("(^[[:alpha:]])", "\\U\\1", feature.list, perl=TRUE)
+feature.list <- gsub("ssc","SSC",feature.list)
+feature.list <- gsub("Pgr","PageRank",feature.list)
+
+
+
+ temp.zz <- names(gene.essential)
+
+
+ temp.zz <- gsub(".norm","",temp.zz)
+ temp.zz <- gsub("[.]","-",temp.zz)
+ temp.zz <- gsub("source","Source",temp.zz)
+ temp.zz <- gsub("sink","Sink",temp.zz)
+ temp.zz <- gsub("(^[[:alpha:]])", "\\U\\1", temp.zz, perl=TRUE)
+ temp.zz <- gsub("ssc","SSC",temp.zz)
+ temp.zz <- gsub("Pgr","PageRank",temp.zz)
+ 
+ names(gene.essential) <- temp.zz
+
+
+
 
 aa <-     gene.essential %>%
     gather(., key = "Centrality", value = "cent_value",
@@ -28,12 +56,13 @@ aa <-     gene.essential %>%
     aa <- sapply(aa, function(X){levels(X) <- 1:100; return(X)})
     aa <- cbind(aa,gene.essential$Description)
     aa <- as_data_frame(aa)
-    aa2 <- as_data_frame(aa)
+    aa2<- as_data_frame(aa)
     aa <- gather(aa, key = "Centrality", value = "cent_value",-c(12))
 
     aa$cent_value <- as.numeric(aa$cent_value)
 
 
+    
     feat.list <- colnames(aa2)
 
 feat.list <- feat.list[-12]
@@ -56,13 +85,16 @@ ks.pvals <- paste("KS p-value <",ks.pvals)
 
 aa3 <- rbind(aa,mutate(aa,V12= "All Genes"))
 
+
+
+unique(aa3$Centrality)
 ggplot(aa3,aes(cent_value,color = V12)) +
-    stat_ecdf(geom = "line", size = 0.8,alpha=0.9) + facet_wrap(~Centrality ,ncol = 3)+theme_bw()+
-    labs(x = "Quantile", y = "Cumulative Density")+
+    stat_ecdf(geom = "line", size = 1.3,alpha=0.9) + facet_wrap(~Centrality ,ncol = 3)+theme_bw()+
+    labs(x = "Quantile of the Z-normliazed Centrality Scores (Eq. 23)", y = "Cumulative Density")+
     guides(colour = guide_legend(override.aes = list(size=15),show.legend = "line")) +
     theme(strip.text = element_text(face="bold", size=20),
           plot.title = element_text(size = 20),
-          axis.title = element_text(size = 25),
+          axis.title = element_text(size = 35),
           legend.text = element_text(size = 25),
           legend.title=element_blank(),
           axis.text.y=element_text(size = 20),
@@ -74,13 +106,12 @@ ggplot(aa3,aes(cent_value,color = V12)) +
               aes(x,y,label=label),size = 7, inherit.aes=FALSE)
 
 
-    ggsave("images/KSstats.pdf",
+    ggsave("images/Human_KSstats.pdf",
            width = 18, height = 20, units = c("in"))
 
 
 
 
-colnames(aa)
 
 
 

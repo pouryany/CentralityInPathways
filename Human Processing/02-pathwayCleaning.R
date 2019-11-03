@@ -1,6 +1,6 @@
 library(dplyr)
 library(ggplot2)
-all.homo.essential <- readRDS("pathwayCentralities.rds")
+all.homo.essential <- readRDS("Human Processing/pathwayCentralities.rds")
 
 gene.essential <-  all.homo.essential
 gene.essential %>% distinct(.,pathway.name)
@@ -52,6 +52,6 @@ gene.essential %>% distinct(.,pathway.name)
 
 gene.essential <- gene.essential[ !(gene.essential$pathway.name %in% unlist(no.cancers))  ,]
 
-
-saveRDS(gene.essential, file = "gene_essentials.rds")
+length(unique(gene.essential$node.genes))
+saveRDS(gene.essential, file = "Human Processing/gene_essentials.rds")
 

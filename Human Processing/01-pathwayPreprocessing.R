@@ -37,7 +37,7 @@ library(broom)
 library(xtable)
 
 
-source("00-basicFunctions.R")
+source("Human Processing/00-basicFunctions.R")
 
 # Downloading KEGG PATHWAYS
 # Pathwview stores pathways in the working directory
@@ -46,10 +46,10 @@ if(!dir.exists("PATHWAYLIST/")){
     a <- CHRONOS::downloadKEGGPathwayList("hsa")
     pathview::download.kegg(pathway.id = a$Id, kegg.dir = "./PATHWAYLIST/")
     paths_list  <- as_data_frame(a)
-    write.csv(paths_list, file = "pathlist.txt", row.names = F)
+    write.csv(paths_list, file = "data/pathlist.txt", row.names = F)
 }
 
-    a <- read.table("pathlist.txt", sep = ",", header = T,
+    a <- read.table("data/pathlist.txt", sep = ",", header = T,
                     colClasses = c("character","character"))
 # Retreiving Pathway graphs and information for KGML files
     paths.address  <- paste("PATHWAYLIST/hsa",a$Id,".xml",sep = "")
@@ -74,9 +74,11 @@ if(!dir.exists("PATHWAYLIST/")){
 graphs.homo      <- sapply(graphs.homo, function(X)(RBGL::removeSelfLoops(X)))
 
 ### Some basic pathway filterg, leaving out empty graphs
+length(graphs.homo)
 non.empty.homo   <- sapply(graphs.homo, function(X)(length(nodes(X)) != 0))
 num.nodes.homo   <- sapply(graphs.homo, function(X)(length(nodes(X))))
 non.empty.homo   <- graphs.homo[non.empty.homo]
+length(non.empty.homo)
 
 mtx.collection   <- sapply(non.empty.homo, function(X)(as(X,"matrix")))
 num.edges.homo   <- sapply(mtx.collection, sum)
@@ -162,8 +164,10 @@ colnames(paths.summary) <- c("pathway_name", "num_nodes", "num_edges","eigen")
         homo.gene.ref <- dplyr::bind_rows(homo.gene.ref1,homo.gene.ref2)
         homo.gene.ref <-  distinct(homo.gene.ref,Gene,Description)
 
-        paths.summary[paths.summary$num_nodes < 21 |paths.summary$num_edges <21,]
+        paths.summary[paths.summary$num_nodes < 20 |paths.summary$num_edges <20,]
         paths.summary[paths.summary$eigen >10,]
+        paths.summary[paths.summary$num_nodes > 1000 |paths.summary$num_edges >4000,]
+        
         all.path.names     <- pathway.titles
         all.homo.essential <- data_frame()
 
@@ -376,6 +380,6 @@ for (i in 1:length(graphs.homo)){
     print(temp)
 }
 
-
+unique(all.homo.essential$pathway.name)
 ### Saving and loading made easy
-saveRDS(all.homo.essential, file = "pathwayCentralities.rds")
+saveRDS(all.homo.essential, file = "Human Processing/pathwayCentralities.rds")

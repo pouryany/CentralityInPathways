@@ -4,7 +4,7 @@ library(broom)
 library(ggplot2)
 library(xtable)
 
-gene.essential <- readRDS("gene_essentials.rds")
+gene.essential <- readRDS("Human Processing/gene_essentials.rds")
 
 
 
@@ -15,7 +15,7 @@ gene.essential <- readRDS("gene_essentials.rds")
 
 gene.essential$Description <- factor(gene.essential$Description)
 # levels(gene.temp$Description)
- gene.essential$Description <- relevel(gene.essential$Description,ref = "Normal")
+gene.essential$Description <- relevel(gene.essential$Description,ref = "Normal")
 
 
 ## The regression analysis
@@ -97,16 +97,16 @@ adjusted.pval <- formatC(adjusted.pval, format = "e", digits = 2)
 overall.cors[,4] <- formatC(unlist(pull(overall.cors[,4])), format = "e", digits = 2)
 print(xtable(overall.cors), include.rownames = F)
 
-text.vals <- paste("Adjusted r-squared:",formatC(pull(overall.cors[,2]),digits = 2),
+text.vals <- paste("Adj r-squared:",formatC(pull(overall.cors[,2]),digits = 2),
                    "\n p-value:", pull(overall.cors[,4]), "\n Adj p-value:",
                    adjusted.pval)
 
 overall.cors$label <- text.vals
 
-ggplot(total, aes(y = freq, x= quant)) + geom_point()+
+ggplot(total, aes(y = 100*freq, x= quant)) + geom_point()+
     geom_smooth(method= "lm") + #geom_smooth(method= "loess", color="green" , fill = "red") +
-    facet_wrap(~Centrality ,ncol = 2) +theme_bw()+
-    labs(x = "Quantile Score", y = "Fraction of Cancer Genes")+
+    facet_wrap(~Centrality ,ncol = 3) +theme_bw()+
+    labs(x = "Normalized Centrality Score (Eq. 20)", y = "% of Genes that are Cancer-related (Eq. 21)")+
     theme(strip.text = element_text(face="bold", size=20),
           plot.title = element_text(size = 20),
           axis.title = element_text(size = 30),
@@ -115,15 +115,17 @@ ggplot(total, aes(y = freq, x= quant)) + geom_point()+
           axis.text.y=element_text(size = 12),
           axis.text.x=element_text(size = 12),
           axis.ticks.y=element_blank()) +
-    geom_text(data=overall.cors, x = 50, y =0.7,
+    geom_text(data=overall.cors, x = 50, y =70,
               aes(x,y,label=label),size = 6, inherit.aes=FALSE)
 
-ggsave("images/Regression.pdf",
+ggsave("images/Human_Regression.pdf",
        width = 10, height = 18, units = c("in"))
 
 
+# Calculating precentage
+
 overall.regs <- total %>% group_by(Centrality) %>%
-    do(fit = lm(freq ~ as.numeric(quant), data=.)) %>%  tidy(fit)
+    do(fit = lm((100*freq) ~ as.numeric(quant), data=.)) %>%  tidy(fit)
 
 
 overall.regs$term[overall.regs$term == "as.numeric(quant)"] <- "Coefficient"

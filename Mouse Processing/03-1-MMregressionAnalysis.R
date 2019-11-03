@@ -106,10 +106,10 @@ text.vals <- paste("Adjusted r-squared:",formatC(pull(overall.cors[,2]),digits =
 overall.cors$label <- text.vals
 
 
-ggplot(total, aes(y = freq, x= quant)) + geom_point()+
+ggplot(total, aes(y = 100 * freq, x= quant)) + geom_point()+
     geom_smooth(method= "lm") + #geom_smooth(method= "loess", color="green" , fill = "red") +
     facet_wrap(~Centrality ,ncol = 3) +theme_bw()+
-    labs(x = "Quantile Score", y = "Fraction of Lethal Genes")+
+    labs(x = "Normalized Centrality Score (Eq. 20)", y = "% of Genes that are Lethal (Eq. 21)")+
     theme(strip.text = element_text(face="bold", size=20),
           plot.title = element_text(size = 20),
           axis.title = element_text(size = 30),
@@ -118,15 +118,16 @@ ggplot(total, aes(y = freq, x= quant)) + geom_point()+
           axis.text.y=element_text(size = 12),
           axis.text.x=element_text(size = 12),
           axis.ticks.y=element_blank()) +
-    geom_text(data=overall.cors, x = 50, y =0.3,
+    geom_text(data=overall.cors, x = 50, y =30,
               aes(x,y,label=label),size = 6, inherit.aes=FALSE)
 
-ggsave("images/MouseRegression.pdf",
+ggsave("images/Mouse_Regression.pdf",
        width = 10, height = 18, units = c("in"))
 
 
+#reporting percentage
 overall.regs <- total %>% group_by(Centrality) %>%
-    do(fit = lm(freq ~ as.numeric(quant), data=.)) %>%  tidy(fit)
+    do(fit = lm((100*freq) ~ as.numeric(quant), data=.)) %>%  tidy(fit)
 
 
 overall.regs$term[overall.regs$term == "as.numeric(quant)"] <- "Coefficient"

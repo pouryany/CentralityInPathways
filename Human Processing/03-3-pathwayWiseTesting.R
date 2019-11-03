@@ -8,7 +8,7 @@ library(broom)
 library(ggplot2)
 library(xtable)
 
-gene.essential <- readRDS("gene_essentials.rds")
+gene.essential <- readRDS("Human Processing/gene_essentials.rds")
 # Pathway-wise checking if the rank of the cancer nodes are different based on centrality
 ### Getting rid of pathways with no cancer-genes
 

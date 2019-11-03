@@ -53,6 +53,7 @@ gene.essential %>% distinct(.,pathway.name)
 
 gene.essential <- gene.essential[ !(gene.essential$pathway.name %in% unlist(no.Lethals))  ,]
 
+length((gene.essential$node.genes[gene.essential$Description == "Lethal"]))
 
 saveRDS(gene.essential, file = "Mouse Processing/MMgene_essentials.rds")
 

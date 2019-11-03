@@ -3,7 +3,7 @@
 require(dplyr)
 require(ggplot2)
 
-gene.essential <- readRDS("gene_essentials.rds")
+gene.essential <- readRDS("Human Processing/gene_essentials.rds")
 
 
 norm.names <-  names(gene.essential)[grep("norm",names(gene.essential))]
