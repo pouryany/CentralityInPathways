@@ -3,23 +3,127 @@ library(dplyr)
 library(broom)
 library(ggplot2)
 library(xtable)
+library(reshape2)
 
-gene.essential <- readRDS("Mouse Processing/MMgene_essentials.rds")
-
-
-
-
-
-
-
+gene.essential <- readRDS("mouse_data/MMgene_essentials.rds")
 
 gene.essential$Description <- factor(gene.essential$Description)
-# levels(gene.temp$Description)
- gene.essential$Description <- relevel(gene.essential$Description,ref = "Normal")
+gene.essential$Description <- relevel(gene.essential$Description,ref = "Normal")
+
+
+feature.list <- grep("quant",names(gene.essential))
+new.vars     <- c("pathway.name","node.genes","Description",
+                  names(gene.essential)[feature.list])
+new.vars     <- new.vars[-c(5)]
+cents.table  <- gene.essential[,new.vars]
+cents.table  <- reshape2::melt(cents.table, id.vars = c("pathway.name",
+                                                        "node.genes","Description"))
+names(cents.table)[4] <- "Centrality"
+
+
+tots <- cents.table %>%  group_by(.,Centrality,value,Description)  %>%
+  summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
+  filter(., Description== "Lethal") 
+
+
+overall.cors <- tots %>% group_by(Centrality) %>%
+  do(fit = lm(freq ~ as.numeric(value), data=.)) %>% 
+  glance(fit) %>% filter(., !grepl("cls",Centrality))
+
+
+
+overall.cors     <- overall.cors[,c(1,2,3,6)]
+adjusted.pval    <- p.adjust(unlist(overall.cors[,4]),method = "fdr")
+adjusted.pval    <- formatC(adjusted.pval, format = "e", digits = 2)
+overall.cors[,4] <- formatC(unlist(pull(overall.cors[,4])), format = "e",
+                            digits = 2)
+
+
+print(xtable(overall.cors), include.rownames = F)
+
+text.vals <- paste("Adj r-squared:",formatC(pull(overall.cors[,2]),digits = 2),
+                   "\n p-value:", pull(overall.cors[,4]), "\n Adj p-value:",
+                   adjusted.pval)
+
+overall.cors$label <- text.vals
+
+
+total <- tots %>% filter(.,!grepl("cls",Centrality))
+
+ggplot(total, aes(y = 100*freq, x= value)) + geom_point()+
+  geom_smooth(method= "lm") + #geom_smooth(method= "loess", color="green" , fill = "red") +
+  facet_wrap(~Centrality ,ncol = 3) +theme_bw()+
+  labs(x = "Normalized Centrality Score (Eq. 20)", y = "% of Genes that are Lethal (Eq. 21)")+
+  theme(strip.text = element_text(face="bold", size=20),
+        plot.title = element_text(size = 20),
+        axis.title = element_text(size = 30),
+        legend.text = element_text(size = 9),
+        legend.title=element_text(face = "bold", size = 9),
+        axis.text.y=element_text(size = 12),
+        axis.text.x=element_text(size = 12),
+        axis.ticks.y=element_blank()) +
+  geom_text(data=overall.cors, x = 50, y =70,
+            aes(x,y,label=label),size = 6, inherit.aes=FALSE)
+ggsave("images/Mouse_Regression.pdf",
+       width = 10, height = 18, units = c("in"))
+
+
+
+
+
+overall.cors <- tots %>% group_by(Centrality) %>%
+  do(fit = lm(freq ~ as.numeric(value), data=.)) %>% 
+  glance(fit) %>% filter(., grepl("cls",Centrality))
+
+
+
+overall.cors     <- overall.cors[,c(1,2,3,6)]
+adjusted.pval    <- p.adjust(unlist(overall.cors[,4]),method = "fdr")
+adjusted.pval    <- formatC(adjusted.pval, format = "e", digits = 2)
+overall.cors[,4] <- formatC(unlist(pull(overall.cors[,4])), format = "e",
+                            digits = 2)
+
+
+print(xtable(overall.cors), include.rownames = F)
+
+text.vals <- paste("Adj r-squared:",formatC(pull(overall.cors[,2]),digits = 2),
+                   "\n p-value:", pull(overall.cors[,4]), "\n Adj p-value:",
+                   adjusted.pval)
+
+overall.cors$label <- text.vals
+
+
+total <- tots %>% filter(.,grepl("cls",Centrality))
+
+ggplot(total, aes(y = 100*freq, x= value)) + geom_point()+
+  geom_smooth(method= "lm") + #geom_smooth(method= "loess", color="green" , fill = "red") +
+  facet_wrap(~Centrality ,ncol = 2) +theme_bw()+
+  labs(x = "Normalized Centrality Score (Eq. 20)", y = "% of Genes that are Lethal (Eq. 21)")+
+  theme(strip.text = element_text(face="bold", size=20),
+        plot.title = element_text(size = 20),
+        axis.title = element_text(size = 30),
+        legend.text = element_text(size = 9),
+        legend.title=element_text(face = "bold", size = 9),
+        axis.text.y=element_text(size = 12),
+        axis.text.x=element_text(size = 12),
+        axis.ticks.y=element_blank()) +
+  geom_text(data=overall.cors, x = 50, y =50,
+            aes(x,y,label=label),size = 6, inherit.aes=FALSE)
+ggsave("images/Mouse_Regression_Closeness.pdf",
+       width = 10, height = 10, units = c("in"))
+
+
+
+
+
+
+
+
+
 
 
 ## The regression analysis
-
+if(FALSE){
 a1 <- gene.essential %>% group_by(katz.ssc.quant, Description)  %>%
     summarise(n = n()) %>% mutate(freq = n/ sum(n)) %>%
     filter(., Description== "Lethal") %>%
@@ -244,5 +348,5 @@ reg.res %>% group_by(Centrality) %>% group_by(Description,cent_value) %>%
 
 reg.res %>% group_by(., Centrality) %>%
     do(fit = lm(freq ~ as.numeric(cent_value), data=.)) %>%    glance(fit)
-
+}
 

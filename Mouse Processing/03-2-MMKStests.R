@@ -6,7 +6,7 @@ require(Hmisc)
 require(tidyr)
 require(broom)
 require(xtable)
-gene.essential <- readRDS("Mouse Processing/MMgene_essentials.rds")
+gene.essential <- readRDS("mouse_data/MMgene_essentials.rds")
 
 
 
@@ -42,8 +42,9 @@ names(gene.essential) <- temp.zz
 
 
 aa <-     gene.essential %>%
-    gather(., key = "Centrality", value = "cent_value",
-           gather_cols=feature.list) %>%  group_by(Centrality) %>%
+    pivot_longer(., feature.list, names_to  = "Centrality", 
+                 values_to  = "cent_value") %>% 
+    group_by(Centrality) %>%
      mutate(.,zz = as.factor(cut2(cent_value,m = 3, g = 100))) %>%
     group_by(Centrality) %>% mutate(., zz = as.factor(zz))
 
@@ -114,7 +115,7 @@ colnames(aa)
 
 ## Remember to fix the names of pgr.source and pgr.sink
 
-
+if(FALSE){
 aa.cancer <-  filter(aa,  V12=="Cancer" )
 aa.cancer$Centrality <- gsub(".norm","",aa.cancer$Centrality)
 
@@ -403,4 +404,4 @@ ggplot(gene.essential4,aes(pgr.quant2, color = Description)) +
     annotate("text",x=50, y= 1, size = 10,  label= "KS p-value < 4e-04")
 
 ks.test(zzz4,zzz2, alternative = "greater")
-
+}

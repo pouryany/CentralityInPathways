@@ -6,7 +6,7 @@ require(Hmisc)
 require(tidyr)
 require(broom)
 require(xtable)
-gene.essential <- readRDS("Human Processing/gene_essentials.rds")
+gene.essential <- readRDS("human_data/gene_essentials.rds")
 
 
 
@@ -46,8 +46,9 @@ feature.list <- gsub("Pgr","PageRank",feature.list)
 
 
 aa <-     gene.essential %>%
-    gather(., key = "Centrality", value = "cent_value",
-           gather_cols=feature.list) %>%  group_by(Centrality) %>%
+    pivot_longer(., feature.list, names_to  = "Centrality", 
+                 values_to  = "cent_value") %>% 
+    group_by(Centrality) %>%
      mutate(.,zz = as.factor(cut2(cent_value,m = 3, g = 100))) %>%
     group_by(Centrality) %>% mutate(., zz = as.factor(zz))
 
@@ -55,8 +56,8 @@ aa <-     gene.essential %>%
                  FUN = function(X){as.factor(cut2(X,m=3,g=100))})
     aa <- sapply(aa, function(X){levels(X) <- 1:100; return(X)})
     aa <- cbind(aa,gene.essential$Description)
-    aa <- as_data_frame(aa)
-    aa2<- as_data_frame(aa)
+    aa <- as_tibble(aa)
+    aa2<- as_tibble(aa)
     aa <- gather(aa, key = "Centrality", value = "cent_value",-c(12))
 
     aa$cent_value <- as.numeric(aa$cent_value)
@@ -121,7 +122,9 @@ ggplot(aa3,aes(cent_value,color = V12)) +
 
 ## Remember to fix the names of pgr.source and pgr.sink
 
-
+ 
+    
+if(FALSE){  
 aa.cancer <-  filter(aa,  V12=="Cancer" )
 aa.cancer$Centrality <- gsub(".norm","",aa.cancer$Centrality)
 
@@ -410,4 +413,4 @@ ggplot(gene.essential4,aes(pgr.quant2, color = Description)) +
     annotate("text",x=50, y= 1, size = 10,  label= "KS p-value < 4e-04")
 
 ks.test(zzz4,zzz2, alternative = "greater")
-
+}

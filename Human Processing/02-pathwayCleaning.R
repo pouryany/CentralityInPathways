@@ -1,10 +1,10 @@
 library(dplyr)
 library(ggplot2)
-all.homo.essential <- readRDS("Human Processing/pathwayCentralities.rds")
+all.hsap.essential <- readRDS("Human Processing/pathwayCentralities.rds")
 
-gene.essential <-  all.homo.essential
+gene.essential <-  all.hsap.essential
 gene.essential %>% distinct(.,pathway.name)
-gene.essential <-  gene.essential %>%  replace_na(list(Description = "Normal"))
+gene.essential <-  gene.essential %>%  tidyr::replace_na(list(Description = "Normal"))
 
 # Assigning quantile scores to centrality models
 gene.essential %<>% filter(.,total.node < 1000, total.node >20, total.edge > 20,
@@ -14,10 +14,10 @@ gene.essential %<>% filter(.,total.node < 1000, total.node >20, total.edge > 20,
            katz.sink.quant =   round((katz.sink.rank/total.node)*100),
            katz.source.quant = round((katz.source.rank/total.node)*100),
            deg.quant =         round((degree.rank/total.node)*100),
-           beet.source.quant = round((beet.source.rank/total.node)*100),
-           beet.und.quant =    round((beet.und.rank/total.node)*100),
-           beet.sink.quant =   round((beet.sink.rank/total.node)*100),
-           beet.ssc.quant =    round((beet.ssc.rank/total.node)*100),
+           cls.source.quant = round((cls.source.rank/total.node)*100),
+           cls.und.quant =    round((cls.und.rank/total.node)*100),
+           cls.sink.quant =   round((cls.sink.rank/total.node)*100),
+           cls.ssc.quant =    round((cls.ssc.rank/total.node)*100),
            pgr.source.quant =  round((pgr.source.rank/total.node)*100),
            pgr.sink.quant =    round((pgr.sink.rank/total.node)*100),
            pgr.ssc.quant =     round((pgr.ssc.rank/total.node)*100),
@@ -53,5 +53,5 @@ gene.essential %>% distinct(.,pathway.name)
 gene.essential <- gene.essential[ !(gene.essential$pathway.name %in% unlist(no.cancers))  ,]
 
 length(unique(gene.essential$node.genes))
-saveRDS(gene.essential, file = "Human Processing/gene_essentials.rds")
+saveRDS(gene.essential, file = "human_data/gene_essentials.rds")
 

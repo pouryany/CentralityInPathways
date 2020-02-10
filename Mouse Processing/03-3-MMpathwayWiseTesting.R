@@ -8,7 +8,7 @@ library(broom)
 library(ggplot2)
 library(xtable)
 
-gene.essential <- readRDS("Mouse Processing/MMgene_essentials.rds")
+gene.essential <- readRDS("mouse_data/MMgene_essentials.rds")
 # Pathway-wise checking if the rank of the cancer nodes are different based on centrality
 ### Getting rid of pathways with no cancer-genes
 
@@ -33,7 +33,7 @@ p.vals.process <- gene.essential %>%
     group_by(pathway.name,Centrality) %>%
     do(pval =tidy(t.test( cent_value~ Description,
                           alternative = "greater",paired = F,exact=FALSE, data = .))) %>%
-    unnest()  %>%
+    unnest(cols = c(pval))  %>%
     group_by(Centrality) %>%
     mutate(., fdr = p.adjust(p.value)) %>%
     filter(., fdr < 0.25)
@@ -63,8 +63,8 @@ mat2 <- table(p.vals.process$pathway.name,p.vals.process$Centrality)
 
 confusion <- as.matrix(mat1) %*% as.matrix(mat2)
 
-colnames(confusion) <- c("Lap-Sink","Lap-Source","Lap-SSC",
-                        "Pgr-Sink","Pgr-Source", "Pgr-SSC")
+colnames(confusion) <- c("Lap-Sink","Lap-SSC",
+                        "Pgr-Sink")
 rownames(confusion) <- colnames(confusion)
 
 # The following line only for nonparametrix you have to remove the log values
@@ -90,5 +90,5 @@ xtable(confusion)
 
 # Analyzing for only pathways with cancer
 gene.essential %>% distinct(., node.genes)
-gene.essential %>% filter(.,Description == "Cancer") %>% distinct(., node.genes)
+gene.essential %>% filter(.,Description == "Lethal") %>% distinct(., node.genes)
 
