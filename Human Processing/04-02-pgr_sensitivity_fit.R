@@ -64,37 +64,137 @@ total <- overall.cors
 
 library(RColorBrewer)
 colores <- brewer.pal(4,"Set2")  
-ggplot(total, aes(y = adj.r.squared, x= pgr_damp)) + 
-    geom_line(aes(color = Centrality), size = 2) +
-    scale_color_manual( labels = c("Source","Sink","SSC","Undirected"),
-                        values = c("pgr.source.quant" = colores[1],
-                                   "pgr.sink.quant" = colores[2],
-                                   "pgr.ssc.quant" = colores[3],
-                                   "pgr.und.quant" = colores[4])) +
+p1 <- ggplot(total, aes(y = adj.r.squared, x= pgr_damp)) + 
+        geom_line(aes(color = Centrality), size = 2) +
+        scale_color_manual( labels = c("Source","Sink","SSC","Undirected"),
+                            values = c("pgr.source.quant" = colores[1],
+                                       "pgr.sink.quant" = colores[2],
+                                       "pgr.ssc.quant" = colores[3],
+                                       "pgr.und.quant" = colores[4])) +
+        labs(x = "PageRank dampening factor (alpha)", 
+             y = "Adjusted R-Squared of the linear model")+
+        theme_bw()+
+        theme(strip.text = element_text(face="bold", size=20),
+              plot.title = element_text(size = 20),
+              axis.title = element_text(size = 20),
+              legend.text = element_text(size = 15),
+              legend.title=element_text(face = "bold", size = 20),
+              axis.text.y=element_text(size = 15),
+              axis.text.x=element_text(size = 15),
+              axis.ticks.y=element_blank())
+    
+
+
+
+
+
+
+max.r <- which.max(overall.cors$adj.r.squared)
+max.r <- overall.cors[max.r,]$pgr_damp
+
+
+
+
+
+
+
+
+
+
+
+overall.cors <- tots %>% group_by(.,pgr_damp,Centrality) %>%
+    do(fit = lm(freq ~ as.numeric(value), data=.)) %>% 
+    glance(fit) %>% filter(.,pgr_damp == max.r)
+
+
+psych::r.test(100,0.808,0.692, twotailed = F)
+
+overall.regs <- tots %>% group_by(.,pgr_damp,Centrality) %>%
+    do(fit = lm((100*freq) ~ as.numeric(value), data=.)) %>%
+    tidy(fit) %>% filter(.,pgr_damp == max.r)
+
+
+overall.regs$term[overall.regs$term == "as.numeric(quant)"] <- "Coefficient"
+
+overall.regs[,c(3,4,5,6)] <- sapply(overall.regs[,c(3,4,5,6)], FUN = formatC,
+                                    format = "e", digits = 2)
+
+
+print(xtable(overall.regs), include.rownames = F, digits = 2,
+      display=c("s","s", "s", "s","g"),
+      math.style.exponents = T)
+
+
+tot2  <- tots %>% filter(.,Centrality %in% c("pgr.und.quant","pgr.ssc.quant"))
+
+overall.cors <- tots %>% group_by(.,pgr_damp,Centrality) %>%
+    do(fit = lm(freq ~ as.numeric(value), data=.)) %>% 
+    glance(fit) 
+
+
+p.difs <- data.frame(pgr_damps =  unique(overall.cors$pgr_damp), pvals = NA)
+for(i in unique(overall.cors$pgr_damp)){
+    r1 <- overall.cors[overall.cors$pgr_damp == i & 
+                           overall.cors$Centrality =="pgr.ssc.quant",]$r.squared
+    r2 <- overall.cors[overall.cors$pgr_damp == i & 
+                           overall.cors$Centrality =="pgr.und.quant",]$r.squared
+    out <- psych::r.test(100,(r1),(r2),twotailed = F)
+    p.difs[p.difs$pgr_damps ==i,2] <- out$p
+    print(out$p)
+}
+
+
+
+p2 <- ggplot(p.difs, aes(y = -log(pvals), x= p.difs[,1])) + 
+    geom_line( size = 2) +
+    geom_hline(yintercept=-log(0.05), linetype="dashed", color = "red") +
     labs(x = "PageRank dampening factor (alpha)", 
-         y = "Adjusted R-Squared of the linear model")+
+         y = "Negative log p-value of ∆r")+
     theme_bw()+
     theme(strip.text = element_text(face="bold", size=20),
           plot.title = element_text(size = 20),
-          axis.title = element_text(size = 20),
+          axis.title = element_text(size = 15),
           legend.text = element_text(size = 15),
           legend.title=element_text(face = "bold", size = 20),
-          axis.text.y=element_text(size = 12),
-          axis.text.x=element_text(size = 12),
+          axis.text.y=element_text(size = 15),
+          axis.text.x=element_text(size = 15),
           axis.ticks.y=element_blank())
 
 
+library(gridExtra)
+p3 <- arrangeGrob(p1,p2, nrow =1)
+ggsave("images/Human_pgr_Sensitivity.pdf",p3,
+       width = 18, height = 10, units = c("in"))
+
+
+
+difs <- tot2 %>% group_by(.,pgr_damp) %>%
+    do(fit = lm((100*freq) ~ as.numeric(value)/Centrality, data=.)) %>% 
+    tidy(fit) 
+
+
+# z <- lm((100*freq) ~ as.numeric(value), data=tot2)
+# 
+# 
+# m.interaction <- lm((100*freq) ~ as.numeric(value)/Centrality, data=tot2)
+# summary(m.interaction)
+### Functionalize the above code at some point. Use the chunks below
 
 
 
 
-overall.cors <- tots %>% group_by(Centrality) %>%
-    do(fit = lm(freq ~ as.numeric(value), data=.)) %>% 
-    glance(fit) %>% filter(., grepl("cls",Centrality))
 
 
 
-overall.cors     <- overall.cors[,c(1,2,3,6)]
+
+
+
+
+
+
+
+
+overall.cors     <- overall.cors[,c(2,3,4,7)]
 adjusted.pval    <- p.adjust(unlist(overall.cors[,4]),method = "fdr")
 adjusted.pval    <- formatC(adjusted.pval, format = "e", digits = 2)
 overall.cors[,4] <- formatC(unlist(pull(overall.cors[,4])), format = "e",
@@ -110,23 +210,8 @@ text.vals <- paste("Adj r-squared:",formatC(pull(overall.cors[,2]),digits = 2),
 overall.cors$label <- text.vals
 
 
-total <- tots %>% filter(.,grepl("cls",Centrality))
+total <- tots %>% filter(.,pgr_damp == 0.58)
 
-ggplot(total, aes(y = 100*freq, x= value)) + geom_point()+
-    geom_smooth(method= "lm") + #geom_smooth(method= "loess", color="green" , fill = "red") +
-    facet_wrap(~Centrality ,ncol = 2) +theme_bw()+
-    labs(x = "Normalized Centrality Score (Eq. 20)", y = "% of Genes that are Cancer-related (Eq. 21)")+
-    theme(strip.text = element_text(face="bold", size=20),
-          plot.title = element_text(size = 20),
-          axis.title = element_text(size = 30),
-          legend.text = element_text(size = 9),
-          legend.title=element_text(face = "bold", size = 9),
-          axis.text.y=element_text(size = 12),
-          axis.text.x=element_text(size = 12),
-          axis.ticks.y=element_blank()) +
-    geom_text(data=overall.cors, x = 50, y =70,
-              aes(x,y,label=label),size = 6, inherit.aes=FALSE)
-ggsave("images/Human_Regression_Closeness.pdf",
-       width = 10, height = 10, units = c("in"))
+
 
 
