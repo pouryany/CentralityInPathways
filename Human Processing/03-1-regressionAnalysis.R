@@ -115,67 +115,6 @@ ggplot(total, aes(y = 100*freq, x= value)) + geom_point()+
 ggsave("images/Human_Regression_Closeness.pdf",
        width = 10, height = 10, units = c("in"))
 
-# -c(1,2,3,4,58,59,60,61)
-# 
-# reg.table <- gene.essential %>%
-#     tidyr::gather(., key = "Centrality", value = "cent_value",
-#            gather_cols=feature.list) %>%
-#     group_by(Centrality) %>%
-#     do(fit =tidy(glm(as.factor(Description) ~ cent_value, family="binomial", data = .))) %>%
-#     unnest()  %>%
-#     group_by(Centrality)
-# 
-# 
-# mutate(., fdr = p.adjust(p.value)) %>%
-#     filter(., fdr < 0.05)
-# 
-# 
-# bbb <- reg.table %>% filter(., term != "(Intercept)") %>%
-#     mutate(., estimate = exp(estimate))
-# levels(gene.essential$Description) <- c(0,1)
-# 
-# glm(as.factor(Description) ~ katz.sink.norm + pgr.sink.norm, family= binomial, data = gene.essential)
-# 
-# 
-# 
-# log(log(log(katz.ssc.vec)) +2)
-# as.logical(factor(gene.essential$Description))
-# log(100)
-# exp(0.37)
-# ggplot(gene.essential,aes(x =katz.ssc.vec ,   colour = Description)) +
-#     geom_density( kernel = "g")+
-#     theme_bw()
-# 
-# ggplot(gene.essential,aes(x =log(katz.source.vec) , y = log(katz.sink.vec),
-#                           colour = Description)) + geom_point()
-# ggplot(gene.essential,aes(x =rgamma(nrow(gene.essential),3.27839639,1.00738148 ))) +
-#     geom_density( kernel = "g")
-# 
-# 
-# ?dgamma
-# 
-# library(MASS)
-# my.mle<-fitdistr(gene.essential$katz.ssc.vec, densfun="gamma")
-# my.mle$sd
-# BIC(my.mle)
-# 
-# 
-# feature.list <-  grep("quant",names(gene.essential),value = T)
-# feature.list <- feature.list[-2]
-# reg.res <- gene.essential %>% mutate(., deg.quant = all.degree)
-# reg.res <-    gene.essential %>%
-#     gather_(., key = "Centrality", value = "cent_value",
-#             gather_cols=feature.list)
-# 
-# 
-# reg.res %>% group_by(Centrality) %>% group_by(Description,cent_value) %>%
-#     summarise(n = n()) %>%
-#     mutate(freq = n/ sum(n)) %>%
-#     filter(., Description== "Cancer") %>% mutate(.,Models = Centrality)
-# 
-# 
-# reg.res %>% group_by(., Centrality) %>%
-#     do(fit = lm(freq ~ as.numeric(cent_value), data=.)) %>%    glance(fit)
 
 if(FALSE){
   ## The regression analysis

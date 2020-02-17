@@ -62,6 +62,17 @@ overall.cors <- tots %>% group_by(.,pgr_damp,Centrality) %>%
 
 total <- overall.cors
 
+
+library(grid)
+# Create a text
+grobA <- grobTree(textGrob("A", x=0.05,  y=0.95, hjust=0,
+                          gp=gpar( fontsize=30, fontface="bold")))
+
+grobB <- grobTree(textGrob("B", x=0.05,  y=0.95, hjust=0,
+                           gp=gpar( fontsize=30, fontface="bold")))
+# Plot
+
+
 library(RColorBrewer)
 colores <- brewer.pal(4,"Set2")  
 p1 <- ggplot(total, aes(y = adj.r.squared, x= pgr_damp)) + 
@@ -81,7 +92,9 @@ p1 <- ggplot(total, aes(y = adj.r.squared, x= pgr_damp)) +
               legend.title=element_text(face = "bold", size = 20),
               axis.text.y=element_text(size = 15),
               axis.text.x=element_text(size = 15),
-              axis.ticks.y=element_blank())
+              axis.ticks.y=element_blank())+ 
+    annotation_custom(grobA)
+
     
 
 
@@ -145,20 +158,22 @@ for(i in unique(overall.cors$pgr_damp)){
 
 
 
+
 p2 <- ggplot(p.difs, aes(y = -log(pvals), x= p.difs[,1])) + 
     geom_line( size = 2) +
     geom_hline(yintercept=-log(0.05), linetype="dashed", color = "red") +
     labs(x = "PageRank dampening factor (alpha)", 
-         y = "Negative log p-value of ∆r")+
+         y = "Negative log p-value")+
     theme_bw()+
     theme(strip.text = element_text(face="bold", size=20),
           plot.title = element_text(size = 20),
-          axis.title = element_text(size = 15),
+          axis.title = element_text(size = 20),
           legend.text = element_text(size = 15),
           legend.title=element_text(face = "bold", size = 20),
           axis.text.y=element_text(size = 15),
           axis.text.x=element_text(size = 15),
-          axis.ticks.y=element_blank())
+          axis.ticks.y=element_blank())+ 
+    annotation_custom(grobB)
 
 
 library(gridExtra)
