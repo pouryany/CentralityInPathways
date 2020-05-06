@@ -52,9 +52,9 @@ aa <-     gene.essential %>%
                  FUN = function(X){as.factor(cut2(X,m=3,g=100))})
     aa <- sapply(aa, function(X){levels(X) <- 1:100; return(X)})
     aa <- cbind(aa,gene.essential$Description)
-    aa <- as_data_frame(aa)
-    aa2 <- as_data_frame(aa)
-    aa <- gather(aa, key = "Centrality", value = "cent_value",-c(12))
+    aa <- tibble::as_data_frame(aa)
+    aa2 <- tibble::as_data_frame(aa)
+    aa <- tidyr::gather(aa, key = "Centrality", value = "cent_value",-c(12))
 
     aa$cent_value <- as.numeric(aa$cent_value)
 
@@ -76,7 +76,7 @@ for (i in feat.list){
 ks.list <- data.frame(cbind(feat.list,ks.list))
 
 ks.pvals <- formatC(unlist(ks.list$V2), digits = 3)
-ks.pvals <- paste("KS p-value <",ks.pvals)
+ks.pvals <- paste("KS p-value =",ks.pvals)
 
 
 aa3 <- rbind(aa,mutate(aa,V12= "All Genes"))

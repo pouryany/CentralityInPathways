@@ -31,7 +31,7 @@ p.vals.process <- gene.essential %>%
            katz.ssc.vec,katz.source.norm,katz.sink.norm,
           lap.ssc.vec,lap.sink.vec,lap.source.vec)%>%
     group_by(pathway.name,Centrality) %>%
-    do(pval =tidy(t.test( cent_value~ Description,
+    do(pval =tidy(wilcox.test( cent_value~ Description,
                           alternative = "greater",paired = F,exact=FALSE, data = .))) %>%
     unnest(cols = c(pval))  %>%
     group_by(Centrality) %>%

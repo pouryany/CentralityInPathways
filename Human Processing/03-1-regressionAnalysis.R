@@ -96,7 +96,8 @@ text.vals <- paste("Adj r-squared:",formatC(pull(overall.cors[,2]),digits = 2),
 overall.cors$label <- text.vals
 
 
-total <- tots %>% filter(.,grepl("cls",Centrality))
+total  <- tots %>% filter(.,grepl("cls",Centrality))
+x.name <- levels(total$Centrality)
 
 ggplot(total, aes(y = 100*freq, x= value)) + geom_point()+
   geom_smooth(method= "lm") + #geom_smooth(method= "loess", color="green" , fill = "red") +
@@ -335,7 +336,7 @@ if(FALSE){
               aes(x,y,label=label),size = 6, inherit.aes=FALSE)
   
   ggsave("images/Human_Regression_closeness.pdf",
-         width = 10, height = 18, units = c("in"))
+         width = 10, height = 12, units = c("in"))
   
   
   # Calculating precentage

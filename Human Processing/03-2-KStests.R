@@ -81,7 +81,7 @@ for (i in feat.list){
 ks.list <- data.frame(cbind(feat.list,ks.list))
 
 ks.pvals <- formatC(unlist(ks.list$V2), digits = 3)
-ks.pvals <- paste("KS p-value <",ks.pvals)
+ks.pvals <- paste("KS p-value =",ks.pvals, " *")
 
 
 aa3 <- rbind(aa,mutate(aa,V12= "All Genes"))

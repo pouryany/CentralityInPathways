@@ -32,8 +32,8 @@ for (i in 1:length(graphs.hsap)){
     hsap.Graph  <- graphs.hsap[[i]]
     if(paths.summary  %>% dplyr::select(., num_nodes) %>% dplyr::slice(.,i) >1000) next
     if(paths.summary  %>% dplyr::select(., num_edges) %>% dplyr::slice(.,i) >4000) next
-    if(paths.summary  %>% dplyr::select(., num_nodes) %>% dplyr::slice(.,i) <20  ) next
-    if(paths.summary  %>% dplyr::select(., num_edges) %>% dplyr::slice(.,i) <20  ) next
+    if(paths.summary  %>% dplyr::select(., num_nodes) %>% dplyr::slice(.,i) <=20  ) next
+    if(paths.summary  %>% dplyr::select(., num_edges) %>% dplyr::slice(.,i) <=20  ) next
     if(paths.summary  %>% dplyr::select(., eigen)     %>% dplyr::slice(.,i) > 10 ) next
     
     
@@ -257,4 +257,4 @@ for (i in 1:length(graphs.hsap)){
 
 unique(all.hsap.essential$pathway.name)
 ### Saving and loading made easy
-saveRDS(all.hsap.essential, file = "Human Processing/pathwayCentralities.rds")
+saveRDS(all.hsap.essential, file = "Human_data/pathwayCentralities.rds")
