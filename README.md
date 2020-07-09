@@ -82,3 +82,5 @@ review the contents of the `Human Processing` folder.
     PageRank centrality values from the last script.
 
 # References
+
+Naderi Yeganeh P, Richardson C, Saule E, Loraine A, Taghi Mostafavi M. Revisiting the use of graph centrality models in biological pathway analysis. BioData Min. 2020;13:5. Published 2020 Jun 16. doi:10.1186/s13040-020-00214-x
